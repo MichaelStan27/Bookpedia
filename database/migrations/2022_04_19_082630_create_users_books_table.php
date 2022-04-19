@@ -19,8 +19,8 @@ class CreateUsersBooksTable extends Migration
             $table->unsignedBigInteger('book_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('book_id')->references('id')->on('books');
-            $table->decimal('sale_price');
-            $table->decimal('loan_price');
+            $table->decimal('sale_price', $precision = 12, $scale = 2);
+            $table->decimal('loan_price', $precision = 12, $scale = 2);
             $table->integer('status');
             $table->integer('type_trans');
             $table->timestamps();

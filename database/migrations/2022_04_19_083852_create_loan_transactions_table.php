@@ -23,7 +23,7 @@ class CreateLoanTransactionsTable extends Migration
             $table->date('loan_date');
             $table->date('return_date');
             $table->integer('duration');
-            $table->decimal('fine');
+            $table->decimal('fine', $precision = 12, $scale = 2);
             $table->timestamps();
         });
     }

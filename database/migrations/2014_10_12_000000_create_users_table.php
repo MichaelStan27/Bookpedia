@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('city');
             $table->integer('postal_code');
             $table->text('detail_address');
-            $table->decimal('balance');
+            $table->decimal('balance', $precision = 12, $scale = 2);
             $table->rememberToken();
             $table->timestamps();
         });
