@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    @include('components.navbar')
+    @include('partials.navbar')
     @yield('example-body')
 </body>
 
