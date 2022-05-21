@@ -18,7 +18,7 @@
                     </div>
                     <button type="submit"
                         class="text-white rounded-md border-2 w-1/2 py-1 bg-black hover:text-black hover:bg-gray-100 mb-4 shadow-md">Login</button>
-                    <h1 class="text-gray-400 mb-4">OR</h1>
+                    <h1 class="text-gray-400 mb-4 rounded-full border-2 w-fit mx-auto p-2">OR</h1>
                     <a href="/register">
                         <div class="rounded-md text-white bg-gray-500 hover:bg-gray-600 w-1/2 py-1 shadow-md mb-7 mx-auto">
                             Register
