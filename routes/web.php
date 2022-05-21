@@ -16,4 +16,4 @@ use App\Http\Controllers\ViewControllers;
 |
 */
 
-Route::get('/{dir?}', [ViewControllers::class, 'index']);
+Route::get('/{view?}', [ViewControllers::class, 'index']);

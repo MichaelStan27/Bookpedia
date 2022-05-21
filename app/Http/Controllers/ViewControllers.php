@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 
 class ViewControllers extends Controller {
-    public function index($dir = 'welcome') {
-        if (View::exists($dir)) {
-            return view($dir);
+    public function index($view = 'welcome') {
+        if (View::exists($view)) {
+            return view($view);
         }
         return redirect('/');
     }

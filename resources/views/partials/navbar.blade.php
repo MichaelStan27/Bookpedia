@@ -7,7 +7,7 @@
         <li>
             @include('partials.searchbar')
         </li>
-        <li>Login</li>
+        <li><a href="/login">Login</a></li>
         <li>
             <i class="fa-solid fa-cart-shopping fa-lg"></i>
         </li>
