@@ -16,8 +16,9 @@ This project was made to fulfill the requirements of the web programming final p
 2. Install all project dependencies (`npm install && composer install`)
 3. Configure `.env` file
 4. Sets APP_KEY value in `.env` file (`php artisan key:generate`)
-5. Build project assets (`npm run dev`)
-6. Preview project (`php artisan serve`)
+5. Run database migrations and seeder (`php artisan migrate --seed`)
+6. Build project assets (`npm run dev`)
+7. Preview project (`php artisan serve`)
 
 ### Additional setup
 
