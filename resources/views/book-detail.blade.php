@@ -73,36 +73,37 @@
 
     <div class="container mx-auto flex justify-center">
         <div class="py-4 w-3/4">
-            <h1 class="text-xl font-bold text-gray-500">From This User</h1>
+            <h1 class="text-xl font-bold text-gray-500 mb-4">From This User</h1>
             <div class="grid grid-cols-4 gap-4 mb-2">
-                <div class="rounded-lg border-2 shadow-md overflow-hidden">
+                <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
                     <img src="{{ asset('assets/books/naruto - vol 2/cover.jpg') }}" alt="">
                     <div class="p-2">
                         <h1 class="font-bold text-xl">Book Title</h1>
                         <p class="font-semibold text-md text-gray-500">Rp. xxx.xxx</p>
                     </div>
                 </div>
-                <div class="rounded-lg border-2 shadow-md overflow-hidden">
+                <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
                     <img src="{{ asset('assets/books/naruto - vol 2/cover.jpg') }}" alt="">
                     <div class="p-2">
                         <h1 class="font-bold text-xl">Book Title</h1>
                         <p class="font-semibold text-md text-gray-500">Rp. xxx.xxx</p>
                     </div>
                 </div>
-                <div class="rounded-lg border-2 shadow-md overflow-hidden">
+                <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
                     <img src="{{ asset('assets/books/naruto - vol 2/cover.jpg') }}" alt="">
                     <div class="p-2">
                         <h1 class="font-bold text-xl">Book Title</h1>
                         <p class="font-semibold text-md text-gray-500">Rp. xxx.xxx</p>
                     </div>
                 </div>
-                <div class="rounded-lg border-2 shadow-md overflow-hidden">
+                <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
                     <img src="{{ asset('assets/books/naruto - vol 2/cover.jpg') }}" alt="">
                     <div class="p-2">
                         <h1 class="font-bold text-xl">Book Title</h1>
                         <p class="font-semibold text-md text-gray-500">Rp. xxx.xxx</p>
                     </div>
                 </div>
+
             </div>
             <div class="text-right">
                 <a href="" class="underline text-md text-gray-500 hover:text-gray-700">See More...</a>
@@ -112,30 +113,30 @@
 
     <div class="container mx-auto flex justify-center">
         <div class="py-4 w-3/4">
-            <h1 class="text-xl font-bold text-gray-500">Related Books</h1>
+            <h1 class="text-xl font-bold text-gray-500 mb-4">Related Books</h1>
             <div class="grid grid-cols-4 gap-4 mb-2">
-                <div class="rounded-lg border-2 shadow-md overflow-hidden">
+                <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
                     <img src="{{ asset('assets/books/naruto - vol 2/cover.jpg') }}" alt="">
                     <div class="p-2">
                         <h1 class="font-bold text-xl">Book Title</h1>
                         <p class="font-semibold text-md text-gray-500">Rp. xxx.xxx</p>
                     </div>
                 </div>
-                <div class="rounded-lg border-2 shadow-md overflow-hidden">
+                <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
                     <img src="{{ asset('assets/books/naruto - vol 2/cover.jpg') }}" alt="">
                     <div class="p-2">
                         <h1 class="font-bold text-xl">Book Title</h1>
                         <p class="font-semibold text-md text-gray-500">Rp. xxx.xxx</p>
                     </div>
                 </div>
-                <div class="rounded-lg border-2 shadow-md overflow-hidden">
+                <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
                     <img src="{{ asset('assets/books/naruto - vol 2/cover.jpg') }}" alt="">
                     <div class="p-2">
                         <h1 class="font-bold text-xl">Book Title</h1>
                         <p class="font-semibold text-md text-gray-500">Rp. xxx.xxx</p>
                     </div>
                 </div>
-                <div class="rounded-lg border-2 shadow-md overflow-hidden">
+                <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
                     <img src="{{ asset('assets/books/naruto - vol 2/cover.jpg') }}" alt="">
                     <div class="p-2">
                         <h1 class="font-bold text-xl">Book Title</h1>

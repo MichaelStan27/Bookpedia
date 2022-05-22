@@ -26,7 +26,8 @@
                 </div>
             </form>
         </div>
-        <div class="bg-gray-100 w-1/4 rounded-r-md shadow-lg py-2 flex justify-center items-center border-l-2">
+        <div
+            class="bg-gradient-to-br from-gray-400 to-gray-100 w-1/4 rounded-r-md shadow-lg py-2 flex justify-center items-center border-l-2">
             <h1 class="text-center text-2xl font-bold py-2 my-4">Register</h1>
         </div>
     </div>
