@@ -5,15 +5,76 @@
 @section('content')
     <div class="container mx-auto flex justify-center py-8">
         <div class="bg-white w-1/2 rounded-l-md shadow-lg py-2">
-            <form action="" method="post">
+            <h1 class="text-center text-2xl font-bold py-2 my-4">Register</h1>
+            <form action="" method="post" class="">
                 @csrf
                 <div class="text-center mt-4">
-                    <input type="text" name="name" id="name" placeholder="Name" autocomplete="off"
-                        class="text-center w-1/2 mb-4 rounded-md border-2 outline-gray-400 py-1">
-                    <input type="text" name="email" id="email" placeholder="Email" autocomplete="off"
-                        class="text-center w-1/2 mb-4 rounded-md border-2 outline-gray-400 py-1">
-                    <input type="text" name="password" id="password" placeholder="Password" autocomplete="off"
-                        class="text-center w-1/2 mb-8 rounded-md border-2 outline-gray-400 py-1">
+                    <div class="mb-4">
+                        <label for="first_name" class="block text-left mx-auto w-1/2 text-gray-500">First Name <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" name="first_name" id="first_name" placeholder="" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="last_name" class="block text-left mx-auto w-1/2 text-gray-500">Last Name <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" name="last_name" id="last_name" placeholder="" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-left mx-auto w-1/2 text-gray-500">Phone Number
+                            <span class="text-sm text-gray-400">(numeric)</span>
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" name="phone" id="phone" placeholder="" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="city" class="block text-left mx-auto w-1/2 text-gray-500">City <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" name="city" id="city" placeholder="" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="postal_code" class="block text-left mx-auto w-1/2 text-gray-500">Postal Code
+                            <span class="text-sm text-gray-400">(numeric, length: 5)</span>
+                            <span class="text-red-500">*</span></label>
+                        <input type="text" name="postal_code" id="postal_code" placeholder="" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="detail_address" class="block text-left mx-auto w-1/2 text-gray-500">Detail Address <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" name="detail_address" id="detail_address" placeholder="" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="balance" class="block text-left mx-auto w-1/2 text-gray-500">Balance</label>
+                        <input type="text" name="balance" id="balance" placeholder="" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-left mx-auto w-1/2 text-gray-500">Email
+                            <span class="text-sm text-gray-400">(must be a valid email)</span>
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" name="email" id="email" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-left mx-auto w-1/2 text-gray-500">Password
+                            <span class="text-sm text-gray-400">(alphanumeric, minimal:
+                                5)</span>
+                            <span class="text-red-500">*</span></label>
+                        <input type="password" name="password" id="password" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
+                    <div class="mb-8">
+                        <label for="confirm_password" class="block text-left mx-auto w-1/2 text-gray-500">Confirm Password
+                            <span class="text-red-500">*</span></label>
+                        <input type="password" name="confirm_password" id="confirm_password" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1">
+                    </div>
                     <button type="submit"
                         class="text-white rounded-md border-2 w-1/2 py-1 bg-black hover:text-black hover:bg-gray-100 mb-8 shadow-md">Create
                         Account</button>
@@ -25,10 +86,6 @@
                     </a>
                 </div>
             </form>
-        </div>
-        <div
-            class="bg-gradient-to-br from-gray-400 to-gray-100 w-1/4 rounded-r-md shadow-lg py-2 flex justify-center items-center border-l-2">
-            <h1 class="text-center text-2xl font-bold py-2 my-4">Register</h1>
         </div>
     </div>
 @endsection
