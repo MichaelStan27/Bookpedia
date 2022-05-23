@@ -20,3 +20,4 @@ use App\Http\Controllers\ViewControllers;
 Route::get('/{view?}', [ViewControllers::class, 'index']);
 Route::post('/login', [AccountController::class, 'login']);
 Route::post('/logout', [AccountController::class, 'logout']);
+Route::post('/register', [AccountController::class, 'store']);
