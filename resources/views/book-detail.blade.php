@@ -11,10 +11,15 @@
                     <div class="flex justify-between">
                         <h1 class="font-bold text-3xl">Book Title</h1>
                         <form action="" method="post">
-                            <button type="submit"
-                                class="border-2 rounded-md shadow-md bg-pink-400 hover:bg-pink-500 px-2 py-1 text-white font-medium">Add
-                                to
-                                Wishlist</button>
+                            <div class="hover:scale-105">
+                                <button type="submit"
+                                    class="relative w-[30px] h-[30px] rotate-45 shadow-md bg-gray-300 border-b-2">
+                                    <div class="absolute w-full h-full top-0 left-[-50%] rounded-full bg-gray-300">
+                                    </div>
+                                    <div class="absolute w-full h-full top-[-50%] rounded-full bg-gray-300">
+                                    </div>
+                                </button>
+                            </div>
                         </form>
                     </div>
 
