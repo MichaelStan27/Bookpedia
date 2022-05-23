@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 
@@ -17,3 +18,5 @@ use App\Http\Controllers\ViewControllers;
 */
 
 Route::get('/{view?}', [ViewControllers::class, 'index']);
+Route::post('/login', [AccountController::class, 'login']);
+

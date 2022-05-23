@@ -8,10 +8,21 @@
             <form action="" method="post">
                 @csrf
                 <div class="text-center mt-4">
-                    <input type="text" name="email" id="email" placeholder="Email" autocomplete="off"
-                        class="text-center w-1/2 mb-4 rounded-md border-2 outline-gray-400 py-1">
-                    <input type="text" name="password" id="password" placeholder="Password" autocomplete="off"
-                        class="text-center w-1/2 mb-4 rounded-md border-2 outline-gray-400 py-1">
+                    <div class="mb-4">
+                        <input type="text" name="email" id="email" placeholder="Email" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1 @error('email') border-red-500 @enderror"
+                            value="{{ old('email') }}">
+                        @error('email')
+                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" name="password" id="password" placeholder="Password" autocomplete="off"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1 @error('password') border-red-500 @enderror">
+                        @error('password')
+                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
                     <div class="mb-4">
                         <input type="checkbox" name="remember" id="remember">
                         <label for="remember" class="text-gray-400">Remember me</label>
