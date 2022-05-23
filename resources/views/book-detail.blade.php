@@ -12,8 +12,7 @@
                         <h1 class="font-bold text-3xl">Book Title</h1>
                         <form action="" method="post">
                             <div class="hover:scale-105">
-                                <button type="submit"
-                                    class="relative w-[30px] h-[30px] rotate-45 shadow-md bg-gray-300 border-b-2">
+                                <button type="submit" class="relative w-[30px] h-[30px] rotate-45 shadow-md bg-gray-300">
                                     <div class="absolute w-full h-full top-0 left-[-50%] rounded-full bg-gray-300">
                                     </div>
                                     <div class="absolute w-full h-full top-[-50%] rounded-full bg-gray-300">
