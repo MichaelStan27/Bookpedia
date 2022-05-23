@@ -11,6 +11,7 @@
                     <div class="flex justify-between">
                         <h1 class="font-bold text-3xl">Book Title</h1>
                         <form action="" method="post">
+                            @csrf
                             <div class="hover:scale-105">
                                 <button type="submit" class="relative w-[30px] h-[30px] rotate-45 shadow-md bg-gray-300">
                                     <div class="absolute w-full h-full top-0 left-[-50%] rounded-full bg-gray-300">
@@ -67,6 +68,7 @@
             </div>
 
             <form action="" method="post" class="py-2 px-8 w-full text-center">
+                @csrf
                 <button type="submit"
                     class="font-medium rounded-md bg-black text-white hover:bg-white hover:text-black px-2 shadow-md border-2 py-1">
                     Add to Cart
