@@ -10,6 +10,14 @@
         @guest
             <li><a href="/login">Login</a></li>
         @endguest
+        @auth
+            <li>
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="font-bold">Logout</button>
+                </form>
+            </li>
+        @endauth
         <li>
             <i class="fa-solid fa-cart-shopping fa-lg"></i>
         </li>
