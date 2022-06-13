@@ -24,3 +24,7 @@ Route::controller(AccountController::class)->group(function () {
     Route::post('/logout', 'logout');
     Route::post('/register', 'store');
 });
+
+Route::get('/add-book', function(){
+    return view('add-book');
+});
