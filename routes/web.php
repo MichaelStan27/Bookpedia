@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 
@@ -34,3 +35,8 @@ Route::controller(BookController::class)->name('crud-book')->group(function (){
     Route::get('/add-book', 'add-book-form');
     Route::post('/add-book', 'create');
 });
+Route::get('/add-book', function(){
+    return view('add-book');
+});
+
+Route::get('/profile', [ProfileController::class, 'profile']);
