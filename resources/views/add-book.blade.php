@@ -6,7 +6,7 @@
     <div class="container mx-auto flex justify-center py-8">
         <div class="bg-white w-1/2 rounded-lg shadow-xl py-2">
             <h1 class="text-center text-2xl font-bold py-2 my-14">Add New Book</h1>
-            <form action="" method="post" class="">
+            <form action="{{ route('crud-book') }}" method="post" class="" enctype="multipart/form-data">
                 @csrf
                 <div class="text-center mt-4 px-[20%]">
                     <div class="mb-4">
@@ -63,6 +63,16 @@
                         @enderror
                     </div>
                     <div class="mb-4">
+                        <label for="image" class="block text-left text-gray-500">Photo
+                            <span class="text-sm text-gray-400">(file extentions : jpg, png, webp, jpeg, svg)</span>
+                            <span class="text-red-500">*</span></label>
+                        <input type="file" name="image" id="image" placeholder=""
+                            class="text-left w-full rounded-md border-2 outline-gray-400 @error('image') border-red-500 @enderror">
+                        @error('image')
+                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
                         <label for="summary" class="block text-left text-gray-500">Summary
                             <span class="text-sm text-gray-400">(min: 10)</span>
                             <span class="text-red-500">*</span></label>
@@ -88,9 +98,14 @@
                             <p class="text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="mb-4 flex justify-evenly">
-                        <div><input type="checkbox" name="lend_type" id="lend_type"> Lend</div>
-                        <div><input type="checkbox" name="sell_type" id="sell_type"> Sell</div>
+                    <div class="mb-4">
+                        <div class="mb-4 flex justify-evenly">
+                            <div><input type="checkbox" name="type[1]" id="lend_type"> Lend</div>
+                            <div><input type="checkbox" name="type[2]" id="sell_type"> Sell</div>
+                        </div>
+                        @error('type')
+                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-4 hidden" id="loan_price">
                         <label for="loan_price" class="block text-left text-gray-500">Loan Price
