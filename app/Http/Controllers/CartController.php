@@ -10,19 +10,20 @@ class CartController extends Controller
     public function index(){
         $cartItems = CartItem::with('book.user')
             ->join('books', 'cart_items.book_id', '=', 'books.id')
-            ->where('user_id', auth()->user()->id)->get();
+            ->where('cart_items.user_id', auth()->user()->id)->get();
 
         $count = [
             'counter' => $cartItems->count(),
-            'total' => 'IDR '.number_format($cartItems->sum('price')),
+            'total' => 0
+            // 'IDR '.number_format($cartItems->sum('price')),
         ];
         
     //    return dd($count);
-            return view('login');
+            // return view('login');
 
-        // return view('cart')
-        //     ->with('cartItems', $cartItems)
-        //     ->with('count', $count);
+        return view('cart')
+            ->with('cartItems', $cartItems)
+            ->with('count', $count);
     }
     // public function store(Request $request){
     //     $game = Game::where('id', $request->id)->first();

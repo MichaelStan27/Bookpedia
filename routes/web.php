@@ -33,9 +33,9 @@ Route::controller(BookController::class)->name('crud-book')->group(function (){
     Route::post('/add-book', 'create');
 });
 
-Route::get('/your-cart', function(){
-    return view('cart');
-});
+// Route::get('/your-cart', function(){
+//     return view('cart');
+// });
 
-// Route::get('/cart', [CartController::class, 'index']);
+Route::get('/your-cart', [CartController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'profile']);

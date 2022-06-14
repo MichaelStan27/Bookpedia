@@ -19,6 +19,8 @@ class CreateCartItemsTable extends Migration
             $table->foreign('book_id')->references('id')->on('books');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('transaction_types');
             $table->timestamps();
         });
     }
@@ -31,5 +33,6 @@ class CreateCartItemsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('cart_items');
+
     }
 }

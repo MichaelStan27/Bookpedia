@@ -28,7 +28,7 @@ class CreateBooksTable extends Migration {
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->unsignedBigInteger('transaction_type_id');
-            $table->foreign('transaction_type_id')->references('id')->on('users');
+            $table->foreign('transaction_type_id')->references('id')->on('transaction_types');
             $table->timestamps();
         });
     }
