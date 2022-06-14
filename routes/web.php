@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 
@@ -17,7 +18,7 @@ use App\Http\Controllers\ViewControllers;
 |
 */
 
-Route::get('/{view?}', [ViewControllers::class, 'index']);
+// Route::get('/{view?}', [ViewControllers::class, 'index']);
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/login', 'login');
@@ -28,3 +29,9 @@ Route::controller(AccountController::class)->group(function () {
 Route::get('/add-book', function(){
     return view('add-book');
 });
+
+Route::get('/cart', function(){
+    return view('cart');
+});
+
+// Route::get('/cart', [CartController::class, 'index']);
