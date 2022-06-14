@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 
@@ -28,3 +29,5 @@ Route::controller(AccountController::class)->group(function () {
 Route::get('/add-book', function(){
     return view('add-book');
 });
+
+Route::get('/profile', [ProfileController::class, 'profile']);
