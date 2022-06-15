@@ -20,7 +20,7 @@ use App\Http\Controllers\ViewControllers;
 |
 */
 
-// Route::get('/{view?}', [ViewControllers::class, 'index']);
+Route::get('/{view?}', [ViewControllers::class, 'index']);
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/login', 'login');
@@ -29,7 +29,7 @@ Route::controller(AccountController::class)->group(function () {
 });
 
 Route::controller(BookController::class)->name('crud-book')->group(function (){
-    Route::get('/add-book', 'add-book-form');
+    Route::get('/add-book', 'add_book_form');
     Route::post('/add-book', 'create');
 });
 
