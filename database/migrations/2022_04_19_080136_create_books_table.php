@@ -16,7 +16,7 @@ class CreateBooksTable extends Migration {
             $table->string('isbn')->unique();
             $table->string('title');
             $table->string('author');
-            $table->year('released_year');
+            $table->integer('released_year');
             $table->string('publisher');
             $table->string('image');
             $table->string('extension');
@@ -29,7 +29,7 @@ class CreateBooksTable extends Migration {
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->unsignedBigInteger('transaction_type_id');
-            $table->foreign('transaction_type_id')->references('id')->on('transaction_types');
+            $table->foreign('transaction_type_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
