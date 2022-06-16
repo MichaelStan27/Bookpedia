@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
@@ -26,8 +28,14 @@ Route::controller(AccountController::class)->group(function () {
     Route::post('/register', 'store');
 });
 
-Route::get('/add-book', function(){
-    return view('add-book');
+Route::controller(BookController::class)->name('crud-book')->group(function (){
+    Route::get('/add-book', 'add_book_form');
+    Route::post('/add-book', 'create');
 });
 
+// Route::get('/your-cart', function(){
+//     return view('cart');
+// });
+
+Route::get('/your-cart', [CartController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'profile']);
