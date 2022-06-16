@@ -63,6 +63,11 @@
                         @enderror
                     </div>
                     <div class="mb-4">
+                        <div class="my-2 hidden" id="preview-img">
+                            <h1 class="text-lg font-semibold">Preview</h1>
+                            <img class="w-[50%] m-auto p-2 rounded-lg border-2 border-gray-500">
+                        </div>
+
                         <label for="image" class="block text-left text-gray-500">Photo
                             <span class="text-sm text-gray-400">(file extentions : jpg, png, webp, jpeg, svg)</span>
                             <span class="text-red-500">*</span></label>

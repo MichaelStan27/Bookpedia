@@ -18,3 +18,20 @@ sell_cb?.addEventListener("click", () => {
         input_sale_price.classList.add("hidden");
     }
 });
+
+let inputImg = document.querySelector("#image");
+
+function preview_book_image() {
+    const photoPreview = document.querySelector("#preview-img");
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(inputImg.files[0]);
+
+    fileReader.onload = function (oFREvent) {
+        photoPreview.children[1].src = oFREvent.target.result;
+    };
+
+    photoPreview.classList.remove("hidden");
+}
+
+inputImg.onchange = preview_book_image;
