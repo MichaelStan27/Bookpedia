@@ -15,15 +15,15 @@
             </button>
 
             <a href="#">
-                <img carousel-image src="{{ asset('assets/carousel-1.jpg') }}"
+                <img carousel-image src="{{ asset('assets/carousel/carousel-1.jpg') }}"
                     class="h-full w-full object-cover absolute inset-0 transition-all duration-500 z-10">
             </a>
             <a href="#">
-                <img carousel-image src="{{ asset('assets/carousel-2.jpg') }}"
+                <img carousel-image src="{{ asset('assets/carousel/carousel-2.jpg') }}"
                     class="h-full w-full object-cover absolute inset-0 transition-all duration-500 z-0">
             </a>
             <a href="#">
-                <img carousel-image src="{{ asset('assets/carousel-3.png') }}"
+                <img carousel-image src="{{ asset('assets/carousel/carousel-3.png') }}"
                     class="h-full w-full object-cover absolute inset-0 transition-all duration-500 z-0">
             </a>
         </div>
