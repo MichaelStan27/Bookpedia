@@ -20,7 +20,7 @@ use App\Http\Controllers\ViewControllers;
 |
 */
 
-Route::get('/{view?}', [ViewControllers::class, 'index']);
+// Route::get('/{view?}', [ViewControllers::class, 'index']);
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/login', 'login');
@@ -31,10 +31,13 @@ Route::controller(AccountController::class)->group(function () {
 Route::controller(BookController::class)->name('crud-book')->group(function (){
     Route::get('/add-book', 'add_book_form');
     Route::post('/add-book', 'create');
+    Route::get('/update-book/{id}', 'update_book_form');
+    Route::put('/update-book/{book}', 'update');
+    
 });
 
-// Route::get('/your-cart', function(){
-//     return view('cart');
+// Route::get('/update-book/{id}', function(){
+//     return view('update-book');
 // });
 
 Route::get('/your-cart', [CartController::class, 'index']);
