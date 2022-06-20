@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 class AccountController extends Controller {
+    public function viewLogin(){
+        return view('/login');
+    }
+
+    public function viewRegister(){
+        return view('/register');
+    }
+
     public function login(Request $request) {
         $request->validate([
             'email' => ['required', 'email'],

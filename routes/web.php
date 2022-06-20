@@ -24,8 +24,10 @@ use App\Http\Controllers\ViewControllers;
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/login', 'login');
+    Route::get('login', 'viewLogin');
     Route::post('/logout', 'logout');
     Route::post('/register', 'store');
+    Route::get('/register', 'viewRegister');
 });
 
 Route::get('/', fn () => view('dashboard'));
@@ -33,6 +35,7 @@ Route::get('/search', fn () => view('search'));
 Route::controller(BookController::class)->name('crud-book')->group(function () {
     Route::get('/add-book', 'add_book_form');
     Route::post('/add-book', 'create');
+    Route::get('/book-detail', 'viewBookDetail');
 });
 
 // Route::get('/your-cart', function(){
