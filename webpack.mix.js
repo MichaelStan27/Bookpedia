@@ -11,7 +11,14 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js(["resources/js/app.js", "resources/js/add-book.js"], "public/js/app.js")
+mix.js(
+    [
+        "resources/js/app.js",
+        "resources/js/add-book.js",
+        "resources/js/carousel.js",
+    ],
+    "public/js/app.js"
+)
     .postCss("resources/css/app.css", "public/css", [require("tailwindcss")])
     .disableNotifications()
     .browserSync({

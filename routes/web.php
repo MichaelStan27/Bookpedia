@@ -17,7 +17,7 @@ use App\Http\Controllers\ViewControllers;
 |
 */
 
-Route::get('/{view?}', [ViewControllers::class, 'index']);
+// Route::get('/{view?}', [ViewControllers::class, 'index']);
 
 Route::controller(AccountController::class)->group(function () {
     Route::post('/login', 'login');
@@ -25,6 +25,8 @@ Route::controller(AccountController::class)->group(function () {
     Route::post('/register', 'store');
 });
 
-Route::get('/add-book', function(){
+Route::get('/add-book', function () {
     return view('add-book');
 });
+
+Route::get('/', fn () => view('dashboard'));
