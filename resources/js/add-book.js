@@ -27,11 +27,11 @@ function preview_book_image() {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(inputImg.files[0]);
 
-    fileReader.onload = function (oFREvent) {
+    fileReader.addEventListener("load", (oFREvent) => {
         photoPreview.children[1].src = oFREvent.target.result;
-    };
+    });
 
     photoPreview.classList.remove("hidden");
 }
 
-inputImg.onchange = preview_book_image;
+inputImg?.addEventListener("change", () => preview_book_image());

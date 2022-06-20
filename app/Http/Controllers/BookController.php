@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
+
+    public function viewBookDetail(){
+        return view('book-detail');
+    }
+
     public function add_book_form(){
         return view('add-book');
     }
