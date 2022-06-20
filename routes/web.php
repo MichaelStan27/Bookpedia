@@ -30,3 +30,4 @@ Route::get('/add-book', function () {
 });
 
 Route::get('/', fn () => view('dashboard'));
+Route::get('/search', fn () => view('search'));
