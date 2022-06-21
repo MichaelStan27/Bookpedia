@@ -25,7 +25,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 60000,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'Ugly Love',
@@ -39,7 +42,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 100000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => '400 Days',
@@ -53,7 +59,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 1
+                'transaction_type_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'The Seven Husbands of Evelyn Hugo',
@@ -67,7 +76,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 2
+                'transaction_type_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'Harry Potter and the Philosopher\'s Stone',
@@ -81,7 +93,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 120000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2
+                'transaction_type_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'The Sun and Her Flowers',
@@ -95,7 +110,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 120000,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 2,
             ],
             [
                 'title' => 'Please Love Me At My Worst',
@@ -109,7 +127,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 1
+                'transaction_type_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 2,
             ],
             [
                 'title' => 'Living Slower: Simple Ideas to Eliminate Excess and Make Time for What Matters',
@@ -123,7 +144,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 135000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'A Rip Through Time',
@@ -137,7 +161,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 150000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2
+                'transaction_type_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'The Queen of Nothing',
@@ -153,7 +180,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 160000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'Malibu Rising',
@@ -167,7 +197,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 1
+                'transaction_type_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'The Murder of Mr. Wickham',
@@ -181,7 +214,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 165000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'Breathless',
@@ -195,7 +231,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 180000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2
+                'transaction_type_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'All That Fills Us',
@@ -209,7 +248,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 145000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'Near The Bone',
@@ -223,7 +265,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 175000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'title' => 'The Hate U give',
@@ -237,7 +282,10 @@ class BookSeeder extends Seeder {
                 'sale_price' => 175000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => 1,
             ],
         ]);
     }
