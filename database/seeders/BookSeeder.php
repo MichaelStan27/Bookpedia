@@ -26,7 +26,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 60000,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781471136726',
@@ -41,7 +42,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 100000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781542094085',
@@ -56,7 +58,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 1
+                'transaction_type_id' => 1,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781501139239',
@@ -71,7 +74,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 2
+                'transaction_type_id' => 2,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '0747532699',
@@ -86,7 +90,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 120000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2
+                'transaction_type_id' => 2,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781449486792',
@@ -101,7 +106,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 120000,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781524868697',
@@ -116,7 +122,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 1
+                'transaction_type_id' => 1,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781493434022',
@@ -131,7 +138,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 135000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781250820006',
@@ -146,7 +154,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 150000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2
+                'transaction_type_id' => 2,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '0316310409',
@@ -163,7 +172,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 160000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781529157147',
@@ -178,7 +188,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 1
+                'transaction_type_id' => 1,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9780593592342',
@@ -193,7 +204,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 165000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9780593315491',
@@ -208,7 +220,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 180000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2
+                'transaction_type_id' => 2,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9780800740160',
@@ -223,7 +236,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 145000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9780593199763',
@@ -238,7 +252,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 175000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781406384765',
@@ -253,7 +268,8 @@ class BookSeeder extends Seeder {
                 'sale_price' => 175000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3
+                'transaction_type_id' => 3,
+                'category_id' => 1,
             ],
         ]);
     }
