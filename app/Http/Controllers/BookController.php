@@ -18,7 +18,6 @@ class BookController extends Controller {
 
     public function create(Request $request) {
         $request->validate([
-            'isbn' => ['required', 'numeric', 'digits:13'],
             'title' => ['required'],
             'author' => ['required'],
             'released_year' => ['required', 'integer', 'digits:4'],
@@ -74,7 +73,6 @@ class BookController extends Controller {
         }
 
         Book::create([
-            'isbn' => $request->isbn,
             'title' => $request->title,
             'author' => $request->author,
             'released_year' => $request->released_year,
@@ -93,10 +91,8 @@ class BookController extends Controller {
     }
 
     public function update_book_form($id) {
-        // return "hi";
-        // return view ('login');
         $book = Book::where('id', $id)->first();
-        // return dd($book);
+
         return view('update-book')->with('book', $book);
     }
 
@@ -165,11 +161,6 @@ class BookController extends Controller {
             'status_id' => 1,
             'transaction_type_id' => $type,
         ]);
-
-        // $book->image = 'book-image/'.$filename;
-        // $book->summary = $request->summary;
-        // $book->description = $request->description;
-
 
         return redirect("/profile")->with('updateBookMessage', 'Book added successfully');
     }

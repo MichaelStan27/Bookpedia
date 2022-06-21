@@ -6,20 +6,9 @@
     <div class="container mx-auto flex justify-center py-8">
         <div class="bg-white w-1/2 rounded-lg shadow-xl py-2">
             <h1 class="text-center text-2xl font-bold py-2 my-14">Add New Book</h1>
-            <form action="{{ route('crud-book') }}" method="post" class="" enctype="multipart/form-data">
+            <form action="{{ route('add-book') }}" method="post" class="" enctype="multipart/form-data">
                 @csrf
                 <div class="text-center mt-4 px-[20%]">
-                    <div class="mb-4">
-                        <label for="isbn" class="block text-left text-gray-500">ISBN
-                            <span class="text-sm text-gray-400">(numeric, length: 13)</span>
-                            <span class="text-red-500">*</span></label>
-                        <input type="text" name="isbn" id="isbn" placeholder="" autocomplete="off"
-                            class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('isbn') border-red-500 @enderror"
-                            value="{{ old('isbn') }}">
-                        @error('isbn')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
-                        @enderror
-                    </div>
                     <div class="mb-4">
                         <label for="title" class="block text-left text-gray-500">Title <span
                                 class="text-red-500">*</span></label>
@@ -27,7 +16,7 @@
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('title') border-red-500 @enderror"
                             value="{{ old('title') }}">
                         @error('title')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4">
@@ -38,7 +27,7 @@
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('author') border-red-500 @enderror"
                             value="{{ old('author') }}">
                         @error('author')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4">
@@ -49,7 +38,7 @@
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('released_year') border-red-500 @enderror"
                             value="{{ old('released_year') }}">
                         @error('released_year')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4">
@@ -59,7 +48,7 @@
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('publisher') border-red-500 @enderror"
                             value="{{ old('publisher') }}">
                         @error('publisher')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4">
@@ -74,7 +63,7 @@
                         <input type="file" name="image" id="image" placeholder=""
                             class="text-left w-full rounded-md border-2 outline-gray-400 @error('image') border-red-500 @enderror">
                         @error('image')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4">
@@ -85,7 +74,7 @@
                             class="p-5 w-full rounded-md border-2 outline-gray-400 @error('summary') border-red-500 @enderror" cols="30"
                             rows="10">{{ old('summary') }}</textarea>
                         @error('summary')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4">
@@ -93,10 +82,10 @@
                             <span class="text-sm text-gray-400">(min: 10)</span>
                             <span class="text-red-500">*</span></label>
                         <textarea type="text" name="description" id="description" placeholder=""
-                            class="w-full p-5 rounded-md border-2 outline-gray-400 @error('description') border-red-500 @enderror" cols="30"
-                            rows="10">{{ old('description') }}</textarea>
+                            class="w-full p-5 rounded-md border-2 outline-gray-400 @error('description') border-red-500 @enderror"
+                            cols="30" rows="10">{{ old('description') }}</textarea>
                         @error('description')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4">
@@ -117,7 +106,7 @@
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('loan_price') border-red-500 @enderror"
                             value="{{ old('loan_price') }}">
                         @error('loan_price')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4 @error('sale_price') @else hidden @enderror" id="sale_price">
@@ -127,7 +116,7 @@
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('sale_price') border-red-500 @enderror"
                             value="{{ old('sale_price') }}">
                         @error('sale_price')
-                            <p class="   text-red-500 text-sm">{{ $message }}</p>
+                            <p class="   text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
 

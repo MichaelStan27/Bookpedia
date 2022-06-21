@@ -33,12 +33,11 @@ Route::controller(AccountController::class)->group(function () {
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/search', fn () => view('search'));
-Route::controller(BookController::class)->name('crud-book')->group(function () {
-    Route::get('/add-book', 'add_book_form');
-    Route::post('/add-book', 'create');
-    Route::get('/update-book/{id}', 'update_book_form');
-    Route::put('/update-book/{book}', 'update');
-
+Route::controller(BookController::class)->group(function () {
+    Route::get('/add-book', 'add_book_form')->name('add-book');
+    Route::post('/add-book', 'create')->name('add-book');
+    Route::get('/update-book/{id}', 'update_book_form')->name('update-book');
+    Route::put('/update-book/{book}', 'update')->name('update-book');
     Route::get('/book-detail', 'viewBookDetail');
 });
 
