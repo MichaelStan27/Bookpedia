@@ -120,7 +120,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 1,
+                'category_id' => 2,
             ],
             [
                 'isbn' => '9781524868697',
@@ -138,7 +138,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 1,
+                'category_id' => 2,
             ],
             [
                 'isbn' => '9781493434022',
@@ -149,7 +149,7 @@ class BookSeeder extends Seeder {
                 'image' => 'book-image/9781493434022.jpg',
                 'summary' => 'In an increasingly complex and chaotic world, we yearn to live a little slower, a little simpler.',
                 'description' => '85% in good condition',
-                'user_id' => 1,
+                'user_id' => 4,
                 'sale_price' => 135000,
                 'loan_price' => 12000,
                 'status_id' => 1,
