@@ -19,7 +19,9 @@
             </li>
         @endauth
         <li>
-            <i class="fa-solid fa-cart-shopping fa-lg"></i>
+            <a href="{{ route('cart') }}">
+                <i class="fa-solid fa-cart-shopping fa-lg"></i>
+            </a>
         </li>
     </ul>
 

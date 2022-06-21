@@ -46,5 +46,5 @@ Route::controller(BookController::class)->name('crud-book')->group(function () {
 //     return view('update-book');
 // });
 
-Route::get('/your-cart', [CartController::class, 'index']);
+Route::get('/your-cart', [CartController::class, 'index'])->name('cart');
 Route::get('/profile', [ProfileController::class, 'profile']);
