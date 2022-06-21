@@ -43,7 +43,6 @@ class BookSeeder extends Seeder {
                 'status_id' => 1,
                 'transaction_type_id' => 3
             ],
-
             [
                 'isbn'=> '9781542094085', 
                 'title'=> '400 Days', 
@@ -54,6 +53,7 @@ class BookSeeder extends Seeder {
                 'summary'=>'Welcome to 400 Days. A mystery and romance story like none other. An unputdownable tale of suspense, human relationships, love, friendship, the crazy world we live in and, above all, a mother\'s determination to never give up.',
                 'description' => '70% in good condition',
                 'user_id' => 1,
+                'sale_price' => NULL,
                 'loan_price' => 10000,
                 'status_id' => 1,
                 'transaction_type_id' => 1
@@ -68,6 +68,7 @@ class BookSeeder extends Seeder {
                 'summary'=>'Aging and reclusive Hollywood movie icon Evelyn Hugo is finally ready to tell the truth about her glamorous and scandalous life. But when she chooses unknown magazine reporter Monique Grant for the job, no one is more astounded than Monique herself. Why her? Why now?',
                 'description' => '90% in good condition',
                 'user_id' => 1,
+                'sale_price' => NULL,
                 'loan_price' => 12000,
                 'status_id' => 1,
                 'transaction_type_id' => 2
@@ -83,6 +84,7 @@ class BookSeeder extends Seeder {
                 'description' => '60% in good condition',
                 'user_id' => 1,
                 'sale_price' => 120000,
+                'loan_price' => NULL,
                 'status_id' => 1,
                 'transaction_type_id' => 2
             ],
@@ -112,6 +114,7 @@ class BookSeeder extends Seeder {
                 'summary'=>'Please Love Me At My Worst is a collection of four sections of poetry inspired by loneliness, unrequited love, and not being able to let go of past relationships. Written during the 2020 COVID-19 quarantine, the book is a reflection of what it means to yearn for people who are unavailable and how important it is to focus on self-love and healing.',
                 'description' => '70% in good condition',
                 'user_id' => 1,
+                'sale_price' => NULL,
                 'loan_price' => 10000,
                 'status_id' => 1,
                 'transaction_type_id' => 1
@@ -144,6 +147,7 @@ class BookSeeder extends Seeder {
                 'description' => '75% in good condition',
                 'user_id' => 1,
                 'sale_price' => 150000,
+                'loan_price' => NULL,
                 'status_id' => 1,
                 'transaction_type_id' => 2
             ],
@@ -175,6 +179,7 @@ class BookSeeder extends Seeder {
                 'summary'=>'Malibu Rising is a story about one unforgettable night in the life of a family: the night they each have to choose what they will keep from the people who made them... and what they will leave behind.',
                 'description' => '85% in good condition',
                 'user_id' => 1,
+                'sale_price' => NULL,
                 'loan_price' => 15000,
                 'status_id' => 1,
                 'transaction_type_id' => 1
@@ -205,6 +210,7 @@ class BookSeeder extends Seeder {
                 'description' => '100% in good condition',
                 'user_id' => 1,
                 'sale_price' => 180000,
+                'loan_price' => NULL,
                 'status_id' => 1,
                 'transaction_type_id' => 2
             ],
