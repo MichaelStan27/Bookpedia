@@ -35,10 +35,10 @@
                     Filter
                 </div>
                 <div class="w-4/5">
-                    <div class="grid grid-cols-4 gap-5">
-                        @for ($i = 0; $i < 9; $i++)
-                            <x-book-card></x-book-card>
-                        @endfor
+                    <div class="grid grid-cols-2 gap-5">
+                        @foreach ($books as $book)
+                            <x-book-card :book="$book"></x-book-card>
+                        @endforeach
                     </div>
                     <a href="#" class="block my-4">Show more</a>
                 </div>
