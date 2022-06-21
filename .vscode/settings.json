@@ -5,4 +5,5 @@
     },
     "intelephense.diagnostics.enable": false,
     "intelephense.format.braces": "k&r",
+    "editor.formatOnSave": true,
 }
