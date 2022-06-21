@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class BookController extends Controller {
 
@@ -33,7 +34,8 @@ class BookController extends Controller {
         //Upload image
         $path = "public/book-image/";
         $file = $request->file('image');
-        $filename = $request->isbn . '.' . $file->extension();
+        $randomString = Str::random(7);
+        $filename = $request->title.$randomString.'.'. $file->extension();
         Storage::putFileAs(
             $path,
             $file,
@@ -112,7 +114,8 @@ class BookController extends Controller {
         //Upload image
         $path = "public/book-image/";
         $file = $request->file('image');
-        $filename = $request->isbn . '.' . $file->extension();
+        $randomString = Str::random(7);
+        $filename = $request->title.$randomString.'.'.$file->extension();
         Storage::putFileAs(
             $path,
             $file,
