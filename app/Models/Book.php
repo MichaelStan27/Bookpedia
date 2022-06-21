@@ -21,6 +21,10 @@ class Book extends Model {
         return $this->belongsTo(Status::class);
     }
 
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
     public function getLoanPriceWithNotationAttribute() {
         return 'IDR ' . number_format($this->attributes['loan_price']);
     }

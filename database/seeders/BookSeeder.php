@@ -29,6 +29,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781471136726',
@@ -46,6 +47,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781542094085',
@@ -63,6 +65,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781501139239',
@@ -80,6 +83,8 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'transaction_type_id' => 2,
+                'category_id' => 1,
             ],
             [
                 'isbn' => '0747532699',
@@ -97,6 +102,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781449486792',
@@ -114,6 +120,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781524868697',
@@ -131,6 +138,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781493434022',
@@ -148,6 +156,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781250820006',
@@ -165,6 +174,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '0316310409',
@@ -184,6 +194,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781529157147',
@@ -201,6 +212,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9780593592342',
@@ -218,6 +230,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9780593315491',
@@ -235,6 +248,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9780800740160',
@@ -252,6 +266,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9780593199763',
@@ -269,6 +284,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
             [
                 'isbn' => '9781406384765',
@@ -286,6 +302,7 @@ class BookSeeder extends Seeder {
                 'transaction_type_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'category_id' => 1,
             ],
         ]);
     }
