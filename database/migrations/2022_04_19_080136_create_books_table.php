@@ -13,7 +13,6 @@ class CreateBooksTable extends Migration {
     public function up() {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('isbn')->unique();
             $table->string('title');
             $table->string('author');
             $table->integer('released_year');
@@ -29,8 +28,6 @@ class CreateBooksTable extends Migration {
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->unsignedBigInteger('transaction_type_id');
             $table->foreign('transaction_type_id')->references('id')->on('transaction_types');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

@@ -14,7 +14,6 @@ class BookSeeder extends Seeder {
     public function run() {
         Book::insert([
             [
-                'isbn' => '9781501110368',
                 'title' => 'It Ends With Us',
                 'author' => 'Coleen Hoover',
                 'released_year' => 2016,
@@ -26,13 +25,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 60000,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 3
             ],
             [
-                'isbn' => '9781471136726',
                 'title' => 'Ugly Love',
                 'author' => 'Coleen Hoover',
                 'released_year' => 2014,
@@ -44,13 +39,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 100000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 3
             ],
             [
-                'isbn' => '9781542094085',
                 'title' => '400 Days',
                 'author' => 'Chetan Bhagat',
                 'released_year' => 2021,
@@ -62,13 +53,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 1
             ],
             [
-                'isbn' => '9781501139239',
                 'title' => 'The Seven Husbands of Evelyn Hugo',
                 'author' => 'Taylor Jenkins Reid',
                 'released_year' => 2018,
@@ -80,14 +67,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'transaction_type_id' => 2,
-                'category_id' => 1,
+                'transaction_type_id' => 2
             ],
             [
-                'isbn' => '0747532699',
                 'title' => 'Harry Potter and the Philosopher\'s Stone',
                 'author' => 'J. K. Rowling',
                 'released_year' => 1997,
@@ -99,13 +81,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 120000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 2
             ],
             [
-                'isbn' => '9781449486792',
                 'title' => 'The Sun and Her Flowers',
                 'author' => 'Rupi Kaur',
                 'released_year' => 2017,
@@ -117,13 +95,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 120000,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 2,
+                'transaction_type_id' => 3
             ],
             [
-                'isbn' => '9781524868697',
                 'title' => 'Please Love Me At My Worst',
                 'author' => 'Michaela Angemeer',
                 'released_year' => 2021,
@@ -135,13 +109,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 10000,
                 'status_id' => 1,
-                'transaction_type_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 2,
+                'transaction_type_id' => 1
             ],
             [
-                'isbn' => '9781493434022',
                 'title' => 'Living Slower: Simple Ideas to Eliminate Excess and Make Time for What Matters',
                 'author' => 'Merissa A. ALink',
                 'released_year' => 2022,
@@ -149,17 +119,13 @@ class BookSeeder extends Seeder {
                 'image' => 'book-image/9781493434022.jpg',
                 'summary' => 'In an increasingly complex and chaotic world, we yearn to live a little slower, a little simpler.',
                 'description' => '85% in good condition',
-                'user_id' => 4,
+                'user_id' => 1,
                 'sale_price' => 135000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 3
             ],
             [
-                'isbn' => '9781250820006',
                 'title' => 'A Rip Through Time',
                 'author' => 'Kelley Armstrong',
                 'released_year' => 2022,
@@ -171,13 +137,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 150000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 2
             ],
             [
-                'isbn' => '0316310409',
                 'title' => 'The Queen of Nothing',
                 'author' => 'Holly Black',
                 'released_year' => 2019,
@@ -191,13 +153,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 160000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 3
             ],
             [
-                'isbn' => '9781529157147',
                 'title' => 'Malibu Rising',
                 'author' => 'Taylor Jenkins Reid',
                 'released_year' => 2021,
@@ -209,13 +167,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => NULL,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 1
             ],
             [
-                'isbn' => '9780593592342',
                 'title' => 'The Murder of Mr. Wickham',
                 'author' => 'Claudia Gray',
                 'released_year' => 2022,
@@ -227,13 +181,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 165000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 3
             ],
             [
-                'isbn' => '9780593315491',
                 'title' => 'Breathless',
                 'author' => 'Amy McCulloch',
                 'released_year' => 2022,
@@ -245,13 +195,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 180000,
                 'loan_price' => NULL,
                 'status_id' => 1,
-                'transaction_type_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 2
             ],
             [
-                'isbn' => '9780800740160',
                 'title' => 'All That Fills Us',
                 'author' => 'Autumn Lytle',
                 'released_year' => 2022,
@@ -263,13 +209,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 145000,
                 'loan_price' => 12000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 3
             ],
             [
-                'isbn' => '9780593199763',
                 'title' => 'Near The Bone',
                 'author' => 'Christina Henry',
                 'released_year' => 2021,
@@ -281,13 +223,9 @@ class BookSeeder extends Seeder {
                 'sale_price' => 175000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 3
             ],
             [
-                'isbn' => '9781406384765',
                 'title' => 'The Hate U give',
                 'author' => 'Angie Thomas',
                 'released_year' => 2017,
@@ -299,10 +237,7 @@ class BookSeeder extends Seeder {
                 'sale_price' => 175000,
                 'loan_price' => 15000,
                 'status_id' => 1,
-                'transaction_type_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1,
+                'transaction_type_id' => 3
             ],
         ]);
     }
