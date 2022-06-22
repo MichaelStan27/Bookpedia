@@ -15,16 +15,16 @@
                         <div>
                             <span class="md:text-sm">Loan price</span>
                             <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
-                                {{ $book->available_price }}
+                                {{ $book->loan_price_with_notation }}
                             </h2>
                         </div>
                     @break
 
                     @case(2)
                         <div>
-                            <span class="md:text-sm">Loan price</span>
+                            <span class="md:text-sm">Sell price</span>
                             <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
-                                {{ $book->available_price }}
+                                {{ $book->sale_price_with_notation }}
                             </h2>
                         </div>
                     @break
@@ -33,13 +33,13 @@
                         <div>
                             <span class="md:text-sm">Loan price</span>
                             <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
-                                {{ $book->available_price }}
+                                {{ $book->loan_price_with_notation }}
                             </h2>
                         </div>
                         <div>
-                            <span class="md:text-sm">Loan price</span>
+                            <span class="md:text-sm">Sell price</span>
                             <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
-                                {{ $book->available_price }}
+                                {{ $book->sale_price_with_notation }}
                             </h2>
                         </div>
                     @break
