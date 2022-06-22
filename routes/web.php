@@ -46,4 +46,4 @@ Route::controller(BookController::class)->group(function () {
 // });
 
 Route::get('/your-cart', [CartController::class, 'index'])->name('cart');
-Route::get('/profile', [ProfileController::class, 'profile']);
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
