@@ -13,8 +13,8 @@ class Book extends Model {
         return $this->belongsTo(User::class);
     }
 
-    public function transactionType() {
-        return $this->hasOne(TransactionType::class);
+    public function transaction() {
+        return $this->hasOne(TransactionType::class, 'id');
     }
 
     public function status() {
