@@ -14,7 +14,7 @@ class Book extends Model {
     }
 
     public function transaction() {
-        return $this->hasOne(TransactionType::class, 'id');
+        return $this->hasOne(TransactionType::class, 'id', 'transaction_type_id');
     }
 
     public function status() {
