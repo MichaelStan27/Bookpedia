@@ -1,7 +1,7 @@
 @props(['book'])
 
 <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-xl outline outline-cyan-700">
-    <img class="w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+    <img class="w-full h-96 md:h-auto object-cover md:w-36 rounded-t-lg md:rounded-none md:rounded-l-lg"
         src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
     <div class="flex flex-col justify-between">
         <div class="p-6 flex flex-col justify-start">
