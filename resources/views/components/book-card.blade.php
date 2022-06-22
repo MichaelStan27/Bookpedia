@@ -5,11 +5,12 @@
         src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
     <div class="flex flex-col justify-between w-full">
         <div class="p-6 flex flex-col justify-start">
-            <a href="{{ route('book-detail', $book) }}" class="text-gray-900 text-xl font-medium hover:text-gray-700">
-                {{ $book->title }}
+            <a href="{{ route('book-detail', $book) }}"
+                class="text-gray-900 md:text-lg text-xl font-medium hover:text-gray-700">
+                {{ Str::limit($book->title, 50, $end = '...') }}
             </a>
             <a href="#" class="text-xs mb-4 hover:text-gray-800">{{ $book->category->category_name }}</a>
-            <div class="flex justify-between">
+            <div class="flex gap-10 md:gap-2">
                 @switch($book->transaction->id)
                     @case(1)
                         <div>
@@ -61,12 +62,30 @@
                     </div>
                 @endif
             @else
-                <div class="p-3 flex flex-row justify-start gap-3">
-                    <button type="button"
-                        class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
-                    <button type="button"
-                        class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
-                </div>
+                @switch($book->transaction->id)
+                    @case(1)
+                        <div class="ml-3 p-3 flex flex-row justify-start gap-3">
+                            <button type="button"
+                                class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
+                        </div>
+                    @break
+
+                    @case(2)
+                        <div class="ml-3 p-3 flex flex-row justify-start gap-3">
+                            <button type="button"
+                                class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
+                        </div>
+                    @break
+
+                    @case(3)
+                        <div class="ml-3 p-3 flex flex-row justify-start gap-3">
+                            <button type="button"
+                                class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
+                            <button type="button"
+                                class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
+                        </div>
+                    @break
+                @endswitch
             @endcan
         @endauth
         <div class="p-6 flex flex-col justify-start">
