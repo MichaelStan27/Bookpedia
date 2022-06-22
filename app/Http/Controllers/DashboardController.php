@@ -32,7 +32,7 @@ class DashboardController extends Controller {
 
         // Transaction type filter
         $type = $request->query('type');
-        if ($type) {
+        if (isset($type)) {
             switch ($type) {
                 case 1:
                     $query = $query->where('transaction_type_id', '<>', 2);
@@ -45,13 +45,13 @@ class DashboardController extends Controller {
 
         // Keyword filtering
         $keyword = $request->query('keyword');
-        if ($keyword) {
+        if (isset($keyword)) {
             $query = $query->where('books.title', 'LIKE', "%$keyword%");
         }
 
         // Sorting price
         $priceSortOption = $request->query('price');
-        if ($type && $priceSortOption) {
+        if (isset($type) && $priceSortOption) {
             $option = $priceSortOption == 'desc' ? 'DESC' : 'ASC';
             switch ($type) {
                 case 1:
@@ -64,7 +64,7 @@ class DashboardController extends Controller {
 
         // Sorting title
         $titleSortOption = $request->query('title');
-        if ($titleSortOption) {
+        if (isset($titleSortOption)) {
             $option = $titleSortOption == 'desc' ? 'DESC' : 'ASC';
             $query = $query->orderBy('books.title', $option);
         }
