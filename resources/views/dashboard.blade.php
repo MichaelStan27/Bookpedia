@@ -40,7 +40,7 @@
                             <x-book-card :book="$book"></x-book-card>
                         @endforeach
                     </div>
-                    <a href="/" class="block text-neutral-800 my-5">
+                    <a href="{{ route('search') }}" class="block text-neutral-800 my-5">
                         <p class="inline-flex items-center">Show more
                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
