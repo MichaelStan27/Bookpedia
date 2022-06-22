@@ -102,21 +102,25 @@
                     <div class="mb-4">
                         <div class="mb-4 flex justify-evenly">
                             <div><input type="checkbox" name="type[]" id="lend_type" value="loan"
-                                    @if ($book->loan_price) checked @endif @error('loan_price') checked @enderror>
+                                    @if ((old('type')[0] ?? false) === 'loan') checked 
+                                    @elseif(!old('type') ? $book->loan_price : false) 
+                                        @error('type') @else 
+                                        checked 
+                                        @enderror @endif>
                                 Loan</div>
                             <div><input type="checkbox" name="type[]" id="sell_type" value="sale"
-                                    @if ($book->sale_price) checked @endif
-                                    @error('sale_price') checked @enderror> Sale</div>
+                                    @if ((old('type')[0] ?? false) === 'sale' || (old('type')[1] ?? false) === 'sale') checked 
+                                    @elseif(!old('type') ? $book->sale_price : false) 
+                                        @error('type') @else 
+                                            checked 
+                                        @enderror @endif>
+                                Sale</div>
                         </div>
                         @error('type')
                             <p class="text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="mb-4 
-                        @error('loan_price') @else 
-                            @if (is_null($book->loan_price)) hidden @endif
-                        @enderror"
-                        id="loan_price">
+                    <div class="mb-4" id="loan_price_field">
                         <label for="loan_price" class="block text-left text-gray-500">Loan Price
                             <span class="text-red-500">*</span></label>
                         <input type="number" name="loan_price" id="loan_price" placeholder="" autocomplete="off"
@@ -126,11 +130,7 @@
                             <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="mb-4 
-                        @error('sale_price') @else 
-                            @if (is_null($book->sale_price)) hidden @endif
-                        @enderror"
-                        id="sale_price">
+                    <div class="mb-4" id="sale_price_field">
                         <label for="sale_price" class="block text-left text-gray-500">Sale Price
                             <span class="text-red-500">*</span></label>
                         <input type="number" name="sale_price" id="sale_price" placeholder="" autocomplete="off"
