@@ -3,15 +3,48 @@
 <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-xl outline outline-cyan-700">
     <img class="w-full h-96 md:h-auto object-cover md:w-36 rounded-t-lg md:rounded-none md:rounded-l-lg"
         src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
-    <div class="flex flex-col justify-between">
+    <div class="flex flex-col justify-between w-full">
         <div class="p-6 flex flex-col justify-start">
             <a href="{{ route('book-detail', $book) }}" class="text-gray-900 text-xl font-medium hover:text-gray-700">
                 {{ $book->title }}
             </a>
             <a href="#" class="text-xs mb-4 hover:text-gray-800">{{ $book->category->category_name }}</a>
-            <h2 class="tracking-widest text-md title-font font-bold text-black-400 mb-4">
-                {{ $book->available_price }}
-            </h2>
+            <div class="flex justify-between">
+                @switch($book->transaction->id)
+                    @case(1)
+                        <div>
+                            <span class="md:text-sm">Loan price</span>
+                            <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
+                                {{ $book->available_price }}
+                            </h2>
+                        </div>
+                    @break
+
+                    @case(2)
+                        <div>
+                            <span class="md:text-sm">Loan price</span>
+                            <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
+                                {{ $book->available_price }}
+                            </h2>
+                        </div>
+                    @break
+
+                    @case(3)
+                        <div>
+                            <span class="md:text-sm">Loan price</span>
+                            <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
+                                {{ $book->available_price }}
+                            </h2>
+                        </div>
+                        <div>
+                            <span class="md:text-sm">Loan price</span>
+                            <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
+                                {{ $book->available_price }}
+                            </h2>
+                        </div>
+                    @break
+                @endswitch
+            </div>
             <h2 class="tracking-widest text-xs text-grey-400 uppercase">{{ $book->transaction_type_string }}</h2>
             <h2 class="tracking-widest text-xs title-font font-bold text-green-400 mb-4 uppercase">
                 {{ $book->status_string }}
