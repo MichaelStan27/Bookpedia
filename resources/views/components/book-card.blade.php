@@ -5,8 +5,10 @@
         src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
     <div class="flex flex-col justify-between">
         <div class="p-6 flex flex-col justify-start">
-            <h5 class="text-gray-900 text-xl font-medium">{{ $book->title }}</h5>
-            <h5 class="text-xs mb-4">Book Category</h5>
+            <a href="{{ route('book-detail', $book) }}" class="text-gray-900 text-xl font-medium hover:text-gray-700">
+                {{ $book->title }}
+            </a>
+            <a href="#" class="text-xs mb-4 hover:text-gray-800">{{ $book->category->category_name }}</a>
             <h2 class="tracking-widest text-md title-font font-bold text-black-400 mb-4">
                 {{ $book->available_price }}
             </h2>
