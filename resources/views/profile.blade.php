@@ -24,8 +24,8 @@
                     </div>
                     <div class="my-4 py-2">
                         <div class="flex items-center justify-start">
-                            <img src="https://cdn-icons.flaticon.com/png/512/1144/premium/1144760.png?token=exp=1655863582~hmac=13d86b398c483639ff3653f990ef24b0"
-                                alt="" class="w-8 h-8 mx-2">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt=""
+                                class="w-8 h-8 mx-2">
                             <label for="membersice" class="block text-xl text-left text-gray-500">Member since
                                 <b>24 Mei 2022</b>
                         </div>
