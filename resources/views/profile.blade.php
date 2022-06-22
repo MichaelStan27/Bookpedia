@@ -8,19 +8,42 @@
         {{-- Profile Section --}}
         <div class="container py-1">
             <div class="bg-white flex justify-start items-center rounded-l-3xl rounded-r-3xl mt-4 mb-4 w-full">
-                <div class="w-1/4 mx-10">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full my-4 mx-4" alt="">
+                <div class="w-1/4 mx-10 py-4 text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full my-4 mx-auto w-5/6"
+                        alt="">
+                    <h5 class="text-2xl font-bold leading-tight mb-2 text-center">Bima Sakti Agustian</h5>
                 </div>
                 <div class="mx-5">
-                    <h5 class="text-3xl font-bold leading-tight mb-2">John Mayer</h5>
-                    <p class="text-xl text-gray-500">johnmayer@gmail.com</p>
-                    <div class="my-4">
-                        <label for="membersice" class="block text-left text-gray-500">Member since
-                            <b>24 Mei 2022</b>
+                    <div class="my-4 py-2">
+                        <div class="flex items-center justify-start">
+                            <img src="https://cdn-icons-png.flaticon.com/512/546/546394.png" alt=""
+                                class="w-8 h-8 mx-2">
+                            <label for="membersice" class="block text-xl text-left text-gray-500"><a
+                                    href="mailto:johnmayer@gmail.com" class="text-decoration-none">johnmayer@gmail.com</a>
+                        </div>
                     </div>
-                    <button type="button"
-                        class="inline-block px-6 py-3 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Edit
-                        Profile</button>
+                    <div class="my-4 py-2">
+                        <div class="flex items-center justify-start">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt=""
+                                class="w-8 h-8 mx-2">
+                            <label for="membersice" class="block text-xl text-left text-gray-500">Member since
+                                <b>24 Mei 2022</b>
+                        </div>
+                    </div>
+                    <div class="my-4 py-2">
+                        <div class="flex items-center justify-start">
+                            <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt=""
+                                class="w-8 h-8 mx-2">
+                            <label for="location" class="text-left text-xl text-gray-500">Jakarta Selatan</b>
+                        </div>
+                    </div>
+                    <div class="my-4 py-2">
+                        <div class="flex items-center justify-start">
+                            <img src="https://cdn-icons-png.flaticon.com/512/6506/6506327.png" alt=""
+                                class="w-8 h-8 mx-2">
+                            <h5 class="text-xl leading-tight">Rp 12.000</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,7 +61,7 @@
             <div class="bg-white flex justify-center rounded-l-3xl rounded-r-3xl">
                 <div class="p-5">
                     <!--Card Start-->
-                    <div class="flex flex-wrap justify-start gap-12">
+                    <div class="flex flex-wrap justify-start gap-10 px-2.5">
                         <div
                             class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-xl outline outline-cyan-700">
                             <img class="w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"

@@ -20,6 +20,23 @@
                         @enderror
                     </div>
                     <div class="mb-4">
+                        <label for="category" class="block text-left text-gray-500">Category <span
+                                class="text-red-500">*</span></label>
+                        <select name="category" id="category" placeholder=""
+                            class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('category') border-red-500 @enderror">
+                            <option class="bg-[#c7ccf7]" value="" @if (!old('category')) selected @endif
+                                disabled>Select game category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if (old('category') === $category->category_name) selected @endif>
+                                    {{ $category->category_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category')
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
                         <label for="author" class="block text-left text-gray-500">Author
                             <span class="text-red-500">*</span>
                         </label>
@@ -90,16 +107,20 @@
                     </div>
                     <div class="mb-4">
                         <div class="mb-4 flex justify-evenly">
-                            <div><input type="checkbox" name="type[]" id="lend_type" value="loan"
-                                    @error('loan_price') checked @enderror> Loan</div>
-                            <div><input type="checkbox" name="type[]" id="sell_type" value="sale"
-                                    @error('sale_price') checked @enderror> Sale</div>
+                            <div>
+                                <input type="checkbox" name="type[]" id="lend_type" value="loan"
+                                    @if ((old('type')[0] ?? false) === 'loan') checked @endif> Loan
+                            </div>
+                            <div>
+                                <input type="checkbox" name="type[]" id="sell_type" value="sale"
+                                    @if ((old('type')[0] ?? false) === 'sale' || (old('type')[1] ?? false) === 'sale') checked @endif> Sale
+                            </div>
                         </div>
                         @error('type')
                             <p class="text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="mb-4 @error('loan_price') @else hidden @enderror" id="loan_price">
+                    <div class="mb-4" id="loan_price_field">
                         <label for="loan_price" class="block text-left text-gray-500">Loan Price
                             <span class="text-red-500">*</span></label>
                         <input type="number" name="loan_price" id="loan_price" placeholder="" autocomplete="off"
@@ -109,7 +130,7 @@
                             <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="mb-4 @error('sale_price') @else hidden @enderror" id="sale_price">
+                    <div class="mb-4" id="sale_price_field">
                         <label for="sale_price" class="block text-left text-gray-500">Sale Price
                             <span class="text-red-500">*</span></label>
                         <input type="number" name="sale_price" id="sale_price" placeholder="" autocomplete="off"

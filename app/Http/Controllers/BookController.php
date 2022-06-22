@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class BookController extends Controller {
 
@@ -14,12 +16,14 @@ class BookController extends Controller {
     }
 
     public function add_book_form() {
-        return view('add-book');
+        $categories = Category::all();
+        return view('add-book')->with('categories', $categories);
     }
 
     public function create(Request $request) {
         $request->validate([
             'title' => ['required'],
+            'category' => ['required', 'exists:categories,id'],
             'author' => ['required'],
             'released_year' => ['required', 'integer', 'digits:4'],
             'publisher' => ['required'],
@@ -28,13 +32,15 @@ class BookController extends Controller {
             'description' => ['required', 'min:10'],
             'type' => ['required'],
         ], [
-            'type.required' => 'Check at least one of above items.'
+            'type.required' => 'Check at least one of above items.',
+            'category.required' => 'Select one of the book categories above'
         ]);
 
         //Upload image
         $path = "public/book-image/";
         $file = $request->file('image');
-        $filename = $request->isbn . '.' . $file->extension();
+        $randomString = Str::random(7);
+        $filename = $request->title.$randomString.'.'. $file->extension();
         Storage::putFileAs(
             $path,
             $file,
@@ -86,6 +92,7 @@ class BookController extends Controller {
             'sale_price' => $sale_price,
             'status_id' => 1,
             'transaction_type_id' => $type,
+            'category_id' => $request->category,
         ]);
 
         return redirect("/")->with('addBookMessage', 'Book added successfully');
@@ -113,7 +120,8 @@ class BookController extends Controller {
         //Upload image
         $path = "public/book-image/";
         $file = $request->file('image');
-        $filename = $request->isbn . '.' . $file->extension();
+        $randomString = Str::random(7);
+        $filename = $request->title.$randomString.'.'.$file->extension();
         Storage::putFileAs(
             $path,
             $file,
