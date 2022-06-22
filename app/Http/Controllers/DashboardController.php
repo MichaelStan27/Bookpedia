@@ -23,9 +23,11 @@ class DashboardController extends Controller {
         // Categories filtering
         $categories = $request->query('category');
         if (!empty($categories)) {
-            foreach ($categories as $category_id) {
-                $query = $query->orWhere('categories.id', '=', $category_id);
-            }
+            $query = $query->orWhere(function ($whereQuery) use ($categories) {
+                foreach ($categories as $category_id) {
+                    $whereQuery = $whereQuery->orWhere('categories.id', '=', $category_id);
+                }
+            });
         }
 
         // Transaction type filter
