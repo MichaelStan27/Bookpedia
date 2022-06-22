@@ -32,77 +32,7 @@
             <h1 class="text-lg mb-2 font-bold">Dashboard</h1>
             <div class="w-full flex justify-center gap-10">
                 <div class="w-1/4 bg-white rounded-lg p-4 self-start">
-                    <h1 class="font-bold text-lg">Filter</h1>
-                    <form action="" method="GET">
-                        <div class="mb-5">
-                            <h3 class="font-bold">Category</h3>
-                            <ul class="ml-2 text-neutral-600">
-                                <li>
-                                    <input type="checkbox" name="fiction" id="fiction" value="fiction">
-                                    <label for="rent">Fiction</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="poetry" id="poetry" value="poetry">
-                                    <label for="rent">Poetry</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="science" id="science" value="science">
-                                    <label for="rent">Science</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="selfhelp" id="selfhelp" value="selfhelp">
-                                    <label for="rent">Self-help</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="comic" id="comic" value="comic">
-                                    <label for="rent">Comic</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-5">
-                            <h3 class="font-bold">Type</h3>
-                            <ul class="ml-2 text-neutral-600">
-                                <li>
-                                    <input type="checkbox" name="rent" id="rent" value="rent">
-                                    <label for="rent">Rent</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="sell" id="sell" value="sell">
-                                    <label for="sell">Sell</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-5">
-                            <h3 class="font-bold">Price</h3>
-                            <ul class="ml-2 text-neutral-600">
-                                <li>
-                                    <input type="radio" name="priceSort" id="priceSort" value="priceSort">
-                                    <label for="rent">Low-High Price</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="priceSort" id="priceSort" value="priceSort">
-                                    <label for="rent">High-Low Price</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-5">
-                            <h3 class="font-bold">Title</h3>
-                            <ul class="ml-2 text-neutral-600">
-                                <li>
-                                    <input type="radio" name="titleSort" id="titleSort" value="titleSort">
-                                    <label for="rent">Ascending</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="titleSort" id="titleSort" value="titleSort">
-                                    <label for="rent">Descending</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit"
-                                class="w-4/5 py-2 bg-neutral-500 text-white rounded-md hover:bg-neutral-600">Filter</button>
-                        </div>
-                    </form>
+                    @include('partials.dashboard-filter')
                 </div>
                 <div class="w-4/5">
                     <div class="grid grid-cols-2 gap-5">

@@ -8,8 +8,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,8 +29,9 @@ Route::controller(AccountController::class)->group(function () {
     Route::get('/register', 'viewRegister');
 });
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/search', fn () => view('search'));
+Route::get('/', [DashboardController::class, 'index'])->name('home');
+Route::get('/search', [DashboardController::class, 'search'])->name('search');
+
 Route::controller(BookController::class)->group(function () {
     Route::get('/add-book', 'add_book_form')->name('add-book');
     Route::post('/add-book', 'create')->name('add-book');
