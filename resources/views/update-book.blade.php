@@ -21,6 +21,16 @@
                         @enderror
                     </div>
                     <div class="mb-4">
+                        <label for="category" class="block text-left text-gray-500">Category <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" name="category" id="category" placeholder="" autocomplete="off"
+                            class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('category') border-red-500 @enderror"
+                            value="{{ $book->category->category_name }}" readonly>
+                        @error('category')
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
                         <label for="author" class="block text-left text-gray-500">Author
                             <span class="text-red-500">*</span>
                         </label>

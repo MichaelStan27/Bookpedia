@@ -20,6 +20,23 @@
                         @enderror
                     </div>
                     <div class="mb-4">
+                        <label for="category" class="block text-left text-gray-500">Category <span
+                                class="text-red-500">*</span></label>
+                        <select name="category" id="category" placeholder=""
+                            class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('category') border-red-500 @enderror">
+                            <option class="bg-[#c7ccf7]" value="" @if (!old('category')) selected @endif
+                                disabled>Select game category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if (old('category') === $category->category_name) selected @endif>
+                                    {{ $category->category_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category')
+                            <p class="text-red-500 text-sm text-left">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
                         <label for="author" class="block text-left text-gray-500">Author
                             <span class="text-red-500">*</span>
                         </label>
