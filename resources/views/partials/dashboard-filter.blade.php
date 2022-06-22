@@ -1,5 +1,6 @@
 <h1 class="font-bold text-lg">Filter</h1>
-<form action="{{ route('search') }}" method="GET">
+<form action="{{ route('search') }}" method="GET" id="filterForm">
+    <input type="text" name="keyword" id="keywordInput" hidden>
     <div class="mb-5">
         <h3 class="font-bold">Category</h3>
         <ul class="ml-2 text-neutral-600">

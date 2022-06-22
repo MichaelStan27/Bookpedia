@@ -18,3 +18,19 @@ function enablePriceSort() {
 
     listRadioSort.forEach((el) => el.removeAttribute("disabled"));
 }
+
+// Handle multiple form submit
+const searchForm = document.querySelector("#searchForm");
+const filterForm = document.querySelector("#filterForm");
+const queryInput = document.querySelector("#query");
+const keywordInput = document.querySelector("#keywordInput");
+
+// Everytime searchbar (queryInput) input changed, the value will be get copy to 'keywordInput'
+queryInput?.addEventListener("input", () =>
+    keywordInput.setAttribute("value", queryInput.value)
+);
+
+searchForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    filterForm.submit();
+});

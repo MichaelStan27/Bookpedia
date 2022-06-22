@@ -43,6 +43,12 @@ class DashboardController extends Controller {
             }
         }
 
+        // Keyword filtering
+        $keyword = $request->query('keyword');
+        if ($keyword) {
+            $query = $query->where('books.title', 'LIKE', "%$keyword%");
+        }
+
         // Sorting price
         $priceSortOption = $request->query('price');
         if ($type && $priceSortOption) {
@@ -68,7 +74,8 @@ class DashboardController extends Controller {
             'category' => $categories,
             'type' => $type,
             'priceSort' => $priceSortOption,
-            'titleSort' => $titleSortOption
+            'titleSort' => $titleSortOption,
+            'keyword' => $request->keyword
         ]);
     }
 }
