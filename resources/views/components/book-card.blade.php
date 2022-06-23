@@ -31,17 +31,19 @@
                     @break
 
                     @case(3)
-                        <div>
-                            <span class="md:text-sm">Loan price</span>
-                            <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
-                                {{ $book->loan_price_with_notation }}
-                            </h2>
-                        </div>
-                        <div>
-                            <span class="md:text-sm">Sell price</span>
-                            <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
-                                {{ $book->sale_price_with_notation }}
-                            </h2>
+                        <div class="grid grid-cols-2 gap-1 divide-x-2">
+                            <div>
+                                <span class="md:text-sm">Loan price</span>
+                                <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
+                                    {{ $book->loan_price_with_notation }}
+                                </h2>
+                            </div>
+                            <div>
+                                <span class="md:text-sm">Sell price</span>
+                                <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
+                                    {{ $book->sale_price_with_notation }}
+                                </h2>
+                            </div>
                         </div>
                     @break
                 @endswitch

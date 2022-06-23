@@ -11,8 +11,11 @@ use Illuminate\Support\Str;
 class BookController extends Controller {
 
     public function viewBookDetail(Book $book) {
-        dd($book->title);
-        return view('book-detail');
+        return view('book-detail', [
+            'book' => $book,
+            'books_from_user' => Book::limit(4)->where('user_id', $book->user_id)->get(),
+            'related_books' => Book::limit(4)->where('category_id', $book->category_id)->get()
+        ]);
     }
 
     public function add_book_form() {
@@ -40,7 +43,7 @@ class BookController extends Controller {
         $path = "public/book-image/";
         $file = $request->file('image');
         $randomString = Str::random(7);
-        $filename = $request->title.$randomString.'.'. $file->extension();
+        $filename = $request->title . $randomString . '.' . $file->extension();
         Storage::putFileAs(
             $path,
             $file,
@@ -121,7 +124,7 @@ class BookController extends Controller {
         $path = "public/book-image/";
         $file = $request->file('image');
         $randomString = Str::random(7);
-        $filename = $request->title.$randomString.'.'.$file->extension();
+        $filename = $request->title . $randomString . '.' . $file->extension();
         Storage::putFileAs(
             $path,
             $file,

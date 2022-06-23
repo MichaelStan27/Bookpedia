@@ -72,4 +72,8 @@ class Book extends Model {
                 break;
         }
     }
+
+    public function getReleaseDateAttribute() {
+        return date('d M Y', strtotime($this->created_at));
+    }
 }
