@@ -49,7 +49,7 @@ class User extends Authenticatable {
         return $this->hasMany(CartItem::class);
     }
 
-    public function wishlist() {
+    public function wishlists() {
         return $this->hasMany(Wishlist::class);
     }
 
