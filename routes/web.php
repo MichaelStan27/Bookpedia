@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::controller(BookController::class)->group(function () {
     Route::put('/update-book/{book}', 'update')->name('update-book');
     Route::get('/book-detail/{book}', 'viewBookDetail')->name('book-detail');
 });
+
+Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wishlist');
 
 // Route::get('/update-book/{id}', function(){
 //     return view('update-book');
