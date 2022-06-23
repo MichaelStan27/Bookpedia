@@ -61,4 +61,8 @@ class User extends Authenticatable {
         if ($successful_trans == 0) return "No succesful transaction";
         else return "{$successful_trans} sucessful " . Str::plural('transaction', $successful_trans);
     }
+
+    public function getBalanceWithNotationAttribute() {
+        return 'IDR ' . number_format($this->attributes['balance']);
+    }
 }
