@@ -1,7 +1,7 @@
 <h1 class="font-bold text-xl mb-2">Filter by</h1>
 <form action="{{ route('search') }}" method="GET" id="filterForm">
     <input type="text" name="keyword" id="keywordInput" hidden>
-    <div class="mb-5">
+    <div class="ml-2 mb-5">
         <h3 class="font-bold mb-2">Category</h3>
         <ul class="ml-2 text-neutral-600">
             <li class="mb-1">
@@ -31,7 +31,7 @@
             </li>
         </ul>
     </div>
-    <div class="mb-5">
+    <div class="ml-2 mb-5">
         <h3 class="font-bold mb-2">Type</h3>
         <ul class="ml-2 text-neutral-600">
             <li class="mb-1">
@@ -47,7 +47,7 @@
         </ul>
     </div>
     <h1 class="font-bold text-xl mb-2">Sort by</h1>
-    <div class="mb-5">
+    <div class="ml-2 mb-5">
         <h3 class="font-bold mb-2">
             Price
             <span id="sortDesc" class="text-xs font-normal text-neutral-400 capitalize">
@@ -85,7 +85,7 @@
             </li>
         </ul>
     </div>
-    <div class="mb-5">
+    <div class="ml-2 mb-5">
         <h3 class="font-bold mb-2">Title</h3>
         <ul class="ml-2 text-neutral-600">
             <li class="mb-1">

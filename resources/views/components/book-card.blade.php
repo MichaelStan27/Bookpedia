@@ -1,7 +1,7 @@
 @props(['book'])
 
 <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-xl outline outline-cyan-700">
-    <img class="w-full h-96 md:h-auto object-cover md:w-36 rounded-t-lg md:rounded-none md:rounded-l-lg"
+    <img class="w-full h-96 md:h-auto object-cover md:w-36 lg:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
         src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
     <div class="flex flex-col justify-between w-full">
         <div class="p-6 flex flex-col justify-start">
@@ -9,7 +9,8 @@
                 class="text-gray-900 md:text-lg text-xl font-medium hover:text-gray-700">
                 {{ Str::limit($book->title, 50, $end = '...') }}
             </a>
-            <a href="#" class="text-xs mb-4 hover:text-gray-800">{{ $book->category->category_name }}</a>
+            <a href="{{ route('search', ['category[]' => $book->category->id]) }}"
+                class="text-xs mb-4 hover:text-gray-800">{{ $book->category->category_name }}</a>
             <div class="flex gap-10 md:gap-2">
                 @switch($book->transaction->id)
                     @case(1)
