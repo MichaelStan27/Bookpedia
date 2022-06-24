@@ -111,7 +111,9 @@
                 @endforeach
             </div>
             <div class="text-right">
-                <a href="" class="underline text-md text-gray-500 hover:text-gray-700">See More...</a>
+                <a href="{{ route('search', ['category[]' => $book->category->id]) }}"
+                    class="underline text-md text-gray-500 hover:text-gray-700">See
+                    More...</a>
             </div>
         </div>
     </div>
