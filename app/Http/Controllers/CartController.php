@@ -7,8 +7,10 @@ use App\Models\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CartController extends Controller {
-    public function index() {
+class CartController extends Controller
+{
+    public function index()
+    {
         $cartItems = CartItem::with('book.user')
             ->join('books', 'cart_items.book_id', '=', 'books.id')
             ->where('cart_items.user_id', auth()->user()->id)->get();
@@ -27,7 +29,8 @@ class CartController extends Controller {
             ->with('count', $count);
     }
 
-    public function add_to_cart(Book $book) {
+    public function add_to_cart(Book $book)
+    {
         CartItem::firstOrCreate([
             'book_id' => $book->id,
             'user_id' => Auth::user()->id,
