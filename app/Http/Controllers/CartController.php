@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\CartItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CartController extends Controller
-{
-    public function index(){
+class CartController extends Controller {
+    public function index() {
         $cartItems = CartItem::with('book.user')
             ->join('books', 'cart_items.book_id', '=', 'books.id')
             ->where('cart_items.user_id', auth()->user()->id)->get();
@@ -17,20 +18,30 @@ class CartController extends Controller
             'total' => 0
             // 'IDR '.number_format($cartItems->sum('price')),
         ];
-        
-    //    return dd($count);
-            // return view('login');
+
+        //    return dd($count);
+        // return view('login');
 
         return view('cart')
             ->with('cartItems', $cartItems)
             ->with('count', $count);
     }
+
+    public function add_to_cart(Book $book) {
+        CartItem::firstOrCreate([
+            'book_id' => $book->id,
+            'user_id' => Auth::user()->id,
+            'type_id' => $book->transaction_type_id,
+        ]);
+        return redirect()->back()->with('message', 'Added to cart');
+    }
+
     // public function store(Request $request){
     //     $game = Game::where('id', $request->id)->first();
     //     $cartItem = CartItem::where('user_id', auth()->user()->id)
     //         ->where('game_id', $game->id)
     //         ->first();
-        
+
     //     if($cartItem){
     //         return redirect(route("cart"))->with('message', 'You already had <b>"'.$game->title.'"</b> in your cart!');
     //     }

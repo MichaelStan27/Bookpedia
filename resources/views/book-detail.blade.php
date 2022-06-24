@@ -75,12 +75,14 @@
                 </div>
             </div>
 
-            <form action="" method="post" class="py-2 px-8 w-full text-center">
+            <form action="{{ route('add-to-cart', $book) }}" method="post" class="py-2 px-8 w-full text-center">
                 @csrf
-                <button type="submit"
-                    class="font-medium rounded-md bg-black text-white hover:bg-white hover:text-black px-2 shadow-md border-2 py-1">
-                    Add to Cart
-                </button>
+                @auth
+                    <button type="submit"
+                        class="font-medium rounded-md bg-black text-white hover:bg-white hover:text-black px-2 shadow-md border-2 py-1">
+                        Add to Cart
+                    </button>
+                @endauth
             </form>
         </div>
     </div>
