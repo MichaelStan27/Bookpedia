@@ -8,10 +8,10 @@
             @include('partials.searchbar')
         </li>
         <li class="relative">
-            <a href="{{ route('cart') }}">
-                <i class="fa-solid fa-cart-shopping fa-lg hover:brightness-110"></i>
-            </a>
             @auth
+                <a href="{{ route('cart') }}">
+                    <i class="fa-solid fa-cart-shopping fa-lg hover:brightness-110"></i>
+                </a>
                 <div
                     class="aspect-square text-center text-xs  p-1 rounded-[50%] bg-red-600 text-white absolute top-[-50%] right-[-50%]">
                     99</div>
