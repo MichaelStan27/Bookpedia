@@ -12,19 +12,21 @@
                         <h1 class="font-bold text-3xl">{{ $book->title }}</h1>
                         <form action="{{ route('wishlist', $book) }}" method="post">
                             @csrf
-                            @if (Auth::user()->wishlists()->where('book_id', $book->id)->first())
-                                <div class="hover:scale-105 hover:text-red-100">
-                                    <button type="submit" class="">
-                                        <i class="fa-solid fa-heart fa-2xl text-red-500"></i>
-                                    </button>
-                                </div>
-                            @else
-                                <div class="hover:scale-105 hover:text-red-500">
-                                    <button type="submit" class="">
-                                        <i class="fa-solid fa-heart fa-2xl"></i>
-                                    </button>
-                                </div>
-                            @endif
+                            @auth
+                                @if (Auth::user()->wishlists()->where('book_id', $book->id)->first())
+                                    <div class="hover:scale-105 hover:text-red-100">
+                                        <button type="submit" class="">
+                                            <i class="fa-solid fa-heart fa-2xl text-red-500"></i>
+                                        </button>
+                                    </div>
+                                @else
+                                    <div class="hover:scale-105 hover:text-red-500">
+                                        <button type="submit" class="">
+                                            <i class="fa-solid fa-heart fa-2xl"></i>
+                                        </button>
+                                    </div>
+                                @endif
+                            @endauth
                         </form>
                     </div>
 

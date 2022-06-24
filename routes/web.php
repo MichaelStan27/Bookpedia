@@ -41,7 +41,7 @@ Route::controller(BookController::class)->group(function () {
     Route::get('/book-detail/{book}', 'viewBookDetail')->name('book-detail');
 });
 
-Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wishlist');
+Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wishlist')->middleware('auth');
 
 // Route::get('/update-book/{id}', function(){
 //     return view('update-book');
