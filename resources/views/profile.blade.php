@@ -3,7 +3,8 @@
 @section('title', 'Profile')
 
 @section('content')
-    <div class="container mx-auto py-5">
+    <a href="#wishlist">WISHLIST</a>
+    <div class="container mx-auto py-5 scroll-smooth">
 
         {{-- Profile Section --}}
         <div class="container py-1">
@@ -82,7 +83,7 @@
         </div>
 
         {{-- MY WISHLIST SECTION --}}
-        <hr class="mt-2 mb-6">
+        <hr class="mt-2 mb-6 scroll-smooth" id="wishlist">
         <div class="flex flex-wrap justify-between items-center">
             <div class="text-2xl font-bold">MY WISHLIST</div>
             <a href="/" class="text-green-800  md:mb-2 lg:mb-0">

@@ -41,18 +41,18 @@
                             <h5>{{ auth()->user()->balance_with_notation }}</h5>
                         </div>
                         <div class="p-2 text-right gap-4">
-                            <a href="{{ route('cart') }}" class="relative">
+                            <a href="{{ route('profile') . '#wishlist' }}" class="relative">
                                 <button
-                                    class="w-16 px-2 my-1 font-semibold shadow-md rounded-md bg-blue-600 text-sm text-white hover:brightness-105">Cart
+                                    class="w-20 px-3 my-1 font-semibold shadow-md rounded-md bg-blue-600 text-sm text-white hover:brightness-105">Wishlist
                                 </button>
                                 <div
-                                    class="aspect-square text-center text-xs p-1 rounded-[50%] bg-red-600 text-white absolute top-[-35%] right-0">
+                                    class="aspect-square text-center text-xs p-1 rounded-[50%] bg-red-600 text-white absolute top-[-35%] right-[-10%]">
                                     11</div>
                             </a>
                             <form action="/logout" method="post">
                                 @csrf
                                 <button
-                                    class="w-16 px-2 my-1 font-semibold shadow-md rounded-md bg-red-600 text-sm text-white whitespace-nowrap hover:brightness-105">Log
+                                    class="w-20 px-3 my-1 font-semibold shadow-md rounded-md bg-red-600 text-sm text-white whitespace-nowrap hover:brightness-105">Log
                                     Out</button>
                             </form>
                         </div>
