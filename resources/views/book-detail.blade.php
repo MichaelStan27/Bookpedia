@@ -59,8 +59,8 @@
                             <td class="">: {{ $book->publisher }}</td>
                         </tr>
                         <tr class="">
-                            <td class="font-semibold">Added</td>
-                            <td class="">: {{ $book->release_date }}</td>
+                            <td class="font-semibold">Owner</td>
+                            <td class="">: {{ $book->owner }}</td>
                         </tr>
                         <tr class="">
                             <td class="font-semibold">Author</td>
@@ -96,7 +96,8 @@
                 @endforeach
             </div>
             <div class="text-right">
-                <a href="" class="underline text-md text-gray-500 hover:text-gray-700">See More...</a>
+                <a href="{{ route('profile') }}" class="underline text-md text-gray-500 hover:text-gray-700">See
+                    More...</a>
             </div>
         </div>
     </div>

@@ -73,7 +73,7 @@ class Book extends Model {
         }
     }
 
-    public function getReleaseDateAttribute() {
-        return date('d M Y', strtotime($this->created_at));
+    public function getOwnerAttribute() {
+        return $this->user->first_name . " " . $this->user->last_name;
     }
 }
