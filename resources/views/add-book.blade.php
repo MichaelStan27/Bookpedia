@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mx-auto flex justify-center py-8">
-        <div class="bg-white w-1/2 rounded-lg shadow-xl py-2">
+        <div class="bg-white w-3/4 md:w-1/2 rounded-lg shadow-xl py-2">
             <h1 class="text-center text-2xl font-bold py-2 my-14">Add New Book</h1>
             <form action="{{ route('add-book') }}" method="post" class="" enctype="multipart/form-data">
                 @csrf
