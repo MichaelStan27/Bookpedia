@@ -68,24 +68,38 @@
                 @switch($book->transaction->id)
                     @case(1)
                         <div class="ml-3 p-3 flex flex-row justify-start gap-3">
-                            <button type="button"
-                                class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
+                            <a href="{{ route('add-to-cart', $book) }}">
+                                <button type="button"
+                                    class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
+                            </a>
+
                         </div>
                     @break
 
                     @case(2)
                         <div class="ml-3 p-3 flex flex-row justify-start gap-3">
-                            <button type="button"
-                                class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
+                            <a href="{{ route('add-to-cart', $book) }}">
+                                <button type="button"
+                                    class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
+                            </a>
                         </div>
                     @break
 
                     @case(3)
                         <div class="ml-3 p-3 flex flex-row justify-start gap-3">
-                            <button type="button"
-                                class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
-                            <button type="button"
-                                class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
+                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="type" value="1">
+                                <button type="submit"
+                                    class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
+                            </form>
+                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="type" value="2">
+                                <button type="submit"
+                                    class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
+                            </form>
+
                         </div>
                     @break
                 @endswitch

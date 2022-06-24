@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 use App\Http\Controllers\WishlistController;
@@ -50,6 +51,9 @@ Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wis
 Route::controller(CartController::class)->group(function () {
     Route::get('/your-cart', 'index')->name('cart');
     Route::post('/add-to-cart/{book}', 'add_to_cart')->name('add-to-cart')->middleware('auth');
+    Route::delete('/your-cart/{cartItem}', 'destroy')->name('delete');
 });
 
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
+Route::post('/checkout', [TransactionController::class, 'checkout'])->middleware('auth')->name('checkout');

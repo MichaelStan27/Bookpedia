@@ -69,4 +69,9 @@ class User extends Authenticatable {
     public function getBalanceWithNotationAttribute() {
         return 'IDR ' . number_format($this->attributes['balance']);
     }
+
+    public function transactions() {
+        return $this->hasMany(Transaction::class);
+    }
+    
 }

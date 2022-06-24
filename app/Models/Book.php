@@ -17,6 +17,14 @@ class Book extends Model {
         return $this->hasOne(TransactionType::class, 'id', 'transaction_type_id');
     }
 
+    public function loanTransaction() {
+        return $this->hasMany(LoanTransaction::class);
+    }
+
+    public function buyTransaction() {
+        return $this->hasMany(BuyTransaction::class);
+    }
+
     public function status() {
         return $this->belongsTo(Status::class);
     }
