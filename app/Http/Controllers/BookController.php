@@ -62,21 +62,21 @@ class BookController extends Controller {
 
         if (count($types) === 2) {
             $request->validate([
-                'loan_price' => ['required', 'integer'],
-                'sale_price' => ['required', 'integer'],
+                'loan_price' => ['required', 'numeric'],
+                'sale_price' => ['required', 'numeric'],
             ]);
             $loan_price = $request->loan_price;
             $sale_price = $request->sale_price;
             $type = 3;
         } elseif ($types[0] === "sale") {
             $request->validate([
-                'sale_price' => ['required', 'integer'],
+                'sale_price' => ['required', 'numeric'],
             ]);
             $sale_price = $request->sale_price;
             $type = 2;
         } else {
             $request->validate([
-                'loan_price' => ['required', 'integer'],
+                'loan_price' => ['required', 'numeric'],
             ]);
             $loan_price = $request->loan_price;
             $type = 1;
@@ -102,7 +102,8 @@ class BookController extends Controller {
     }
 
     public function update_book_form($id) {
-        $book = Book::where('id', $id)->first();
+        $book = Book::with('category')
+            ->where('id', $id)->first();
 
         return view('update-book')->with('book', $book);
     }
@@ -143,21 +144,21 @@ class BookController extends Controller {
 
         if (count($types) === 2) {
             $request->validate([
-                'loan_price' => ['required', 'integer'],
-                'sale_price' => ['required', 'integer'],
+                'loan_price' => ['required', 'numeric'],
+                'sale_price' => ['required', 'numeric'],
             ]);
             $loan_price = $request->loan_price;
             $sale_price = $request->sale_price;
             $type = 3;
         } elseif ($types[0] === "sale") {
             $request->validate([
-                'sale_price' => ['required', 'integer'],
+                'sale_price' => ['required', 'numeric'],
             ]);
             $sale_price = $request->sale_price;
             $type = 2;
         } else {
             $request->validate([
-                'loan_price' => ['required', 'integer'],
+                'loan_price' => ['required', 'numeric'],
             ]);
             $loan_price = $request->loan_price;
             $type = 1;
