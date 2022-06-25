@@ -55,9 +55,9 @@
         <hr class="mt-2 mb-2">
         <div class="flex flex-wrap justify-between items-center">
             <div class="text-2xl font-bold">MY BOOK</div>
-            <button type="button"
+            <a href="/add-book/"
                 class="inline-block px-6 py-3 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Add
-                Book</button>
+                Book</a>
         </div>
 
         <div class="container px-2 py-6 h-full">
@@ -175,16 +175,7 @@
                                                     </svg>
                                                 </p>
                                             </a>
-                                            <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                                                <form action=" {{ route('add-to-cart', $wishlist->book) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    <button type="submit"
-                                                        class="inline-block px-3 py-1 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">
-                                                        Add to Cart
-                                                    </button>
-                                                </form>
-                                            </span>
+
                                         </div>
                                     </div>
                                 </div>
