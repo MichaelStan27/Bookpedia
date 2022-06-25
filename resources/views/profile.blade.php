@@ -3,16 +3,17 @@
 @section('title', 'Profile')
 
 @section('content')
-    <a href="#wishlist">WISHLIST</a>
     <div class="container mx-auto py-5 scroll-smooth">
 
         {{-- Profile Section --}}
         <div class="container py-1">
             <div class="bg-white flex justify-start items-center rounded-l-3xl rounded-r-3xl mt-4 mb-4 w-full">
                 <div class="w-1/4 mx-10 py-4 text-center">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-full my-4 mx-auto w-5/6"
-                        alt="">
-                    <h5 class="text-2xl font-bold leading-tight mb-2 text-center">Bima Sakti Agustian</h5>
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/user-avatar-contact-portfolio-personal-portrait-profile-1-5182.png"
+                        class="rounded-full my-4 mx-auto w-5/6" alt="">
+
+                    <h5 class="text-2xl font-bold leading-tight mb-2 text-center">{{ auth()->user()->first_name }}
+                        {{ auth()->user()->last_name }}</h5>
                 </div>
                 <div class="mx-5">
                     <div class="my-4 py-2">
@@ -20,7 +21,8 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/546/546394.png" alt=""
                                 class="w-8 h-8 mx-2">
                             <label for="membersice" class="block text-xl text-left text-gray-500"><a
-                                    href="mailto:johnmayer@gmail.com" class="text-decoration-none">johnmayer@gmail.com</a>
+                                    href="mailto:{{ auth()->user()->email }}"
+                                    class="text-decoration-none">{{ auth()->user()->email }}</a>
                         </div>
                     </div>
                     <div class="my-4 py-2">
@@ -28,21 +30,21 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt=""
                                 class="w-8 h-8 mx-2">
                             <label for="membersice" class="block text-xl text-left text-gray-500">Member since
-                                <b>24 Mei 2022</b>
+                                <b>{{ auth()->user()->created_at->format('d F Y') }}</b>
                         </div>
                     </div>
                     <div class="my-4 py-2">
                         <div class="flex items-center justify-start">
                             <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt=""
                                 class="w-8 h-8 mx-2">
-                            <label for="location" class="text-left text-xl text-gray-500">Jakarta Selatan</b>
+                            <label for="location" class="text-left text-xl text-gray-500">{{ auth()->user()->city }}</b>
                         </div>
                     </div>
                     <div class="my-4 py-2">
                         <div class="flex items-center justify-start">
                             <img src="https://cdn-icons-png.flaticon.com/512/6506/6506327.png" alt=""
                                 class="w-8 h-8 mx-2">
-                            <h5 class="text-xl leading-tight">Rp 12.000</h5>
+                            <h5 class="text-xl leading-tight">{{ auth()->user()->BalanceWithNotation }}</h5>
                         </div>
                     </div>
                 </div>
@@ -121,8 +123,7 @@
                                     </div>
 
                                     <img class="w-full object-cover object-center"
-                                        src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1637008457"
-                                        alt="Book Cover" />
+                                        src="{{ asset("assets/{$wishlist->book->image}") }}" alt="Book Cover" />
 
                                     <div class="p-4">
                                         <h2
@@ -183,7 +184,6 @@
                                                         Add to Cart
                                                     </button>
                                                 </form>
-
                                             </span>
                                         </div>
                                     </div>
