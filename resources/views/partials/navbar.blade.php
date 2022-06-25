@@ -13,8 +13,8 @@
                     <i class="fa-solid fa-cart-shopping fa-lg hover:brightness-110"></i>
                 </a>
                 <div
-                    class="aspect-square text-center text-xs  p-1 rounded-[50%] bg-red-600 text-white absolute top-[-50%] right-[-50%]">
-                    99</div>
+                    class="flex items-center justify-center aspect-square w-5 text-xs rounded-[50%] bg-red-600 text-white absolute top-[-50%] right-[-50%]">
+                    {{ auth()->user()->cartItems()->count() }}</div>
             @endauth
         </li>
         @auth
@@ -46,8 +46,8 @@
                                     class="w-20 px-3 my-1 font-semibold shadow-md rounded-md bg-blue-600 text-sm text-white hover:brightness-105">Wishlist
                                 </button>
                                 <div
-                                    class="aspect-square text-center text-xs p-1 rounded-[50%] bg-red-600 text-white absolute top-[-35%] right-[-10%]">
-                                    11</div>
+                                    class="flex items-center justify-center aspect-square w-5 text-xs rounded-[50%] bg-red-600 text-white absolute top-[-35%] right-[-10%]">
+                                    {{ auth()->user()->wishlists()->count() }}</div>
                             </a>
                             <form action="/logout" method="post">
                                 @csrf
