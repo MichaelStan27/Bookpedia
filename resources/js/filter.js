@@ -27,7 +27,7 @@ const keywordInput = document.querySelector("#keywordInput");
 
 // Everytime searchbar (queryInput) input changed, the value will be get copy to 'keywordInput'
 queryInput?.addEventListener("input", () =>
-    keywordInput.setAttribute("value", queryInput.value)
+    keywordInput?.setAttribute("value", queryInput.value)
 );
 
 searchForm?.addEventListener("submit", (e) => {
