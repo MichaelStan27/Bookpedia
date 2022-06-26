@@ -23,7 +23,7 @@ class UserSeeder extends Seeder {
                 'city' => 'Jakarta Selatan',
                 'postal_code' => '10250',
                 'detail_address' => 'Jalan Pulo Raya V No.14',
-                'balance' => '0',
+                'balance' => '1000000',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

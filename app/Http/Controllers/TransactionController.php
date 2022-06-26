@@ -18,9 +18,14 @@ class TransactionController extends Controller {
 
         $cartItems = CartItem::where('user_id', $user->id)->get();
         foreach ($cartItems as $cartItem) {
+            $seller = User::find($cartItem->book->user_id);
+
             if ($cartItem->transaction_type_id == 1) {
                 $transaction = new LoanTransaction();
             } else {
+                $seller->update([
+                    'balance' => ($seller->balance + $cartItem->book->sale_price)
+                ]);
                 $transaction = new BuyTransaction();
                 $transaction->book_id = $cartItem->book_id;
                 $transaction->user_id = $cartItem->user_id;
@@ -33,6 +38,8 @@ class TransactionController extends Controller {
         $user->update([
             'balance' => ($user->balance - $request->total)
         ]);
+
+
         return redirect()->route("cart")->with('checkout_success', $request->count . ' book(s) has successfully been checked out!<br><b>Your total Payment : ' . $request->total . '</b><br> Your Balance: ' . $user->balance . '</b>');
     }
 }
