@@ -22,13 +22,15 @@ class CartItemSeeder extends Seeder {
             [
                 'book_id' => 2,
                 'user_id' => 1,
-                'type_id' => 2
+                'type_id' => 2,
+                'duration' => NULL
             ],
 
             [
                 'book_id' => 1,
                 'user_id' => 1,
-                'type_id' => 2
+                'type_id' => 1,
+                'duration' => 2
             ],
 
             // [
