@@ -102,35 +102,27 @@ class BookController extends Controller {
     }
 
     public function update_book_form($id) {
+        $categories = Category::all();
         $book = Book::with('category')
             ->where('id', $id)->first();
 
-        return view('update-book')->with('book', $book);
+        return view('update-book')->with(['book' => $book, 'categories' => $categories]);
     }
 
     public function update(Request $request, Book $book) {
         $request->validate([
-            'image' => ['required', 'image', 'mimes:jpg, png, webp, jpeg, svg'],
+            'title' => ['required'],
+            'category' => ['required', 'exists:categories,id'],
+            'author' => ['required'],
+            'released_year' => ['required', 'integer', 'digits:4'],
+            'publisher' => ['required'],
+            'image' => ['image', 'mimes:jpg, png, webp, jpeg, svg'],
             'summary' => ['required', 'min:10'],
             'description' => ['required', 'min:10'],
             'type' => ['required'],
         ], [
             'type.required' => 'Check at least one of above items.'
         ]);
-
-        // Storage::deleteDirectory($book->isbn."-img/");
-        Storage::deleteDirectory('public/book-image/' . $book->image);
-
-        //Upload image
-        $path = "public/book-image/";
-        $file = $request->file('image');
-        $randomString = Str::random(7);
-        $filename = $request->title . $randomString . '.' . $file->extension();
-        Storage::putFileAs(
-            $path,
-            $file,
-            $filename
-        );
 
         $types = $request->type;
 
@@ -164,8 +156,32 @@ class BookController extends Controller {
             $type = 1;
         }
 
+        if ($request->file('image')) {
+            // Storage::deleteDirectory($book->isbn."-img/");
+            Storage::deleteDirectory('public/book-image/' . $book->image);
+
+            //Upload image
+
+            $path = "public/book-image/";
+            $file = $request->file('image');
+            $randomString = Str::random(7);
+            $filename = $request->title . $randomString . '.' . $file->extension();
+            Storage::putFileAs(
+                $path,
+                $file,
+                $filename
+            );
+            $filename = 'book-image/' . $filename;
+        } else {
+            $filename = $book->image;
+        }
+
         $book->update([
-            'image' => 'book-image/' . $filename,
+            'title' => $request->title,
+            'author' => $request->author,
+            'released_year' => $request->released_year,
+            'publisher' => $request->publisher,
+            'image' => $filename,
             'summary' => $request->summary,
             'description' => $request->description,
             'user_id' => auth()->user()->id,
@@ -173,7 +189,10 @@ class BookController extends Controller {
             'sale_price' => $sale_price,
             'status_id' => 1,
             'transaction_type_id' => $type,
+            'category_id' => $request->category,
         ]);
+
+        // return dd($book);
 
         return redirect("/profile")->with('updateBookMessage', 'Book added successfully');
     }

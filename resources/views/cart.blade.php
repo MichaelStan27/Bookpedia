@@ -24,9 +24,16 @@
 
                             <div class="flex flex-row gap-2 py-3">
                                 @if ($cartItem->type_id == 1)
-                                    <h3
-                                        class="bg-zinc-900 border-2 border-zinc-900 text-white rounded-md text-center w-12 px-1">
-                                        Rent</h3>
+                                    <div class="flex items-center gap-4">
+                                        <h3
+                                            class="bg-zinc-900 border-2 border-zinc-900 text-white rounded-md text-center w-12 px-1">
+                                            Rent</h3>
+                                        <input type="number" name="duration[{{ $cartItem->id }}]"
+                                            id="duration[{{ $cartItem->id }}]" placeholder="" autocomplete="off"
+                                            class="text-center px-3 w-14 rounded-md border-2 outline-gray-400 py-1 @error('sale_price') border-red-500 @enderror"
+                                            value="1">
+                                        <h3>(duration in week)</h3>
+                                    </div>
                                 @else
                                     <h3
                                         class="bg-zinc-900 border-2 border-zinc-900 text-white rounded-md text-center w-12 px-1">
@@ -38,7 +45,9 @@
 
                     <div class="right-content flex flex-col items-center">
                         @if ($cartItem->type_id == 1)
-                            <h3 class="font-medium">{{ $cartItem->book->loan_price_with_notation }}</h3>
+                            {{-- <input type="hidden" name="loan_price[{{$cartItem->id}}]" id="loan_price[{{$cartItem->id}}]" 
+                            value ="{{$cartItem->book->loan_price}}" > --}}
+                            <h3 class="font-medium" id="">{{ $cartItem->book->loan_price_with_notation  }}</h3>
                             @php
                                 $count['total'] += $cartItem->book->loan_price;
                             @endphp

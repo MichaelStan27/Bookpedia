@@ -121,7 +121,7 @@
                         @enderror
                     </div>
                     <div class="mb-4" id="loan_price_field">
-                        <label for="loan_price" class="block text-left text-gray-500">Loan Price
+                        <label for="loan_price" class="block text-left text-gray-500">Loan Price (per week)
                             <span class="text-red-500">*</span></label>
                         <input type="number" name="loan_price" id="loan_price" placeholder="" autocomplete="off"
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('loan_price') border-red-500 @enderror"

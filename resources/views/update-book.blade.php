@@ -15,7 +15,7 @@
                                 class="text-red-500">*</span></label>
                         <input type="text" name="title" id="title" placeholder="" autocomplete="off"
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('title') border-red-500 @enderror"
-                            value="{{ $book->title }}" readonly>
+                            value="{{ $book->title }}">
                         @error('title')
                             <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
@@ -23,9 +23,14 @@
                     <div class="mb-4">
                         <label for="category" class="block text-left text-gray-500">Category <span
                                 class="text-red-500">*</span></label>
-                        <input type="text" name="category" id="category" placeholder="" autocomplete="off"
-                            class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('category') border-red-500 @enderror"
-                            value="{{ $book->category->category_name }}" readonly>
+                        <select name="category" id="category" placeholder=""
+                            class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('category') border-red-500 @enderror">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if (old('category', $book->category->category_name) === $category->category_name) selected @endif>
+                                    {{ $category->category_name }}
+                                </option>
+                            @endforeach
+                        </select>
                         @error('category')
                             <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
@@ -36,7 +41,7 @@
                         </label>
                         <input type="text" name="author" id="author" placeholder="" autocomplete="off"
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('author') border-red-500 @enderror"
-                            value="{{ $book->author }}" readonly>
+                            value="{{ $book->author }}">
                         @error('author')
                             <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
@@ -47,7 +52,7 @@
                             <span class="text-red-500">*</span></label>
                         <input type="number" name="released_year" id="released_year" placeholder="" autocomplete="off"
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('released_year') border-red-500 @enderror"
-                            value={{ $book->released_year }} readonly>
+                            value={{ $book->released_year }}>
                         @error('released_year')
                             <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
@@ -57,20 +62,20 @@
                                 class="text-red-500">*</span></label>
                         <input type="text" name="publisher" id="publisher" placeholder="" autocomplete="off"
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('publisher') border-red-500 @enderror"
-                            value="{{ $book->publisher }}" readonly>
+                            value="{{ $book->publisher }}">
                         @error('publisher')
                             <p class="text-red-500 text-sm text-left">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="mb-4">
-                        <div class="my-2 hidden" id="preview-img">
+                        <div class="my-2" id="preview-img">
                             <h1 class="text-lg font-semibold">Preview</h1>
-                            <img class="w-[50%] m-auto p-2 rounded-lg border-2 border-gray-500">
+                            <img src="{{ asset("assets/$book->image") }}" alt="{{ $book->title }}"
+                                class="w-[50%] m-auto p-2 rounded-lg border-2 border-gray-500">
                         </div>
 
                         <label for="image" class="block text-left text-gray-500">Photo
-                            <span class="text-sm text-gray-400">(file extentions : jpg, png, webp, jpeg, svg)</span>
-                            <span class="text-red-500">*</span></label>
+                            <span class="text-sm text-gray-400">(file extentions : jpg, png, webp, jpeg, svg)</label>
                         <input type="file" name="image" id="image" placeholder=""
                             class="text-left w-full rounded-md border-2 outline-gray-400 @error('image') border-red-500 @enderror">
                         @error('image')
@@ -121,7 +126,7 @@
                         @enderror
                     </div>
                     <div class="mb-4" id="loan_price_field">
-                        <label for="loan_price" class="block text-left text-gray-500">Loan Price
+                        <label for="loan_price" class="block text-left text-gray-500">Loan Price (per week)
                             <span class="text-red-500">*</span></label>
                         <input type="number" name="loan_price" id="loan_price" placeholder="" autocomplete="off"
                             class="text-left px-3 w-full rounded-md border-2 outline-gray-400 py-1 @error('loan_price') border-red-500 @enderror"

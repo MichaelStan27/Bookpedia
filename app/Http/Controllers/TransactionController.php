@@ -33,7 +33,6 @@ class TransactionController extends Controller {
         $user->update([
             'balance' => ($user->balance - $request->total)
         ]);
-        // auth()->user()->balance = auth()->user()->balance - $request->total;
         return redirect()->route("cart")->with('checkout_success', $request->count . ' book(s) has successfully been checked out!<br><b>Your total Payment : ' . $request->total . '</b><br> Your Balance: ' . $user->balance . '</b>');
     }
 }
