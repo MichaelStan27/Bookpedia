@@ -23,7 +23,7 @@ class CartController extends Controller {
 
         $count = [
             'counter' => $cartItems->count(),
-            'total' => 'IDR ' . number_format($cartTotal),
+            'total' => $cartTotal,
         ];
 
         return view('cart')
@@ -32,12 +32,27 @@ class CartController extends Controller {
     }
 
     public function add_to_cart(Book $book, Request $request) {
+        // return $book->status_id;
+        if ($book->status_id == 2) {
+            return redirect()->back()->with('message', 'Book is currently not available');
+        }
         $type = ($book->transaction_type_id == 3) ? $request->type : $book->transaction_type_id;
-        CartItem::firstOrCreate([
-            'book_id' => $book->id,
-            'user_id' => Auth::user()->id,
-            'type_id' => $type,
-        ]);
+        if ($type == 1) {
+            CartItem::firstOrCreate([
+                'book_id' => $book->id,
+                'user_id' => Auth::user()->id,
+                'type_id' => $type,
+                'duration' => 1
+            ]);
+        } else {
+            CartItem::firstOrCreate([
+                'book_id' => $book->id,
+                'user_id' => Auth::user()->id,
+                'type_id' => $type,
+                'duration' => NULL
+            ]);
+        }
+
         return redirect()->back()->with('message', 'Added to cart');
     }
 
@@ -73,7 +88,7 @@ class CartController extends Controller {
 
         $count = [
             'counter' => $cartItems->count(),
-            'total' => 'IDR ' . number_format($cartTotal),
+            'total' => $cartTotal
         ];
 
         return Response::json([

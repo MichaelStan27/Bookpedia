@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="right-content flex flex-col items-center">
+    <div class="right-content flex flex-col items-end">
         @if ($cartItem->type_id == 1)
             <h3 class="font-medium" id="">
                 {{ 'IDR ' . number_format($cartItem->book->loan_price * $cartItem->duration) }}

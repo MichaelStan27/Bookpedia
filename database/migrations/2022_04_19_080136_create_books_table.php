@@ -21,15 +21,27 @@ class CreateBooksTable extends Migration {
             $table->text('summary');
             $table->text('description');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->decimal('sale_price', $precision = 12, $scale = 2)->nullable();
             $table->decimal('loan_price', $precision = 12, $scale = 2)->nullable();
             $table->unsignedBigInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('statuses');
+            $table->foreign('status_id')->references('id')->on('statuses')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->unsignedBigInteger('transaction_type_id');
-            $table->foreign('transaction_type_id')->references('id')->on('transaction_types');
+            $table->foreign('transaction_type_id')->references('id')->on('transaction_types')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

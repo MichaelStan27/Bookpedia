@@ -15,13 +15,19 @@ class CreateLoanTransactionsTable extends Migration {
             $table->id();
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('book_id')->references('id')->on('books');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('book_id')->references('id')->on('books')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->date('deadline');
             $table->date('loan_date');
-            $table->date('return_date');
+            $table->date('return_date')->nullable();
             $table->integer('duration');
-            $table->decimal('fine', $precision = 12, $scale = 2);
+            // $table->decimal('fine', $precision = 12, $scale = 2);
             $table->timestamps();
         });
     }

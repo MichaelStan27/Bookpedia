@@ -65,7 +65,7 @@
                     </div>
                 @else
                     <div class="p-3 flex flex-row justify-start gap-3">
-                        <a href="{{ route('profile') . "#mybook" }}"
+                        <a href="{{ route('profile') . '#mybook' }}"
                             class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
                             Manage book
                         </a>
@@ -75,20 +75,23 @@
                 @switch($book->transaction->id)
                     @case(1)
                         <div class="ml-3 p-3 flex flex-row justify-start gap-3">
-                            <a href="{{ route('add-to-cart', $book) }}">
-                                <button type="button"
+                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                @csrf
+                                <button type="submit"
                                     class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
-                            </a>
+                            </form>
 
                         </div>
                     @break
 
                     @case(2)
                         <div class="ml-3 p-3 flex flex-row justify-start gap-3">
-                            <a href="{{ route('add-to-cart', $book) }}">
-                                <button type="button"
+
+                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                @csrf
+                                <button type="submit"
                                     class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
-                            </a>
+                            </form>
                         </div>
                     @break
 

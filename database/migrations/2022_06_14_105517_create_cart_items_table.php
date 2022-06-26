@@ -16,11 +16,20 @@ class CreateCartItemsTable extends Migration
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('book_id');
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('book_id')->references('id')->on('books')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->unsignedBigInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('transaction_types');
+            $table->foreign('type_id')->references('id')->on('transaction_types')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }
