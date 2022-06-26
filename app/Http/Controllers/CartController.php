@@ -9,18 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller {
     public function index() {
-        $cartItems = CartItem::with('book.user')
-            ->join('books', 'cart_items.book_id', '=', 'books.id')
-            ->where('cart_items.user_id', auth()->user()->id)->get();
+        $cartItems = auth()->user()->cartItems;
+
+        $cartTotal = $cartItems->reduce(function ($carry, $item) {
+            if ($item->type_id == 1) {
+                return $carry + $item->book->loan_price * $item->duration;
+            } else {
+                return $carry + $item->book->sale_price;
+            }
+        });
 
         $count = [
             'counter' => $cartItems->count(),
-            'total' => 0
-            // 'IDR '.number_format($cartItems->sum('price')),
+            'total' => 'IDR ' . number_format($cartTotal),
         ];
-
-        //    return dd($count);
-        // return view('login');
 
         return view('cart')
             ->with('cartItems', $cartItems)
