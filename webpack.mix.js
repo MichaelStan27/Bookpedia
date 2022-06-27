@@ -15,6 +15,7 @@ mix.js(
     [
         "resources/js/app.js",
         "resources/js/cart.js",
+        "resources/js/toast-notification.js",
         "resources/js/add-book.js",
         "resources/js/carousel.js",
         "resources/js/filter.js",

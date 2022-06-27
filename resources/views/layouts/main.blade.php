@@ -14,6 +14,7 @@
 </head>
 
 <body class="bg-[#F2F2F2]">
+    @include('partials.toast-notification')
     @include('partials.navbar')
     @yield('content')
 </body>
