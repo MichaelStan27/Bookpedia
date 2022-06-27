@@ -19,16 +19,14 @@ class ProfileController extends Controller {
         return view('profile', ["Books" => $myBook, "Wishlist" => $wishlist]);
     }
 
-    public function userProfile($id) {
+    public function userProfile(User $user) {
 
-        $userProfile = User::where('id', '=', $id)->first();
-
-        $myBook = Book::where('user_id', '=', $id)
+        $myBook = Book::where('user_id', '=', $user->id)
             ->latest()->paginate(3);
 
-        $wishlist = Wishlist::where('user_id', '=', $id)
+        $wishlist = Wishlist::where('user_id', '=', $user->id)
             ->latest()->paginate(4);
 
-        return view('profile', ["Users" => $userProfile, "Books" => $myBook, "Wishlist" => $wishlist]);
+        return view('profile', ["Users" => $user, "Books" => $myBook, "Wishlist" => $wishlist]);
     }
 }

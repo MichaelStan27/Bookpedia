@@ -2,14 +2,14 @@
     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <div class="w-full">
             <div class="w-full flex p-2">
-                <a href="/user/profile/{{ $wishlist->user->id }}">
+                <a href="{{ route('userProfile', $wishlist->user) }}">
                     <div class="p-2">
                         <img src="https://cdn.iconscout.com/icon/free/png-256/profile-417-1163876.png" alt="author"
                             class="w-10 rounded-full overflow-hidden" />
                     </div>
                 </a>
                 <div class="pl-2 pt-2">
-                    <a href="/user/profile/{{ $wishlist->user->id }}">
+                    <a href="{{ route('userProfile', $wishlist->user) }}">
                         <p class="font-bold">{{ $wishlist->user->first_name }}
                             {{ $wishlist->user->last_name }} </p>
                     </a>
@@ -62,7 +62,7 @@
             <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
                 {{ Str::limit($wishlist->book->title, 15, $end = '...') }} </h1>
             <div class="flex justify-between items-center flex-wrap ">
-                <a href="/book-detail/{{ $wishlist->book_id }}" class="text-green-800  md:mb-2 lg:mb-0">
+                <a href="{{ route('book-detail', $wishlist->book) }}" class="text-green-800  md:mb-2 lg:mb-0">
                     <p class="inline-flex items-center">Detail
                         <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                             fill="none" stroke-linecap="round" stroke-linejoin="round">

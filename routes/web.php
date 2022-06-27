@@ -56,6 +56,6 @@ Route::controller(CartController::class)->group(function () {
 });
 
 Route::get('/profile', [ProfileController::class, 'myProfile'])->name('profile');
-Route::get('/user/profile/{id}', [ProfileController::class, 'userProfile'])->name('userProfile');
+Route::get('/user/profile/{user}', [ProfileController::class, 'userProfile'])->name('userProfile');
 
 Route::post('/checkout', [TransactionController::class, 'checkout'])->middleware('auth')->name('checkout');
