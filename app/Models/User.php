@@ -60,7 +60,7 @@ class User extends Authenticatable {
     public function getSuccessfulTransAttribute() {
         $successful_trans = $this->books()->whereIn('id', [...LoanTransaction::pluck('book_id'), ...BuyTransaction::pluck('book_id')])->count();
         if ($successful_trans == 0) return "No succesful transaction";
-        else return "{$successful_trans} sucessful " . Str::plural('transaction', $successful_trans);
+        else return "{$successful_trans} successful " . Str::plural('transaction', $successful_trans);
     }
 
     public function getBalanceWithNotationAttribute() {
