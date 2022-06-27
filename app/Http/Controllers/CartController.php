@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\CartItem;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
@@ -32,10 +33,15 @@ class CartController extends Controller {
     }
 
     public function add_to_cart(Book $book, Request $request) {
-        // return $book->status_id;
+        $userCartItems = auth()->user()->cartItems()->where('book_id', $book->id)->first();
+        if($userCartItems){
+            return redirect()->back()->with('message', 'This book has been added to your cart');
+        }
         if ($book->status_id == 2) {
             return redirect()->back()->with('message', 'Book is currently not available');
         }
+
+        //Creating cartItem object
         $type = ($book->transaction_type_id == 3) ? $request->type : $book->transaction_type_id;
         if ($type == 1) {
             CartItem::firstOrCreate([

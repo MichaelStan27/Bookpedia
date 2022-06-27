@@ -12,9 +12,8 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller {
     public function checkout(Request $request) {
-        // return "$request->total";
         $user = User::find(auth()->user()->id);
-        // return dd($user->balance);
+        
         if ($user->balance < $request->total) {
             return redirect()->route("cart")->with('checkout_fails', 'Insufficient Balance!</b>');
         }
@@ -22,15 +21,12 @@ class TransactionController extends Controller {
         $cartItems = CartItem::where('user_id', $user->id)->get();
 
         foreach ($cartItems as $cartItem) {
-            // return "hello";
             $seller = User::find($cartItem->book->user_id);
             $user->update([
                 'balance' => ($user->balance - $request->total)
             ]);
-            // return "{{$user->balance}}";
             $date = Carbon::now();
             if ($cartItem->type_id == 1) {
-                // return "hello";
                 $seller->update([
                     'balance' => ($seller->balance + $cartItem->book->loan_price)
                 ]);
@@ -44,12 +40,9 @@ class TransactionController extends Controller {
                 $cartItem->book->update([
                     'status_id' => 2
                 ]);
-                // $cartItem->book->status = 'unavailable';
                 $transaction->save();
                 $cartItem->delete();
-                // return dd($transaction->deadline);
             } else {
-                // return "hi";
                 $seller->update([
                     'balance' => ($seller->balance + $cartItem->book->sale_price)
                 ]);
