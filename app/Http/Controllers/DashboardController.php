@@ -27,7 +27,7 @@ class DashboardController extends Controller {
         // Categories filtering
         $categories = $request->query('category');
         if (!empty($categories)) {
-            $query = $query->orWhere(function ($whereQuery) use ($categories) {
+            $query = $query->where(function ($whereQuery) use ($categories) {
                 foreach ($categories as $category_id) {
                     $whereQuery = $whereQuery->orWhere('categories.id', '=', $category_id);
                 }
@@ -50,7 +50,10 @@ class DashboardController extends Controller {
         // Keyword filtering
         $keyword = $request->query('keyword');
         if (isset($keyword)) {
-            $query = $query->where('books.title', 'LIKE', "%$keyword%");
+            $query = $query->where(function ($whereQuery) use ($keyword) {
+                $whereQuery = $whereQuery->orWhere('books.title', 'LIKE', "%$keyword%")
+                    ->orWhere('books.author', 'LIKE', "%$keyword%");
+            });
         }
 
         // Sorting price
