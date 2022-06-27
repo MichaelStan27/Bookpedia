@@ -80,7 +80,8 @@
                         </tr>
                         <tr class="">
                             <td class="font-semibold">Owner</td>
-                            <td class="">: {{ $book->owner }}</td>
+                            <td class="">: <a href="/user/profile/{{ $book->user->id }}">
+                                    {{ $book->owner }}</a></td>
                         </tr>
                         <tr class="">
                             <td class="font-semibold">Author</td>
