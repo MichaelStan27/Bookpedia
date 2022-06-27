@@ -50,7 +50,8 @@
                 @endswitch
             </div>
             <h2 class="tracking-widest text-xs text-grey-400 uppercase">{{ $book->transaction_type_string }}</h2>
-            <h2 class="tracking-widest text-xs title-font font-bold text-green-400 mb-4 uppercase">
+            <h2
+                class="tracking-widest text-xs title-font font-bold  @if ($book->status_string === 'Available') text-green-400 @else text-red-400 @endif mb-4 uppercase">
                 {{ $book->status_string }}
             </h2>
         </div>
