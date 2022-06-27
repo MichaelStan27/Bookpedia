@@ -58,10 +58,7 @@ class User extends Authenticatable {
     }
 
     public function getSuccessfulTransAttribute() {
-        $successful_trans = DB::table('users')
-            ->join('buy_transactions', 'users.id', '=', 'buy_transactions.user_id')
-            ->join('loan_transactions', 'users.id', '=', 'loan_transactions.user_id')
-            ->count();
+        $successful_trans = $this->books()->whereIn('id', [...LoanTransaction::pluck('book_id'), ...BuyTransaction::pluck('book_id')])->count();
         if ($successful_trans == 0) return "No succesful transaction";
         else return "{$successful_trans} sucessful " . Str::plural('transaction', $successful_trans);
     }
@@ -70,8 +67,11 @@ class User extends Authenticatable {
         return 'IDR ' . number_format($this->attributes['balance']);
     }
 
-    public function transactions() {
-        return $this->hasMany(Transaction::class);
+    public function buyTransactions() {
+        return $this->hasMany(BuyTransaction::class);
     }
-    
+
+    public function loanTransactions() {
+        return $this->hasMany(LoanTransaction::class);
+    }
 }
