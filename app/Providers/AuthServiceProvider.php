@@ -26,5 +26,6 @@ class AuthServiceProvider extends ServiceProvider {
         $this->registerPolicies();
 
         Gate::define('manage-the-book', fn (User $user, Book $book) => $user->id == $book->user->id);
+        Gate::define('add-to-wishlist', fn (User $user, Book $book) => $user->id != $book->user->id);
     }
 }
