@@ -14,7 +14,7 @@ class ProfileController extends Controller {
             ->latest()->paginate(3);
 
         $wishlist = Wishlist::where('user_id', '=', auth()->user()->id)
-            ->latest()->paginate(4);
+            ->take(4)->get();
 
         return view('profile', ["Books" => $myBook, "Wishlist" => $wishlist]);
     }
@@ -25,7 +25,7 @@ class ProfileController extends Controller {
             ->latest()->paginate(3);
 
         $wishlist = Wishlist::with(['book', 'user'])->where('user_id', '=', $user->id)
-            ->latest()->paginate(4);
+            ->take(4)->get();
 
         return view('profile', ["Users" => $user, "Books" => $myBook, "Wishlist" => $wishlist]);
     }
