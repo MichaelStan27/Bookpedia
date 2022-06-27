@@ -7,7 +7,7 @@
         <li>
             @include('partials.searchbar')
         </li>
-        <li class="relative hover:brightness-110">
+        <li class="relative">
             @auth
                 <a href="{{ route('cart') }}">
                     <i class="fa-solid fa-cart-shopping fa-lg "></i>
@@ -19,10 +19,10 @@
         </li>
         @auth
             <li class="group relative">
-                <div class="inline mb-2">
+                <a href="{{ route('profile') }}" class="inline">
                     <i class="fa-solid fa-user fa-lg mx-2"></i>
                     <span class="hidden md:inline">{{ auth()->user()->first_name }}</span>
-                </div>
+                </a>
                 <div class="w-fit pt-5 hidden absolute z-20 right-0 md:translate-x-1/2 group-hover:block">
                     <div
                         class="p-5 w-72 bg-white shadow-md rounded-lg ring-2 ring-gray-800 ring-offset-4 ring-offset-gray-200 ">
