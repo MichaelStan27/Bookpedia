@@ -55,47 +55,39 @@
                 {{ $book->status_string }}
             </h2>
         </div>
-        @auth
-            @can('manage-the-book', $book)
-                @if (Route::is('profile'))
-                    <div class="p-3 flex flex-row justify-start gap-3">
+        <div class="p-3 flex flex-row justify-start gap-3">
+            @auth
+                @can('manage-the-book', $book)
+                    @if (Route::is('profile'))
                         <a href="{{ route('update-book', $book) }}"
                             class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Edit</a>
                         <button type="button"
                             class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                    </div>
-                @else
-                    <div class="p-3 flex flex-row justify-start gap-3">
+                    @else
                         <a href="{{ route('profile') . '#mybook' }}"
                             class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
                             Manage book
                         </a>
-                    </div>
-                @endif
-            @else
-                @switch($book->transaction->id)
-                    @case(1)
-                        <div class="ml-3 p-3 flex flex-row justify-start gap-3">
+                    @endif
+                @else
+                    @switch($book->transaction->id)
+                        @case(1)
                             <form action="{{ route('add-to-cart', $book) }}" method="post">
                                 @csrf
                                 <button type="submit"
                                     class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
                             </form>
-                        </div>
-                    @break
+                        @break
 
-                    @case(2)
-                        <div class="ml-3 p-3 flex flex-row justify-start gap-3">
+                        @case(2)
                             <form action="{{ route('add-to-cart', $book) }}" method="post">
                                 @csrf
                                 <button type="submit"
                                     class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
                             </form>
-                        </div>
-                    @break
+                        @break
 
-                    @case(3)
-                        <div class="ml-3 p-3 flex flex-row justify-start gap-3">
+                        @case(3)
                             <form action="{{ route('add-to-cart', $book) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="type" value="1">
@@ -108,11 +100,11 @@
                                 <button type="submit"
                                     class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
                             </form>
-                        </div>
-                    @break
-                @endswitch
-            @endcan
-        @endauth
+                        @break
+                    @endswitch
+                @endcan
+            @endauth
+        </div>
         <div class="p-6 flex flex-col justify-start">
             <p class="text-gray-600 text-xs">{{ $book->updated_at->diffForHumans() }}</p>
         </div>
