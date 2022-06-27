@@ -2,7 +2,7 @@
 
 <a href="{{ route('book-detail', $book) }}">
     <div class="rounded-lg border-2 shadow-md overflow-hidden hover:scale-105">
-        <img src="{{ asset("assets/$book->image") }}" alt="{{ $book->title }}" class="">
+        <img src="{{ asset("assets/$book->image") }}" alt="{{ $book->title }}" class="object-cover h-96 w-full">
         <div class="p-2">
             <h1 class="font-bold text-xl">{{ Str::limit($book->title, 15, $end = '...') }}</h1>
             @switch($book->transaction->id)
