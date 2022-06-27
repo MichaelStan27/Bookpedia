@@ -33,16 +33,34 @@
                     <h2 class="font-medium text-xl text-gray-500 mb-3">{{ $book->category->category_name }}</h2>
                     <h3 class="rounded-md bg-gray-300 pt-1 px-2 align-text-top text-sm mb-4 h-48">{{ $book->summary }}
                     </h3>
-                    <div class="grid grid-cols-2 divide-x-2">
-                        <div class="text-center">
-                            <h1 class="text-md font-medium">Rent</h1>
-                            <h2 class="text-sm text-gray-500">{{ $book->loan_price_with_notation }}</h2>
-                        </div>
-                        <div class="text-center">
-                            <h1 class="text-md font-medium">Sell</h1>
-                            <h2 class="text-sm text-gray-500">{{ $book->sale_price_with_notation }}</h2>
-                        </div>
-                    </div>
+                    @switch($book->transaction->id)
+                        @case(1)
+                            <div class="text-center">
+                                <h1 class="text-md font-medium">Rent</h1>
+                                <h2 class="text-sm text-gray-500">{{ $book->loan_price_with_notation }}</h2>
+                            </div>
+                        @break
+
+                        @case(2)
+                            <div class="text-center">
+                                <h1 class="text-md font-medium">Sell</h1>
+                                <h2 class="text-sm text-gray-500">{{ $book->sale_price_with_notation }}</h2>
+                            </div>
+                        @break
+
+                        @case(3)
+                            <div class="grid grid-cols-2 divide-x-2">
+                                <div class="text-center">
+                                    <h1 class="text-md font-medium">Rent</h1>
+                                    <h2 class="text-sm text-gray-500">{{ $book->loan_price_with_notation }}</h2>
+                                </div>
+                                <div class="text-center">
+                                    <h1 class="text-md font-medium">Sell</h1>
+                                    <h2 class="text-sm text-gray-500">{{ $book->sale_price_with_notation }}</h2>
+                                </div>
+                            </div>
+                        @break
+                    @endswitch
                 </div>
             </div>
 
@@ -74,16 +92,57 @@
                     <p class="">{{ $book->description }}</p>
                 </div>
             </div>
+            @auth
+                @can('manage-the-book', $book)
+                    <div class="p-3 flex flex-row justify-start gap-3">
+                        <a href="{{ route('profile') . '#mybook' }}"
+                            class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-auto">
+                            Manage book
+                        </a>
+                    </div>
+                @else
+                    @switch($book->transaction->id)
+                        @case(1)
+                            <div class="ml-3 p-3 flex flex-row justify-center gap-3">
+                                <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                    @csrf
+                                    <button type="submit"
+                                        class="inline-block px-10 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
+                                </form>
 
-            <form action="{{ route('add-to-cart', $book) }}" method="post" class="py-2 px-8 w-full text-center">
-                @csrf
-                @auth
-                    <button type="submit"
-                        class="font-medium rounded-md bg-black text-white hover:bg-white hover:text-black px-2 shadow-md border-2 py-1">
-                        Add to Cart
-                    </button>
-                @endauth
-            </form>
+                            </div>
+                        @break
+
+                        @case(2)
+                            <div class="ml-3 p-3 flex flex-row justify-center gap-3">
+                                <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                    @csrf
+                                    <button type="submit"
+                                        class="inline-block px-10 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
+                                </form>
+                            </div>
+                        @break
+
+                        @case(3)
+                            <div class="ml-3 p-3 flex flex-row justify-center gap-3">
+                                <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="type" value="1">
+                                    <button type="submit"
+                                        class="inline-block px-10 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
+                                </form>
+                                <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="type" value="2">
+                                    <button type="submit"
+                                        class="inline-block px-10 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
+                                </form>
+
+                            </div>
+                        @break
+                    @endswitch
+                @endcan
+            @endauth
         </div>
     </div>
 
