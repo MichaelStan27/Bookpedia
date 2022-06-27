@@ -93,8 +93,8 @@
                         </div>
                         <div class="my-4 py-2">
                             <div class="flex items-center justify-start">
-                                <img src="https://cdn-icons.flaticon.com/png/512/2099/premium/2099140.png?token=exp=1656296185~hmac=87836b9dd8edbd6e9a224e204b47a01e"
-                                    alt="" class="w-8 h-8 mx-2">
+                                <img src="https://cdn-icons-png.flaticon.com/512/126/126509.png" alt=""
+                                    class="w-8 h-8 mx-2">
                                 <h5 class="text-xl leading-tight text-gray-500">{{ $Users->phone_number }}</h5>
                             </div>
                         </div>
