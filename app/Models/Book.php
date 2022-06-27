@@ -73,6 +73,10 @@ class Book extends Model {
         }
     }
 
+    public function getIsAvailableAttribute() {
+        return $this->attributes['status_id'] == 1;
+    }
+
     public function getOwnerAttribute() {
         return $this->user->first_name . " " . $this->user->last_name;
     }
