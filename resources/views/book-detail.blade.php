@@ -30,7 +30,9 @@
                         </form>
                     </div>
 
-                    <h2 class="font-medium text-xl text-gray-500 mb-3">{{ $book->category->category_name }}</h2>
+                    <a href="{{ route('search', ['category[]' => $book->category->id]) }}">
+                        <h2 class="font-medium text-xl text-gray-500 mb-3">{{ $book->category->category_name }}</h2>
+                    </a>
                     <h3 class="rounded-md bg-gray-300 pt-1 px-2 align-text-top text-sm mb-4 h-48">{{ $book->summary }}
                     </h3>
                     @switch($book->transaction->id)
