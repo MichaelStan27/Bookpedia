@@ -1,7 +1,7 @@
 @props(['book'])
 
 <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-xl outline outline-cyan-700">
-    <img class="w-full h-96 md:h-auto object-cover md:w-36 lg:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+    <img class="w-full h-96 md:h-auto object-cover md:w-36 lg:w-40 rounded-t-lg md:rounded-none md:rounded-l-lg"
         src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
     <div class="flex flex-col justify-between w-full">
         <div class="p-6 flex flex-col justify-start">
@@ -32,9 +32,9 @@
                     @break
 
                     @case(3)
-                        <div class="grid grid-cols-2 gap-1 divide-x-2">
+                        <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <span class="md:text-sm">Loan price</span>
+                                <span class="md:text-sm">Loan price (weekly)</span>
                                 <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
                                     {{ $book->loan_price_with_notation }}
                                 </h2>
@@ -63,25 +63,33 @@
                         <button type="button"
                             class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
                     </div>
+                @else
+                    <div class="p-3 flex flex-row justify-start gap-3">
+                        <a href="{{ route('profile') . '#mybook' }}"
+                            class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                            Manage book
+                        </a>
+                    </div>
                 @endif
             @else
                 @switch($book->transaction->id)
                     @case(1)
                         <div class="ml-3 p-3 flex flex-row justify-start gap-3">
-                            <a href="{{ route('add-to-cart', $book) }}">
-                                <button type="button"
+                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                @csrf
+                                <button type="submit"
                                     class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
-                            </a>
-
+                            </form>
                         </div>
                     @break
 
                     @case(2)
                         <div class="ml-3 p-3 flex flex-row justify-start gap-3">
-                            <a href="{{ route('add-to-cart', $book) }}">
-                                <button type="button"
+                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                                @csrf
+                                <button type="submit"
                                     class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
-                            </a>
+                            </form>
                         </div>
                     @break
 
@@ -99,7 +107,6 @@
                                 <button type="submit"
                                     class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
                             </form>
-
                         </div>
                     @break
                 @endswitch
