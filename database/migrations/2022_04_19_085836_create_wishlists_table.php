@@ -16,13 +16,13 @@ class CreateWishlistsTable extends Migration {
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('book_id')->references('id')->on('books')
-                    ->constrained()
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')
-                    ->constrained()
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
