@@ -34,6 +34,19 @@ class DashboardController extends Controller {
             });
         }
 
+        // Availability filter
+        $availability = $request->query('availability');
+        if (isset($availability)) {
+            switch ($availability) {
+                case 1:
+                    $query = $query->where('status_id', '=', 1);
+                    break;
+                case 2:
+                    $query = $query->where('status_id', '=', 2);
+                    break;
+            }
+        }
+
         // Transaction type filter
         $type = $request->query('type');
         if (isset($type)) {
@@ -82,6 +95,7 @@ class DashboardController extends Controller {
             'type' => $type,
             'priceSort' => $priceSortOption,
             'titleSort' => $titleSortOption,
+            'availability' => $availability,
             'keyword' => $request->keyword
         ]);
     }

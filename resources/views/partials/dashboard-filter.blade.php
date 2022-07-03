@@ -32,6 +32,21 @@
         </ul>
     </div>
     <div class="ml-2 mb-5">
+        <h3 class="font-bold mb-2">Availability</h3>
+        <ul class="ml-2 text-neutral-600">
+            <li class="mb-1">
+                <input type="radio" name="availability" id="available" value="1"
+                    @if (isset($availability) && $availability == 1) checked @endif>
+                <label class="ml-2" for="available">Available</label>
+            </li>
+            <li class="mb-1">
+                <input type="radio" name="availability" id="notAvailable" value="2"
+                    @if (isset($availability) && $availability == 2) checked @endif>
+                <label class="ml-2" for="notAvailable">Not available</label>
+            </li>
+        </ul>
+    </div>
+    <div class="ml-2 mb-5">
         <h3 class="font-bold mb-2">Type</h3>
         <ul class="ml-2 text-neutral-600">
             <li class="mb-1">
