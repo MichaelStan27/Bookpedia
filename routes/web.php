@@ -42,9 +42,9 @@ Route::get('/search', [DashboardController::class, 'search'])->name('search');
 
 Route::controller(BookController::class)->group(function () {
     Route::get('/add-book', 'add_book_form')->name('add-book');
-    Route::post('/add-book', 'create')->name('add-book');
+    Route::post('/add-book', 'create');
     Route::get('/update-book/{id}', 'update_book_form')->name('update-book');
-    Route::put('/update-book/{book}', 'update')->name('update-book');
+    Route::put('/update-book/{book}', 'update');
     Route::delete('/delete-book/{book}', 'destroy')->name('delete-book');
     Route::get('/book-detail/{book}', 'viewBookDetail')->name('book-detail');
 });
