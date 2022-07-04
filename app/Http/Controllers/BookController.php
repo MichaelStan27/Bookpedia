@@ -98,7 +98,7 @@ class BookController extends Controller {
             'category_id' => $request->category,
         ]);
 
-        return redirect()->route('profile')->with('message', 'Book added successfully');
+        return redirect()->route('profile', auth()->user())->with('message', 'Book added successfully');
     }
 
     public function update_book_form($id) {
@@ -191,15 +191,15 @@ class BookController extends Controller {
             'category_id' => $request->category,
         ]);
 
-        return redirect()->route('profile')->with('message', 'Book updated successfully');
+        return redirect()->route('profile', auth()->user())->with('message', 'Book updated successfully');
     }
 
-    public function destroy(Book $book){
+    public function destroy(Book $book) {
         $title = $book->title;
 
         Storage::delete("public/$book->image");
         $book->delete();
 
-        return redirect()->route('profile')->with("message", "$title deleted successfully");
+        return redirect()->route('profile', auth()->user())->with("message", "$title deleted successfully");
     }
 }
