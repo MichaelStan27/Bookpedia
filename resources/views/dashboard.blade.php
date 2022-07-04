@@ -34,7 +34,7 @@
                 <div class="w-1/4 bg-white rounded-lg p-4 self-start">
                     @include('partials.dashboard-filter')
                 </div>
-                <div class="w-4/5">
+                <div class="w-4/6">
                     <div class="grid grid-cols-2 gap-5">
                         @foreach ($books as $book)
                             <x-book-card :book="$book"></x-book-card>
