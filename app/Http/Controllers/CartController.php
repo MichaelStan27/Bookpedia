@@ -35,10 +35,16 @@ class CartController extends Controller {
     public function add_to_cart(Book $book, Request $request) {
         $userCartItems = auth()->user()->cartItems()->where('book_id', $book->id)->first();
         if($userCartItems){
-            return redirect()->back()->with('message', 'This book has been added to your cart');
+            return Response::json([
+                'status' => 'FAIL',
+                'toast' => view('partials.toast-notification')->with('message', 'This book already added to your cart before!')->render()
+            ]);
         }
         if ($book->status_id == 2) {
-            return redirect()->back()->with('message', 'Book is currently not available');
+            return Response::json([
+                'status' => 'FAIL',
+                'toast' => view('partials.toast-notification')->with('message', 'Book is currently not available!')->render()
+            ]);
         }
 
         //Creating cartItem object
@@ -58,8 +64,12 @@ class CartController extends Controller {
                 'duration' => NULL
             ]);
         }
-
-        return redirect()->back()->with('message', 'Added to cart');
+        $cartQty = auth()->user()->cartItems()->count();
+        return Response::json([
+            'status' => 'OK',
+            'cartQty' => $cartQty,
+            'toast' => view('partials.toast-notification')->with('message', 'Added to cart')->render()
+        ]);
     }
 
 

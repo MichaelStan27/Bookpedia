@@ -72,32 +72,32 @@
                 @else
                     @switch($book->transaction->id)
                         @case(1)
-                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                            <form action="" method="post">
                                 @csrf
-                                <button type="submit"
+                                <button data-id="addToCartBtn" book-id="{{ $book->id }}" type="submit"
                                     class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
                             </form>
                         @break
 
                         @case(2)
-                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                            <form action="" method="post">
                                 @csrf
-                                <button type="submit"
+                                <button data-id="addToCartBtn" book-id="{{ $book->id }}" type="submit"
                                     class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
                             </form>
                         @break
 
                         @case(3)
-                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                            <form action="" method="post">
                                 @csrf
                                 <input type="hidden" name="type" value="1">
-                                <button type="submit"
+                                <button data-id="addToCartBtn" book-id="{{ $book->id }}" type="submit"
                                     class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Rent</button>
                             </form>
-                            <form action="{{ route('add-to-cart', $book) }}" method="post">
+                            <form action="" method="post">
                                 @csrf
                                 <input type="hidden" name="type" value="2">
-                                <button type="submit"
+                                <button data-id="addToCartBtn" book-id="{{ $book->id }}" type="submit"
                                     class="inline-block px-4 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Buy</button>
                             </form>
                         @break

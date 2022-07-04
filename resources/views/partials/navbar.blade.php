@@ -13,8 +13,8 @@
                 <a href="{{ route('cart') }}">
                     <i class="fa-solid fa-cart-shopping fa-lg "></i>
                 </a>
-                <div
-                    class="flex items-center justify-center aspect-square w-5 text-xs rounded-[50%] bg-red-600 text-white absolute top-[-50%] right-[-50%]">
+                <div class="flex items-center justify-center aspect-square w-5 text-xs rounded-[50%] bg-red-600 text-white absolute top-[-50%] right-[-50%]"
+                    id="cartCount">
                     {{ auth()->user()->cartItems()->count() }}</div>
             @endauth
         </li>

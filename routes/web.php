@@ -50,9 +50,9 @@ Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wis
 
 Route::controller(CartController::class)->group(function () {
     Route::get('/your-cart', 'index')->name('cart');
-    Route::post('/add-to-cart/{book}', 'add_to_cart')->name('add-to-cart')->middleware('auth');
     Route::delete('/your-cart/{cartItem}', 'destroy')->name('delete');
     Route::get('/api/cart-container', 'cartContainer');
+    Route::post('/add-to-cart/{book}', 'add_to_cart')->middleware('auth');
 });
 
 Route::get('/profile', [ProfileController::class, 'myProfile'])->name('profile');
