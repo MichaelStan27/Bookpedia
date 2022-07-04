@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    image: arville27/bookpedia
+    container_name: "bookpedia"
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 80:80
+
+  db:
+    image: mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./container-data/db:/var/lib/mysql
+
+  dbms:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: ${DB_PASSWORD}
