@@ -98,7 +98,7 @@ class BookController extends Controller {
             'category_id' => $request->category,
         ]);
 
-        return redirect("/")->with('addBookMessage', 'Book added successfully');
+        return redirect("/")->with('message', 'Book added successfully');
     }
 
     public function update_book_form($id) {
@@ -194,6 +194,6 @@ class BookController extends Controller {
 
         // return dd($book);
 
-        return redirect("/profile")->with('updateBookMessage', 'Book added successfully');
+        return redirect("/profile")->with('message', 'Book added successfully');
     }
 }

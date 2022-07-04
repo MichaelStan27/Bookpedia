@@ -60,6 +60,6 @@ class TransactionController extends Controller {
 
 
 
-        return redirect()->route("cart")->with('checkout_success', $request->count . ' book(s) has successfully been checked out!<br><b>Your total Payment : ' . $request->total . '</b><br> Your Balance: ' . $user->balance . '</b>');
+        return redirect()->route("cart")->with('message', $request->count . ' book(s) has successfully been checked out!<br><b>Your total Payment : ' . $request->total . '</b><br> Your Balance: ' . $user->balance . '</b>');
     }
 }
