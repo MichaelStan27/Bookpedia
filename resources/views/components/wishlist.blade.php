@@ -2,14 +2,14 @@
     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <div class="w-full">
             <div class="w-full flex p-2">
-                <a href="{{ route('userProfile', $wishlist->book->user) }}">
+                <a href="{{ route('profile', $wishlist->book->user) }}">
                     <div class="p-2">
                         <img src="https://cdn.iconscout.com/icon/free/png-256/profile-417-1163876.png" alt="author"
                             class="w-10 rounded-full overflow-hidden" />
                     </div>
                 </a>
                 <div class="pl-2 pt-2">
-                    <a href="{{ route('userProfile', $wishlist->book->user) }}">
+                    <a href="{{ route('profile', $wishlist->book->user) }}">
                         <p class="font-bold">{{ $wishlist->book->user->first_name }}
                             {{ $wishlist->book->user->last_name }} </p>
                     </a>

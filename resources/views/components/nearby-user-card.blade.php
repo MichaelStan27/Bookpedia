@@ -21,7 +21,7 @@
             </h2>
             <h1 class="title-font font-medium text-gray-900 mb-3">{{ $user->successful_trans }}</h1>
             <div class="text-right">
-                <a href="{{ route('userProfile', $user) }}">
+                <a href="{{ route('profile', $user) }}">
                     <button type="button"
                         class="inline-block px-3 py-1 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">
                         Detail

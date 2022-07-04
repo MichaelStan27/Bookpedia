@@ -9,20 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller {
-    public function myProfile() {
-        $myBook = Book::where('user_id', '=', auth()->user()->id)
-            ->latest()->paginate(3);
-
-        $wishlist = Wishlist::where('user_id', '=', auth()->user()->id)
-            ->take(4)->get();
-
-        return view('profile', ["Books" => $myBook, "Wishlist" => $wishlist]);
-    }
-
     public function userProfile(User $user) {
 
         $myBook = Book::where('user_id', '=', $user->id)
-            ->latest()->paginate(3);
+            ->latest()->paginate(9);
 
         $wishlist = Wishlist::with(['book', 'user'])->where('user_id', '=', $user->id)
             ->take(4)->get();

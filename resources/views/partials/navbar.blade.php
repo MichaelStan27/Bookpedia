@@ -20,7 +20,7 @@
         </li>
         @auth
             <li class="group relative">
-                <a href="{{ route('profile') }}" class="inline">
+                <a href="{{ route('profile', auth()->user()) }}" class="inline">
                     <i class="fa-solid fa-user fa-lg mx-2"></i>
                     <span class="hidden md:inline">{{ auth()->user()->first_name }}</span>
                 </a>
@@ -31,7 +31,7 @@
                             <i class="fa-solid fa-user fa-2xl mx-2"></i>
                             <div class="px-3">
                                 <h3 class="leading-4">{{ auth()->user()->full_name }}</h3>
-                                <a href="{{ route('profile') }}"
+                                <a href="{{ route('profile', auth()->user()) }}"
                                     class="text-xs text-gray-400 m-0 cursor-pointer hover:brightness-110">>> Tap for
                                     detail</a>
                             </div>
@@ -43,7 +43,7 @@
                                 <h5>{{ auth()->user()->balance_with_notation }}</h5>
                             </div>
                             <div class="p-2 text-right gap-4">
-                                <a href="{{ route('profile') . '#wishlist' }}" class="relative">
+                                <a href="{{ route('profile', auth()->user()) . '#wishlist' }}" class="relative">
                                     <button
                                         class="w-20 px-3 my-1 font-semibold shadow-md rounded-md bg-blue-600 text-sm text-white hover:brightness-105">Wishlist
                                     </button>
