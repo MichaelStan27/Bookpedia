@@ -13,7 +13,7 @@ class DashboardController extends Controller {
         $users = $user ? User::where('id', '<>', $user->id)->limit(5)->get() : User::limit(5)->get();
 
         return view('dashboard', [
-            'books' => Book::with(['transaction', 'category'])->limit(10)->get(),
+            'books' => Book::with(['transaction', 'category', 'user'])->limit(10)->get(),
             'users' => $users
         ]);
     }
