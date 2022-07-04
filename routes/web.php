@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionManagementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 use App\Http\Controllers\WishlistController;
@@ -49,6 +50,10 @@ Route::controller(BookController::class)->group(function () {
 });
 
 Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wishlist')->middleware('auth');
+
+Route::controller(TransactionManagementController::class)->middleware('auth')->group(function () {
+    Route::get('/user/{user}/orders', 'orders')->name('orders');
+});
 
 // Route::get('/update-book/{id}', function(){
 //     return view('update-book');
