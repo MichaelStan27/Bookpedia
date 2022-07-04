@@ -15,7 +15,7 @@
                 @switch($book->transaction->id)
                     @case(1)
                         <div>
-                            <span class="md:text-sm">Loan price</span>
+                            <span class="md:text-sm">Loan price (weekly)</span>
                             <h2 class="md:text-sm tracking-widest text-md font-bold text-black-400 mb-4">
                                 {{ $book->loan_price_with_notation }}
                             </h2>
@@ -51,7 +51,7 @@
             </div>
             <h2 class="tracking-widest text-xs text-grey-400 uppercase">{{ $book->transaction_type_string }}</h2>
             <h2
-                class="tracking-widest text-xs title-font font-bold  @if ($book->is_available) text-green-400 @else text-red-400 @endif mb-4 uppercase">
+                class="tracking-widest text-xs title-font font-bold  @if ($book->is_available) {{ 'text-green-400' }} @else {{ 'text-red-400' }} @endif mb-4 uppercase">
                 {{ $book->status_string }}
             </h2>
         </div>
