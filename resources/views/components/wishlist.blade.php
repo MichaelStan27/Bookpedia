@@ -44,7 +44,7 @@
                     @break
 
                     @case(3)
-                        <div class="grid grid-cols-2 divide-x-2">
+                        <div class="grid grid-cols-2">
                             <div class="bottom-0">
                                 <p class="font-bold text-md text-gray-600">Loan</p>
                                 <p class="font-semibold text-md text-gray-500">

@@ -69,9 +69,21 @@
             </div>
         </div>
 
+        <div class="bg-white rounded-xl flex gap-5 px-8 py-6 justify-between items-center">
+            <h1 class="text-xl font-bold uppercase">Transaction</h1>
+            <div class="flex gap-2">
+                <a href="#" class="rounded-md px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium">
+                    <i class="fa-solid fa-bag-shopping mr-2"></i>My orders
+                </a>
+                <a href="#" class="rounded-md px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-medium">
+                    <i class="fa-solid fa-book mr-2"></i> My book status
+                </a>
+            </div>
+        </div>
+
 
         {{-- MyBook Section --}}
-        <hr class="mt-2 mb-2">
+        <hr class="my-5">
         <div id="mybook" class="flex flex-wrap justify-between items-center">
             <div class="text-2xl font-bold uppercase">
                 @if (null !== auth()->user() && auth()->user()->id == $user->id)
@@ -90,21 +102,19 @@
             @endauth
         </div>
 
-        <div class="container px-2 py-6 h-full">
-            <div class="bg-white flex justify-center rounded-l-3xl rounded-r-3xl">
-                <div class="p-5">
-                    <div class="grid grid-cols-3 gap-5">
-                        @forelse ($books as $book)
-                            <x-book-card :book="$book"></x-book-card>
-                        @empty
-                            <h1 class="p-5 text-center text-2xl font-semibold text-slate-700">
-                                Book is Empty!
-                            </h1>
-                        @endforelse
-                    </div>
-                    <div class="mt-6">
-                        {{ $books->links() }}
-                    </div>
+        <div class="container py-6 h-full">
+            <div class="bg-white flex flex-col rounded-xl p-8">
+                <div class="grid grid-cols-3 gap-5">
+                    @forelse ($books as $book)
+                        <x-book-card :book="$book"></x-book-card>
+                    @empty
+                        <h1 class="content-start text-lg font-semibold text-neutral-500">
+                            This user currently doesn't have any book
+                        </h1>
+                    @endforelse
+                </div>
+                <div class="mt-6">
+                    {{ $books->links() }}
                 </div>
             </div>
         </div>
