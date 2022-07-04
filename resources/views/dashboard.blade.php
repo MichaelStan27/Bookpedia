@@ -52,13 +52,15 @@
                 </div>
             </div>
         </div>
-        <div class="mx-auto">
-            <h1 class="text-lg mb-2 font-bold">Nearby users</h1>
-            <div class="flex gap-5">
-                @foreach ($users as $user)
-                    <x-nearby-user-card :user="$user"></x-nearby-user-card>
-                @endforeach
+        @auth
+            <div class="mx-auto">
+                <h1 class="text-lg mb-2 font-bold">Nearby users</h1>
+                <div class="flex gap-5">
+                    @foreach ($users as $user)
+                        <x-nearby-user-card :user="$user"></x-nearby-user-card>
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endauth
     </div>
 @endsection
