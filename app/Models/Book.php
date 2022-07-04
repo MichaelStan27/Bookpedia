@@ -78,6 +78,6 @@ class Book extends Model {
     }
 
     public function getOwnerAttribute() {
-        return $this->user->first_name . " " . $this->user->last_name;
+        return $this->user->fullname;
     }
 }
