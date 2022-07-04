@@ -24,11 +24,16 @@ use App\Http\Controllers\WishlistController;
 // Route::get('/{view?}', [ViewControllers::class, 'index']);
 
 Route::controller(AccountController::class)->group(function () {
-    Route::post('/login', 'login');
-    Route::get('login', 'viewLogin');
-    Route::post('/logout', 'logout');
-    Route::post('/register', 'store');
-    Route::get('/register', 'viewRegister');
+    Route::middleware('auth')->group(function () {
+        Route::post('/logout', 'logout');
+    });
+
+    Route::middleware('guest')->group(function () {
+        Route::post('/login', 'login');
+        Route::get('login', 'viewLogin');
+        Route::post('/register', 'store');
+        Route::get('/register', 'viewRegister');
+    });
 });
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
