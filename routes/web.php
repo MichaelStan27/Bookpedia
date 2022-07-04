@@ -39,6 +39,7 @@ Route::controller(BookController::class)->group(function () {
     Route::post('/add-book', 'create')->name('add-book');
     Route::get('/update-book/{id}', 'update_book_form')->name('update-book');
     Route::put('/update-book/{book}', 'update')->name('update-book');
+    Route::delete('/delete-book/{book}', 'destroy')->name('delete-book');
     Route::get('/book-detail/{book}', 'viewBookDetail')->name('book-detail');
 });
 

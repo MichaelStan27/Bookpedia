@@ -98,7 +98,7 @@ class BookController extends Controller {
             'category_id' => $request->category,
         ]);
 
-        return redirect("/profile")->with('message', 'Book added successfully');
+        return redirect()->route('profile')->with('message', 'Book added successfully');
     }
 
     public function update_book_form($id) {
@@ -158,10 +158,9 @@ class BookController extends Controller {
 
         if ($request->file('image')) {
             // Storage::deleteDirectory($book->isbn."-img/");
-            Storage::deleteDirectory('public/book-image/' . $book->image);
+            Storage::deleteDirectory("public/$book->image");
 
             //Upload image
-
             $path = "public/book-image/";
             $file = $request->file('image');
             $randomString = Str::random(7);
@@ -192,8 +191,15 @@ class BookController extends Controller {
             'category_id' => $request->category,
         ]);
 
-        // return dd($book);
+        return redirect()->route('profile')->with('message', 'Book updated successfully');
+    }
 
-        return redirect("/profile")->with('message', 'Book added successfully');
+    public function destroy(Book $book){
+        $title = $book->title;
+
+        Storage::delete("public/$book->image");
+        $book->delete();
+
+        return redirect()->route('profile')->with("message", "$title deleted successfully");
     }
 }
