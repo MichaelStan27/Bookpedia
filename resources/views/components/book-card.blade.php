@@ -1,9 +1,9 @@
 @props(['book'])
 
 <div
-    class="flex flex-col w-fit md:w-[24rem] md:h-64 md:flex-row md:max-w-xl rounded-lg bg-white shadow-xl outline outline-cyan-700 relative">
-    <div class="group w-44 md:w-60 rounded-t-lg md:rounded-tr-none md:rounded-l-lg bg-black relative">
-        <img class="w-full h-60 rounded-t-lg md:w-36 md:h-64 md:rounded-tr-none md:rounded-l-lg"
+    class="flex flex-col w-44 xl:w-[24rem] xl:h-64 xl:flex-row xl:max-w-sm rounded-lg bg-white shadow-xl outline outline-cyan-700 relative">
+    <div class="group w-44 xl:w-60 rounded-t-lg xl:rounded-tr-none xl:rounded-l-lg bg-black relative">
+        <img class="w-full h-60 rounded-t-lg xl:w-36 md:h-64 xl:rounded-tr-none xl:rounded-l-lg"
             src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
         @auth
             <div
@@ -61,7 +61,7 @@
             </div>
         @endauth
     </div>
-    <div class="px-3 py-3 md:px-6 w-full h-full flex flex-col gap-2 justify-start relative">
+    <div class="px-3 py-3 xl:px-6 h-64 w-full xl:h-full flex flex-col gap-2 justify-start relative">
         <div>
             <a href="{{ route('book-detail', $book) }}"
                 class="text-gray-900 md:text-lg text-lg font-medium hover:text-gray-600 hover:font-semibold">
@@ -109,7 +109,7 @@
                 @break
             @endswitch
         </div>
-        <div class="mb-7 md:mb-0">
+        <div class="mb-7">
             <h2 class="tracking-widest text-xs text-grey-400 uppercase">{{ $book->transaction_type_string }}</h2>
             <h2
                 class="tracking-widest text-xs title-font font-bold  @if ($book->is_available) {{ 'text-green-400' }} @else {{ 'text-red-400' }} @endif uppercase">
@@ -121,6 +121,4 @@
             <p class="text-gray-600 text-xs">{{ $book->updated_at->diffForHumans() }}</p>
         </div>
     </div>
-
-
 </div>

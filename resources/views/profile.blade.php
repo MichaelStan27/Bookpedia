@@ -92,7 +92,8 @@
             <div class="bg-white flex justify-center rounded-l-3xl rounded-r-3xl">
                 <div class="p-5">
                     <!--Card Start-->
-                    <div class="grid grid-cols-3 gap-5">
+                    <div
+                        class="grid grid-cols-2 gap-x-14 gap-y-5 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 2xl:gap-x-5">
                         @forelse ($Books as $book)
                             <x-book-card :book="$book"></x-book-card>
                         @empty

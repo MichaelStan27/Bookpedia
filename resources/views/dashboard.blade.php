@@ -30,12 +30,12 @@
 
         <div class="mx-auto mb-10">
             <h1 class="text-lg mb-2 font-bold">Dashboard</h1>
-            <div class="w-full flex justify-center gap-10">
-                <div class="w-1/4 bg-white rounded-lg p-4 self-start">
+            <div class="w-full flex justify-between">
+                <div class=" w-1/3 xl:w-1/4 2xl:w-1/3 3xl:w-[27%] bg-white rounded-lg p-4 self-start">
                     @include('partials.dashboard-filter')
                 </div>
-                <div class="w-4/6">
-                    <div class="grid grid-cols-2 gap-5">
+                <div class="w-fit">
+                    <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 3xl:grid-cols-3 gap-5 place-items-start">
                         @foreach ($books as $book)
                             <x-book-card :book="$book"></x-book-card>
                         @endforeach
