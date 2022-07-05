@@ -1,12 +1,13 @@
 @props(['book'])
 
 <div
-    class="w-[24rem] h-64 flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-xl outline outline-cyan-700 relative">
-    <div class="group w-60 rounded-l-lg bg-black relative">
-        <img class="w-36 h-64 rounded-tl-lg" src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
-        <div
-            class="w-full h-3/4 py-2 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 flex flex-row justify-evenly items-end bg-gradient-to-t from-zinc-900 rounded-bl-lg absolute bottom-0">
-            @auth
+    class="flex flex-col w-fit md:w-[24rem] md:h-64 md:flex-row md:max-w-xl rounded-lg bg-white shadow-xl outline outline-cyan-700 relative">
+    <div class="group w-44 md:w-60 rounded-t-lg md:rounded-tr-none md:rounded-l-lg bg-black relative">
+        <img class="w-full h-60 rounded-t-lg md:w-36 md:h-64 md:rounded-tr-none md:rounded-l-lg"
+            src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
+        @auth
+            <div
+                class="w-full h-3/4 py-2 transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 flex flex-row justify-evenly items-end bg-gradient-to-t from-zinc-900 md:rounded-bl-lg absolute bottom-0">
                 @can('manage-the-book', $book)
                     @if (Route::is('profile'))
                         <a href="{{ route('update-book', $book) }}"
@@ -57,10 +58,10 @@
                         @break
                     @endswitch
                 @endcan
-            @endauth
-        </div>
+            </div>
+        @endauth
     </div>
-    <div class="px-6 py-3 w-full h-full flex flex-col gap-2 justify-start relative">
+    <div class="px-3 py-3 md:px-6 w-full h-full flex flex-col gap-2 justify-start relative">
         <div>
             <a href="{{ route('book-detail', $book) }}"
                 class="text-gray-900 md:text-lg text-lg font-medium hover:text-gray-600 hover:font-semibold">
@@ -108,7 +109,7 @@
                 @break
             @endswitch
         </div>
-        <div>
+        <div class="mb-7 md:mb-0">
             <h2 class="tracking-widest text-xs text-grey-400 uppercase">{{ $book->transaction_type_string }}</h2>
             <h2
                 class="tracking-widest text-xs title-font font-bold  @if ($book->is_available) {{ 'text-green-400' }} @else {{ 'text-red-400' }} @endif uppercase">
