@@ -5,13 +5,16 @@
     <div class="group w-44 xl:w-60 overflow-hidden rounded-t-lg xl:rounded-tr-none xl:rounded-l-lg bg-black relative">
         <img class="w-full h-60 rounded-t-lg xl:w-36 md:h-64 xl:rounded-tr-none xl:rounded-l-lg"
             src="{{ asset("assets/{$book->image}") }}" alt="{{ $book->title }}" />
-        <div
-            class="w-full h-1/5 flex flex-col justify-end text-center bg-gradient-to-t from-gray-700 absolute bottom-0 ">
-            <i class="fa-solid fa-angle-up animate-bounce text-white shadow-xl"></i>
-        </div>
         @auth
             <div
-                class="w-full h-3/4 py-2 transition-all duration-500 ease-in-out translate-y-full group-hover:-translate-y-0 flex flex-row justify-evenly items-end bg-gradient-to-t from-zinc-900 md:rounded-bl-lg absolute bottom-0">
+                class="w-full h-1/5 flex flex-col justify-end text-center bg-gradient-to-t from-gray-700 absolute bottom-0 ">
+                <i class="fa-solid fa-angle-up animate-bounce text-white shadow-xl"></i>
+            </div>
+            <div
+                class="w-full h-3/4 py-2 transition-all duration-500 ease-in-out translate-y-full group-hover:translate-y-0 bg-gradient-to-t from-zinc-900 md:rounded-bl-lg absolute bottom-0">
+            </div>
+            <div
+                class="w-full py-2 transition-all duration-[800ms] ease-in-out translate-y-full group-hover:translate-y-0 flex flex-row justify-evenly items-end md:rounded-bl-lg absolute bottom-0">
                 @can('manage-the-book', $book)
                     @if (Route::is('profile'))
                         <a href="{{ route('update-book', $book) }}"
