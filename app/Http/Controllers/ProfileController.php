@@ -12,7 +12,7 @@ class ProfileController extends Controller {
     public function userProfile(User $user) {
 
         $myBook = Book::where('user_id', '=', $user->id)
-            ->latest()->paginate(9);
+            ->latest()->paginate(6);
 
         $wishlist = Wishlist::with(['book', 'user'])->where('user_id', '=', $user->id)
             ->take(4)->get();

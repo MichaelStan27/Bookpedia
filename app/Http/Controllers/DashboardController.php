@@ -13,7 +13,7 @@ class DashboardController extends Controller {
         $users = $user ? User::where('id', '<>', $user->id)->limit(5)->get() : User::limit(5)->get();
 
         return view('dashboard', [
-            'books' => Book::with(['transaction', 'category', 'user'])->limit(10)->get(),
+            'books' => Book::with(['transaction', 'category', 'user'])->limit(12)->get(),
             'users' => $users
         ]);
     }
@@ -90,7 +90,7 @@ class DashboardController extends Controller {
         }
 
         return view('search', [
-            'books' => $query->select('books.*')->paginate(8)->appends($request->query()),
+            'books' => $query->select('books.*')->paginate(12)->appends($request->query()),
             'category' => $categories,
             'type' => $type,
             'priceSort' => $priceSortOption,
