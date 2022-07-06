@@ -1,3 +1,5 @@
+@props(['transactionItem'])
+
 <div class="flex p-4">
     <div class="h-40 aspect-[1/1.4] bg-neutral-300"></div>
     <div class="ml-5 flex flex-col justify-between">
