@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionManagementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 use App\Http\Controllers\WishlistController;
@@ -29,7 +30,7 @@ Route::controller(AccountController::class)->group(function () {
     });
 
     Route::middleware('guest')->group(function () {
-        Route::post('/login', 'login');
+        Route::post('/login', 'login')->name('login');
         Route::get('login', 'viewLogin');
         Route::post('/register', 'store');
         Route::get('/register', 'viewRegister');
@@ -41,14 +42,18 @@ Route::get('/search', [DashboardController::class, 'search'])->name('search');
 
 Route::controller(BookController::class)->group(function () {
     Route::get('/add-book', 'add_book_form')->name('add-book');
-    Route::post('/add-book', 'create')->name('add-book');
+    Route::post('/add-book', 'create');
     Route::get('/update-book/{id}', 'update_book_form')->name('update-book');
-    Route::put('/update-book/{book}', 'update')->name('update-book');
+    Route::put('/update-book/{book}', 'update');
     Route::delete('/delete-book/{book}', 'destroy')->name('delete-book');
     Route::get('/book-detail/{book}', 'viewBookDetail')->name('book-detail');
 });
 
 Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wishlist')->middleware('auth');
+
+Route::controller(TransactionManagementController::class)->middleware('auth')->group(function () {
+    Route::get('/user/orders', 'orders')->name('orders');
+});
 
 // Route::get('/update-book/{id}', function(){
 //     return view('update-book');
@@ -61,6 +66,6 @@ Route::controller(CartController::class)->group(function () {
     Route::post('/add-to-cart/{book}', 'add_to_cart')->middleware('auth');
 });
 
-Route::get('/user/profile/{user}', [ProfileController::class, 'userProfile'])->name('profile');
+Route::get('/user/{user}/profile', [ProfileController::class, 'userProfile'])->name('profile');
 
 Route::post('/checkout', [TransactionController::class, 'checkout'])->middleware('auth')->name('checkout');

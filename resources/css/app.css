@@ -14,3 +14,11 @@
         margin: 0;
     }
 }
+
+.active {
+    @apply text-blue-600 border-blue-600 hover:text-blue-600 hover:border-blue-600;
+}
+
+.not-active {
+    @apply hover:text-gray-600 hover:border-gray-300;
+}
