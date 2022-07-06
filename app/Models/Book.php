@@ -80,4 +80,8 @@ class Book extends Model {
     public function getOwnerAttribute() {
         return $this->user->fullname;
     }
+
+    public function transactions() {
+        return $this->hasMany(Transaction::class);
+    }
 }
