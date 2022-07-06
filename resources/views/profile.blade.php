@@ -3,7 +3,7 @@
 @section('title', 'Profile')
 
 @section('content')
-    <div class="container mx-auto py-5 scroll-smooth w-4/5">
+    <div class="container mx-auto py-5 scroll-smooth w-10/12">
         {{-- Profile Section --}}
         <div class="container py-1">
             <div class="bg-white flex justify-start items-center rounded-l-3xl rounded-r-3xl mt-4 mb-4 w-full">
@@ -72,11 +72,15 @@
         <div class="bg-white rounded-xl flex gap-5 px-8 py-6 justify-between items-center">
             <h1 class="text-xl font-bold uppercase">Transaction</h1>
             <div class="flex gap-2">
-                <a href="#" class="rounded-md px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium">
-                    <i class="fa-solid fa-bag-shopping mr-2"></i>My orders
+                <a href="#"
+                    class="rounded-md px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white text-center font-medium">
+                    <i class="fa-solid fa-bag-shopping md:mr-2"></i>
+                    <span class="hidden md:inline">My orders</span>
                 </a>
-                <a href="#" class="rounded-md px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-medium">
-                    <i class="fa-solid fa-book mr-2"></i> My book status
+                <a href="#"
+                    class="rounded-md px-8 py-3 bg-green-500 hover:bg-green-600 text-white text-center font-medium">
+                    <i class="fa-solid fa-book md:mr-2"></i>
+                    <span class="hidden md:inline">My book status</span>
                 </a>
             </div>
         </div>
@@ -95,16 +99,17 @@
             @auth
                 @if (auth()->user()->id == $user->id)
                     <a href="{{ route('add-book') }}"
-                        class="inline-block px-6 py-3 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">
+                        class="inline-block 2xl:w-[10%] px-6 py-3 bg-blue-400 text-white text-center font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">
                         Add Book
                     </a>
                 @endif
             @endauth
         </div>
 
-        <div class="container py-6 h-full">
-            <div class="bg-white flex flex-col rounded-xl p-8">
-                <div class="grid grid-cols-3 gap-5">
+        <div class="container flex justify-center px-2 py-6 h-full">
+            <div class="w-full bg-white rounded-l-3xl rounded-r-3xl p-10 2xl:px-3">
+                <div
+                    class="w-fit mx-auto grid grid-cols-2 gap-x-14 gap-y-5 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 2xl:gap-7">
                     @forelse ($books as $book)
                         <x-book-card :book="$book"></x-book-card>
                     @empty

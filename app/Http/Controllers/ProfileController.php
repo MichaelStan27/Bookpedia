@@ -14,7 +14,7 @@ class ProfileController extends Controller {
         $myBook = $user->books()
             ->with(['transaction', 'category', 'user'])
             ->latest()
-            ->paginate(9, ['*'], 'booksPage')
+            ->paginate(6, ['*'], 'booksPage')
             ->appends($request->all());
 
         $wishlist = $user->wishlists()

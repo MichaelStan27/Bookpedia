@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="container mx-auto w-[80%] mb-[20rem]">
+    <div class="container mx-auto w-[80%] xl:w-[83%] 4xl:w-[85%] mb-[20rem]">
         <div class="relative h-[24rem] overflow-hidden bg-neutral-200 rounded-lg mx-auto my-10">
             <button id="carousel-prev-btn" class="absolute left-5 bottom-1/2 translate-y-1/2 select-none z-20">
                 <i
@@ -30,12 +30,14 @@
 
         <div class="mx-auto mb-10">
             <h1 class="text-lg mb-2 font-bold">Dashboard</h1>
-            <div class="w-full flex justify-center gap-10">
-                <div class="w-1/4 bg-white rounded-lg p-4 self-start">
+            <div class="w-full flex justify-between">
+                <div
+                    class="md:w-[29vw] lg:w-[25vw] lg:max-w-1/3 xl:w-1/4 2xl:w-[17vw] 3xl:w-[22vw] 4xl:w-1/5 bg-white rounded-lg p-4 self-start">
                     @include('partials.dashboard-filter')
                 </div>
-                <div class="w-4/5">
-                    <div class="grid grid-cols-2 gap-5">
+                <div class="w-fit mx-auto">
+                    <div
+                        class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-2 3xl:gap-8 4xl:gap-5 4xl:grid-cols-3 gap-5">
                         @foreach ($books as $book)
                             <x-book-card :book="$book"></x-book-card>
                         @endforeach
