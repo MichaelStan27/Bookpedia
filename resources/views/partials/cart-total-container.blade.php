@@ -11,7 +11,6 @@
 <div>
     <form action="{{ route('checkout') }}" method="post">
         @csrf
-        <input type="hidden" name="total" value="{{ $count['total'] }}">
         <button type="submit"
             class="w-32 p-1 py-2 bg-[#374151] rounded-md text-white font-center font-medium hover:bg-[#475161] hover:scale-105"
             id="checkout-button">
