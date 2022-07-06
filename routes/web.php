@@ -52,7 +52,7 @@ Route::controller(BookController::class)->group(function () {
 Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wishlist')->middleware('auth');
 
 Route::controller(TransactionManagementController::class)->middleware('auth')->group(function () {
-    Route::get('/user/{user}/orders', 'orders')->name('orders');
+    Route::get('/user/orders', 'orders')->name('orders');
 });
 
 // Route::get('/update-book/{id}', function(){
@@ -66,6 +66,6 @@ Route::controller(CartController::class)->group(function () {
     Route::post('/add-to-cart/{book}', 'add_to_cart')->middleware('auth');
 });
 
-Route::get('/user/profile/{user}', [ProfileController::class, 'userProfile'])->name('profile');
+Route::get('/user/{user}/profile', [ProfileController::class, 'userProfile'])->name('profile');
 
 Route::post('/checkout', [TransactionController::class, 'checkout'])->middleware('auth')->name('checkout');

@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransactionManagementController extends Controller {
-    public function orders(User $user) {
+    public function orders() {
         return view('my-orders');
     }
 }
