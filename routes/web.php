@@ -30,7 +30,7 @@ Route::controller(AccountController::class)->group(function () {
     });
 
     Route::middleware('guest')->group(function () {
-        Route::post('/login', 'login');
+        Route::post('/login', 'login')->name('login');
         Route::get('login', 'viewLogin');
         Route::post('/register', 'store');
         Route::get('/register', 'viewRegister');
