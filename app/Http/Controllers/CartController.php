@@ -34,7 +34,7 @@ class CartController extends Controller {
 
     public function add_to_cart(Book $book, Request $request) {
         $userCartItems = auth()->user()->cartItems()->where('book_id', $book->id)->first();
-        if($userCartItems){
+        if ($userCartItems) {
             return Response::json([
                 'status' => 'FAIL',
                 'toast' => view('partials.toast-notification')->with('message', 'This book already added to your cart before!')->render()
