@@ -22,9 +22,11 @@
             </ul>
         </div>
         <div id="container" class="flex flex-col gap-4">
-            @foreach ($orderItemsList as $orderItems)
+            @forelse ($orderItemsList as $orderItems)
                 <x-order-item-parent :orderItems="$orderItems['items']" :total="$orderItems['total']" :seller="$orderItems['seller']"></x-order-item-parent>
-            @endforeach
+            @empty
+                <h1 class="text-neutral-500 text-lg font-medium">No on going order</h1>
+            @endforelse
         </div>
     </div>
 @endsection
