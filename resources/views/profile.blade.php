@@ -69,21 +69,24 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-xl flex gap-5 px-8 py-6 justify-between items-center">
-            <h1 class="text-xl font-bold uppercase">Transaction</h1>
-            <div class="flex gap-2">
-                <a href="{{ route('orders') }}"
-                    class="rounded-md px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium">
-                    <i class="fa-solid fa-bag-shopping mr-2"></i>My orders
-                </a>
-                <a href="#"
-                    class="rounded-md px-8 py-3 bg-green-500 hover:bg-green-600 text-white text-center font-medium">
-                    <i class="fa-solid fa-book md:mr-2"></i>
-                    <span class="hidden md:inline">My book status</span>
-                </a>
-            </div>
-        </div>
-
+        @auth
+            @if (auth()->user()->id == $user->id)
+                <div class="bg-white rounded-xl flex gap-5 px-8 py-6 justify-between items-center">
+                    <h1 class="text-xl font-bold uppercase">Transaction</h1>
+                    <div class="flex gap-2">
+                        <a href="{{ route('orders') }}"
+                            class="rounded-md px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium">
+                            <i class="fa-solid fa-bag-shopping mr-2"></i>My orders
+                        </a>
+                        <a href="#"
+                            class="rounded-md px-8 py-3 bg-green-500 hover:bg-green-600 text-white text-center font-medium">
+                            <i class="fa-solid fa-book md:mr-2"></i>
+                            <span class="hidden md:inline">My book status</span>
+                        </a>
+                    </div>
+                </div>
+            @endif
+        @endauth
 
         {{-- MyBook Section --}}
         <hr class="my-5">
