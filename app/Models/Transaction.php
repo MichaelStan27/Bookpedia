@@ -21,4 +21,30 @@ class Transaction extends Model {
     public function loanDetails() {
         return $this->hasOne(LoanDetails::class);
     }
+
+    public function getIsLoanTransAttribute() {
+        return isset($this->loanDetails);
+    }
+
+    public function getItemPriceAttribute() {
+        switch ($this->type_id) {
+            case 1:
+                return $this->book->loan_price * $this->loanDetails->duration;
+                break;
+            case 2:
+                return $this->book->sale_price;
+                break;
+        }
+    }
+
+    public function getItemPriceWithNotationAttribute() {
+        switch ($this->type_id) {
+            case 1:
+                return 'IDR ' .  number_format($this->book->loan_price * $this->loanDetails->duration);
+                break;
+            case 2:
+                return $this->book->sale_price_with_notation;
+                break;
+        }
+    }
 }

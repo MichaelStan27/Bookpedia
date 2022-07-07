@@ -22,8 +22,8 @@
             </ul>
         </div>
         <div id="container" class="flex flex-col gap-4">
-            @foreach ([1, 2] as $item)
-                @include('partials.order-item-parent')
+            @foreach ($orderItemsList as $orderItems)
+                <x-order-item-parent :orderItems="$orderItems['items']" :total="$orderItems['total']" :seller="$orderItems['seller']"></x-order-item-parent>
             @endforeach
         </div>
     </div>
