@@ -59,10 +59,14 @@ class TransactionController extends Controller {
                 $cartItem->book->update([
                     'status_id' => 2
                 ]);
+
+                $cartItem->delete();
             } else {
                 $seller->update([
                     'balance' => ($seller->balance + $cartItem->book->sale_price)
                 ]);
+                $cartItem->book()->delete();
+                $cartItem->delete();
             }
 
             $cartItem->delete();

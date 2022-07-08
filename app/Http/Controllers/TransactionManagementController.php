@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransactionManagementController extends Controller {
     public function orders() {
-
         $user = auth()->user();
         $allTrans = $user->transactions()
             ->with(['user', 'book', 'loanDetails', 'book.user'])
@@ -16,7 +16,7 @@ class TransactionManagementController extends Controller {
             ->orderBy('transactions.created_at', 'DESC')
             ->orderBy('books.user_id', 'ASC')
             ->get('transactions.*');
-
+    
         $grouped = $allTrans
             ->groupBy(fn ($item, $idx) => $item->created_at->timestamp . "-" . $item->book->user_id)
             ->map(function ($item) {
