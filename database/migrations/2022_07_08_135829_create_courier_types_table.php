@@ -4,17 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionTypesTable extends Migration {
+class CreateCourierTypesTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::create('transaction_types', function (Blueprint $table) {
+        Schema::create('courier_types', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->timestamps();
+            $table->string('name');
         });
     }
 
@@ -24,6 +23,6 @@ class CreateTransactionTypesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('transaction_types');
+        Schema::dropIfExists('courier_types');
     }
 }

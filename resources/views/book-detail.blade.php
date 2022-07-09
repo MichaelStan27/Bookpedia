@@ -37,7 +37,7 @@
                     </a>
                     <h3 class="rounded-md bg-gray-300 pt-1 px-2 align-text-top text-sm mb-4 h-48">{{ $book->summary }}
                     </h3>
-                    @switch($book->transaction->id)
+                    @switch($book->transactionType->id)
                         @case(1)
                             <div class="text-center">
                                 <h1 class="text-md font-medium">Rent</h1>
@@ -106,7 +106,7 @@
                         </a>
                     </div>
                 @else
-                    @switch($book->transaction->id)
+                    @switch($book->transactionType->id)
                         @case(1)
                             <div class="ml-3 p-3 flex flex-row justify-center gap-3">
                                 <form action="" method="post">

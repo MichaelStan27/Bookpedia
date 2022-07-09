@@ -32,7 +32,7 @@
                         </a>
                     @endif
                 @else
-                    @switch($book->transaction->id)
+                    @switch($book->transactionType->id)
                         @case(1)
                             <form action="" method="post">
                                 @csrf
@@ -79,7 +79,7 @@
         </div>
 
         <div class="">
-            @switch($book->transaction->id)
+            @switch($book->transactionType->id)
                 @case(1)
                     <div>
                         <span class="md:text-sm">Loan price (weekly)</span>

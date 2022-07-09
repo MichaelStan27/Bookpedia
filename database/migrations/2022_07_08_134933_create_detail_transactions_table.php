@@ -4,17 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionTypesTable extends Migration {
+class CreateDetailTransactionsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::create('transaction_types', function (Blueprint $table) {
+        Schema::create('detail_transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->timestamps();
+            $table->foreignId('header_transaction_id')->constrained();
+            $table->foreignId('book_id')->constrained();
+            $table->foreignId('transaction_type_id')->constrained();
         });
     }
 
@@ -24,6 +25,6 @@ class CreateTransactionTypesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('transaction_types');
+        Schema::dropIfExists('detail_transactions');
     }
 }

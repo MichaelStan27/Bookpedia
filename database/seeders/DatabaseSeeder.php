@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CartItem;
+use App\Models\DeliveryStatus;
 use App\Models\TransactionType;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder {
             BookSeeder::class,
             CartItemSeeder::class,
             WishlistSeeder::class,
+            DeliveryStatusSeeder::class,
         ]);
     }
 }
