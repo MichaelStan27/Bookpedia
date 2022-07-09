@@ -22,8 +22,8 @@
             </ul>
         </div>
         <div id="container" class="flex flex-col gap-4">
-            @forelse ($orderItemsList as $orderItems)
-                <x-order-item-parent :orderItems="$orderItems['items']" :total="$orderItems['total']" :seller="$orderItems['seller']"></x-order-item-parent>
+            @forelse ($groupedOrders as $groupOrder)
+                <x-order-item-parent :groupOrder="$groupOrder"></x-order-item-parent>
             @empty
                 <h1 class="text-neutral-500 text-lg font-medium">No on going order</h1>
             @endforelse
