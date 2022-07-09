@@ -31,6 +31,8 @@ queryInput?.addEventListener("input", () =>
 );
 
 searchForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    filterForm.submit();
+    if (filterForm) {
+        e.preventDefault();
+        filterForm.submit();
+    }
 });
