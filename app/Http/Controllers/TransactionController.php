@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BuyTransaction;
-use App\Models\CartItem;
+use App\Models\DetailTransaction;
+use App\Models\HeaderTransaction;
 use App\Models\LoanDetails;
-use App\Models\Transaction;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Request;
 
@@ -24,23 +22,30 @@ class TransactionController extends Controller {
             }
         });
 
-        $user->update([
-            'balance' => ($user->balance - $cartTotal)
-        ]);
-
         if ($user->balance < $cartTotal) {
             return redirect()->route("cart")->with('message', '<b>Insufficient Balance!</b>');
         }
 
+        $user->update([
+            'balance' => ($user->balance - $cartTotal)
+        ]);
+
+        $date = Carbon::now();
+
         foreach ($cartItems as $cartItem) {
             $seller = $cartItem->book->user;
 
-            $date = Carbon::now();
+            $transaction = HeaderTransaction::firstOrCreate([
+                'buyer_id' => $user->id,
+                'seller_id' => $seller->id,
+                'delivery_status_id' => 1,
+                'created_at' => $date
+            ]);
 
-            $transaction = Transaction::create([
-                'book_id' => $cartItem->book_id,
-                'user_id' => $cartItem->user_id,
-                'type_id' => $cartItem->type_id
+            $detailTrans = DetailTransaction::create([
+                'book_id' => $cartItem->book->id,
+                'transaction_type_id' => $cartItem->type_id,
+                'header_transaction_id' => $transaction->id
             ]);
 
             if ($cartItem->type_id == 1) {
@@ -49,9 +54,9 @@ class TransactionController extends Controller {
                 ]);
 
                 LoanDetails::create([
-                    'transaction_id' => $transaction->id,
-                    'deadline' => $date->addWeeks($cartItem->duration),
-                    'loan_date' => $date,
+                    'detail_transaction_id' => $detailTrans->id,
+                    'deadline' => NULL,
+                    'loan_date' => NULL,
                     'return_date' => NULL,
                     'duration' => $cartItem->duration,
                 ]);
@@ -68,6 +73,8 @@ class TransactionController extends Controller {
             $cartItem->delete();
         }
 
-        return redirect()->route("cart")->with('message', $cartItems->count() . ' book(s) has successfully been checked out!<br><b>Your total Payment : ' . $cartTotal . '</b><br> Your Balance: ' . $user->balance . '</b>');
+        return redirect()
+            ->route("cart")
+            ->with('message', $cartItems->count() . ' book(s) has successfully been checked out!<br><b>Your total Payment : ' . $cartTotal . '</b><br> Your Balance: ' . $user->balance . '</b>');
     }
 }
