@@ -13,7 +13,7 @@ class DetailTransaction extends Model {
     protected $guarded = ['id'];
 
     public function book() {
-        return $this->belongsTo(Book::class);
+        return $this->belongsTo(Book::class)->withTrashed();
     }
 
     public function transactionType() {
