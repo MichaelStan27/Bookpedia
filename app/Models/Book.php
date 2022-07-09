@@ -13,7 +13,7 @@ class Book extends Model {
         return $this->belongsTo(User::class);
     }
 
-    public function transaction() {
+    public function transactionType() {
         return $this->hasOne(TransactionType::class, 'id', 'transaction_type_id');
     }
 
@@ -81,7 +81,7 @@ class Book extends Model {
         return $this->user->fullname;
     }
 
-    public function transactions() {
-        return $this->hasMany(Transaction::class);
+    public function detailTransactions() {
+        return $this->hasMany(DetailTransaction::class);
     }
 }

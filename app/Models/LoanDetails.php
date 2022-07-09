@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoanDetails extends Model {
     use HasFactory;
+
     public $timestamps = false;
+
     protected $fillable = [
-        'transaction_id',
+        'detail_transaction_id',
         'deadline',
         'loan_date',
         'return_date',
@@ -17,6 +19,6 @@ class LoanDetails extends Model {
     ];
 
     public function transaction() {
-        return $this->belongsTo(Transaction::class);
+        return $this->belongsTo(DetailTransaction::class);
     }
 }
