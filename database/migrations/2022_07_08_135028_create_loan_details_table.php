@@ -12,11 +12,11 @@ class CreateLoanDetailsTable extends Migration {
      */
     public function up() {
         Schema::create('loan_details', function (Blueprint $table) {
-            $table->unsignedBigInteger('transaction_id');
-            $table->primary('transaction_id');
-            $table->foreign('transaction_id')->references('id')->on('transactions');
-            $table->date('deadline');
-            $table->date('loan_date');
+            $table->unsignedBigInteger('detail_transaction_id');
+            $table->primary('detail_transaction_id');
+            $table->foreign('detail_transaction_id')->references('id')->on('detail_transactions');
+            $table->date('deadline')->nullable();
+            $table->date('loan_date')->nullable();
             $table->date('return_date')->nullable();
             $table->integer('duration');
         });
