@@ -26,7 +26,7 @@
 
         <div class="p-4">
             <h2 class="tracking-widest text-xs title-font font-bold text-green-400 mb-1 uppercase ">
-                @switch($wishlist->book->transaction->id)
+                @switch($wishlist->book->transactionType->id)
                     @case(1)
                         <div class="">
                             <p class="font-bold text-md text-gray-600">Loan</p>

@@ -5,7 +5,7 @@
         <img src="{{ asset("assets/$book->image") }}" alt="{{ $book->title }}" class="object-cover h-96 w-full">
         <div class="p-2">
             <h1 class="font-bold text-xl">{{ Str::limit($book->title, 15, $end = '...') }}</h1>
-            @switch($book->transaction->id)
+            @switch($book->transactionType->id)
                 @case(1)
                     <div class="">
                         <p class="font-bold text-md text-gray-600">Loan</p>
