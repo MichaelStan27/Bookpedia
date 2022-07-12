@@ -3,7 +3,7 @@
 <div class="items-box mb-2 flex gap-5 items-center bg-white rounded-md shadow-md p-3 m-2">
     <div class="left-content flex gap-5">
         <a href="{{ route('book-detail', $wishlist->book) }}">
-            <img class="h-20 w-20 hover:brightness-110" src="{{ asset("assets/{$wishlist->book->image}") }}"
+            <img class="h-30 w-20 hover:brightness-110" src="{{ asset("assets/{$wishlist->book->image}") }}"
                 alt="">
         </a>
     </div>

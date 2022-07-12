@@ -3,7 +3,7 @@
 <div class="items-box mb-2 flex justify-between items-center bg-white rounded-md shadow-md p-3 m-2">
     <div class="left-content flex gap-5">
         <a href="{{ route('book-detail', $cartItem->book) }}">
-            <img class="h-20 w-20 hover:brightness-110" src="{{ asset("assets/{$cartItem->book->image}") }}"
+            <img class="h-30 w-20 hover:brightness-110" src="{{ asset("assets/{$cartItem->book->image}") }}"
                 alt="">
         </a>
 
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="right-content flex flex-col items-end">
+    <div class="right-content flex flex-col items-end justify-end h-full">
         @if ($cartItem->type_id == 1)
             <h3 class="font-medium" id="">
                 {{ 'IDR ' . number_format($cartItem->book->loan_price * $cartItem->duration) }}

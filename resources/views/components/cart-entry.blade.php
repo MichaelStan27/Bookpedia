@@ -3,8 +3,8 @@
 <div class="items-box mb-2 flex justify-between items-center bg-white rounded-md shadow-md p-3 m-2">
     <div class="left-content flex gap-5">
         <a href="{{ route('book-detail', $cartItem->book) }}">
-            <img class="h-20 w-20 hover:brightness-110" src="{{ asset("assets/{$cartItem->book->image}") }}"
-                alt="">
+            <img class="h-30 w-20 shadow-lg border-2 border-black/5 rounded-sm hover:brightness-110"
+                src="{{ asset("assets/{$cartItem->book->image}") }}" alt="">
         </a>
 
         <div class="items-description flex flex-col">
