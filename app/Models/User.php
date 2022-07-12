@@ -49,8 +49,20 @@ class User extends Authenticatable {
         return $this->hasMany(CartItem::class);
     }
 
+    public function cartItemsTrashed() {
+        return $this->cartItems()
+                    ->join('books', 'cart_items.book_id', 'books.id')
+                    ->where('books.deleted_at', '<>', '');
+    }
+    
     public function wishlists() {
         return $this->hasMany(Wishlist::class);
+    }
+
+    public function wishlistsTrashed(){
+        return $this->wishlists()
+                    ->join('books', 'wishlists.book_id', 'books.id')
+                    ->where('books.deleted_at', '<>', '');
     }
 
     public function getFullnameAttribute() {

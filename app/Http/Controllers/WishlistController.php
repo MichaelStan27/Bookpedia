@@ -21,4 +21,15 @@ class WishlistController extends Controller {
         $wishlist->delete();
         return redirect()->back()->with('message', 'Deleted from wishlist');
     }
+
+    public function delete_trash(){
+        $trashes = auth()->user()->wishlistsTrashed()->get('wishlists.*');
+        
+        foreach($trashes as $wishlist){
+            $wishlist = Wishlist::find($wishlist->id);
+            $wishlist->delete();
+        }
+
+        return redirect()->back();
+    }
 }

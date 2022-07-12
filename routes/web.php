@@ -10,6 +10,7 @@ use App\Http\Controllers\TransactionManagementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewControllers;
 use App\Http\Controllers\WishlistController;
+use App\Models\Wishlist;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +50,11 @@ Route::controller(BookController::class)->group(function () {
     Route::get('/book-detail/{book}', 'viewBookDetail')->name('book-detail');
 });
 
-Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wishlist')->middleware('auth');
+Route::controller(WishlistController::class)->group(function () {
+    Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wishlist')->middleware('auth');
+    Route::delete('/remove-wishlist', [WishlistController::class, 'delete_trash'])->name('wishlist.remove-trashed');
+});
+
 
 Route::controller(TransactionManagementController::class)->middleware('auth')->group(function () {
     Route::get('/user/orders', 'orders')->name('orders');
@@ -64,6 +69,7 @@ Route::controller(CartController::class)->group(function () {
     Route::delete('/your-cart/{cartItem}', 'destroy')->name('delete');
     Route::get('/api/cart-container', 'cartContainer');
     Route::post('/add-to-cart/{book}', 'add_to_cart')->middleware('auth');
+    Route::delete('/trashed-cart', 'delete_trash')->middleware('auth')->name('cart.remove-trashed');
 });
 
 Route::get('/user/{user}/profile', [ProfileController::class, 'userProfile'])->name('profile');

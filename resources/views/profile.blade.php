@@ -152,4 +152,7 @@
             </section>
         </div>
     </div>
+
+    @include('partials.wishlist-trash-popup')
+
 @endsection

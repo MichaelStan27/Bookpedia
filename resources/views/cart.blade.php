@@ -19,4 +19,6 @@
         </div>
     @endif
 
+    @include('partials.cart-trash-popup')
+
 @endsection

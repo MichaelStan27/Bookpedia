@@ -19,6 +19,11 @@ class ProfileController extends Controller {
             ->paginate(4, ['*'], 'wishlistPage')
             ->appends($request->all());
 
-        return view('profile', ["user" => $user, "books" => $myBook, "wishlist" => $wishlist]);
+        return view('profile', [
+            "user" => $user, 
+            "books" => $myBook, 
+            "wishlist" => $wishlist,
+            "trashes" => $user->wishlistsTrashed
+        ]);
     }
 }

@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Response;
 class CartController extends Controller {
     public function index() {
         $cartItems = auth()->user()->cartItems;
-
+        $trashes = auth()->user()->cartItemsTrashed;
+        // dd($cartItems->toSql());
         $cartTotal = $cartItems->reduce(function ($carry, $item) {
             if ($item->type_id == 1) {
                 return $carry + $item->book->loan_price * $item->duration;
@@ -28,6 +29,7 @@ class CartController extends Controller {
         ];
 
         return view('cart')
+            ->with('trashes', $trashes)
             ->with('cartItems', $cartItems)
             ->with('count', $count);
     }
@@ -78,6 +80,17 @@ class CartController extends Controller {
 
         $cartItem->delete();
         return redirect(route("cart"))->with('message', 'Book <b>"' . $title . '"</b> has successfully been deleted from your cart!');
+    }
+
+    public function delete_trash(){
+        $trashes = auth()->user()->cartItemsTrashed()->get('cart_items.*');
+        
+        foreach($trashes as $cartItem){
+            $cartItem = CartItem::find($cartItem->id);
+            $cartItem->delete();
+        }
+
+        return redirect(route("cart"));
     }
 
     public function cartContainer(Request $request) {
