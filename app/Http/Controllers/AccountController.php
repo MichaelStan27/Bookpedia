@@ -24,7 +24,7 @@ class AccountController extends Controller {
         ]);
         if (Auth::attempt($request->only('email', 'password'), $request->remember)) {
             $request->session()->regenerate();
-            return redirect('/')->with('message', 'login successful');
+            return redirect()->route('home')->with('message', 'login successful!');
         }
 
         return redirect()->back()->withErrors(['message' => 'invalid login credentials']);
@@ -37,7 +37,7 @@ class AccountController extends Controller {
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'logout successful');
+        return redirect()->route('home')->with('message', 'logout successful!');
     }
 
     public function store(Request $request) {
@@ -66,6 +66,6 @@ class AccountController extends Controller {
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('/login')->with('message', 'Account created successfully');
+        return redirect()->route('login')->with('message', 'Account created successfully');
     }
 }

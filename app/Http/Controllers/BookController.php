@@ -82,6 +82,8 @@ class BookController extends Controller {
             $type = 1;
         }
 
+        $user = auth()->user();
+
         Book::create([
             'title' => $request->title,
             'author' => $request->author,
@@ -90,7 +92,7 @@ class BookController extends Controller {
             'image' => 'book-image/' . $filename,
             'summary' => $request->summary,
             'description' => $request->description,
-            'user_id' => auth()->user()->id,
+            'user_id' => $user->id,
             'loan_price' => $loan_price,
             'sale_price' => $sale_price,
             'status_id' => 1,
@@ -98,7 +100,7 @@ class BookController extends Controller {
             'category_id' => $request->category,
         ]);
 
-        return redirect()->route('profile', auth()->user())->with('message', 'Book added successfully');
+        return redirect()->route('profile', $user)->with('message', 'Book added successfully!');
     }
 
     public function update_book_form($id) {
@@ -175,6 +177,8 @@ class BookController extends Controller {
             $filename = $book->image;
         }
 
+        $user = auth()->user();
+
         $book->update([
             'title' => $request->title,
             'author' => $request->author,
@@ -183,7 +187,7 @@ class BookController extends Controller {
             'image' => $filename,
             'summary' => $request->summary,
             'description' => $request->description,
-            'user_id' => auth()->user()->id,
+            'user_id' => $user->id,
             'loan_price' => $loan_price,
             'sale_price' => $sale_price,
             'status_id' => 1,
@@ -191,15 +195,13 @@ class BookController extends Controller {
             'category_id' => $request->category,
         ]);
 
-        return redirect()->route('profile', auth()->user())->with('message', 'Book updated successfully');
+        return redirect()->route('profile', $user)->with('message', 'Book updated successfully!');
     }
 
     public function destroy(Book $book) {
-        $title = $book->title;
-
         Storage::delete("public/$book->image");
         $book->delete();
 
-        return redirect()->route('profile', auth()->user())->with("message", "$title deleted successfully");
+        return redirect()->route('profile', auth()->user())->with("message", "Book deleted successfully!");
     }
 }

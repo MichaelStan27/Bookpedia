@@ -12,8 +12,10 @@ use Illuminate\Support\Facades\Response;
 
 class CartController extends Controller {
     public function index() {
-        $cartItems = auth()->user()->cartItems;
-        $trashes = auth()->user()->cartItemsTrashed;
+        $user = auth()->user();
+
+        $cartItems = $user->cartItems;
+        $trashes = $user->cartItemsTrashed;
         // dd($cartItems->toSql());
         $cartTotal = $cartItems->reduce(function ($carry, $item) {
             if ($item->type_id == 1) {
@@ -35,7 +37,9 @@ class CartController extends Controller {
     }
 
     public function add_to_cart(Book $book, Request $request) {
-        $userCartItems = auth()->user()->cartItems()->where('book_id', $book->id)->first();
+        $user = auth()->user();
+
+        $userCartItems = $user->cartItems()->where('book_id', $book->id)->first();
         if ($userCartItems) {
             return Response::json([
                 'status' => 'FAIL',
@@ -66,11 +70,11 @@ class CartController extends Controller {
                 'duration' => NULL
             ]);
         }
-        $cartQty = auth()->user()->cartItems()->count();
+        $cartQty = $user->cartItems()->count();
         return Response::json([
             'status' => 'OK',
             'cartQty' => $cartQty,
-            'toast' => view('partials.toast-notification')->with('message', 'Added to cart')->render()
+            'toast' => view('partials.toast-notification')->with('message', 'Added to cart!')->render()
         ]);
     }
 
@@ -79,7 +83,7 @@ class CartController extends Controller {
         $title = $cartItem->book->title;
 
         $cartItem->delete();
-        return redirect(route("cart"))->with('message', 'Book <b>"' . $title . '"</b> has successfully been deleted from your cart!');
+        return redirect()->back()->with('message', 'Successfully removed from cart!');
     }
 
     public function delete_trash(){
@@ -90,11 +94,13 @@ class CartController extends Controller {
             $cartItem->delete();
         }
 
-        return redirect(route("cart"));
+        return redirect()->back();
     }
 
     public function cartContainer(Request $request) {
-        $item = auth()->user()->cartItems()->where('id', '=', $request->cartId);
+        $user = auth()->user();
+
+        $item = $user->cartItems()->where('id', '=', $request->cartId);
         $toCheck = $item->first();
 
         if (isset($toCheck)) {
@@ -105,7 +111,7 @@ class CartController extends Controller {
             return Response::json(['status' => 'ERROR', 'message' => 'Item not found'], 404);
         }
 
-        $cartItems = auth()->user()->cartItems;
+        $cartItems = $user->cartItems;
 
         $cartTotal = $cartItems->reduce(function ($carry, $item) {
             if ($item->type_id == 1) {

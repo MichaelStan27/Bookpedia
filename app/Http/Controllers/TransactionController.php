@@ -78,7 +78,7 @@ class TransactionController extends Controller {
         }
 
         return redirect()
-            ->route("cart")
-            ->with('message', $cartItems->count() . ' book(s) has successfully been checked out!<br><b>Your total Payment : ' . $cartTotal . '</b><br> Your Balance: ' . $user->balance . '</b>');
+            ->back()
+            ->with('message', $cartItems->count() . ' book(s) has successfully been checked out!<br>Your total Payment :<b> IDR ' . number_format($cartTotal) . '</b><br> Your Balance:<b> IDR  ' . number_format($user->balance) . '</b>');
     }
 }
