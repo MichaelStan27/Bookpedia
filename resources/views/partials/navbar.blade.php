@@ -20,7 +20,12 @@
             </li>
             <li>
                 <a href="{{ route('orders') }}">
-                    <i class="fa-solid fa-bag-shopping fa-xl "></i>
+                    <i class="fa-solid fa-bag-shopping fa-xl"></i>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('sales') }}">
+                    <i class="fa-solid fa-book fa-xl"></i>
                 </a>
             </li>
         @endauth
