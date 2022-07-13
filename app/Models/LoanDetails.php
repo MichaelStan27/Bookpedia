@@ -12,6 +12,7 @@ class LoanDetails extends Model {
 
     protected $fillable = [
         'detail_transaction_id',
+        'delivery_status_id',
         'deadline',
         'loan_date',
         'return_date',
@@ -20,5 +21,15 @@ class LoanDetails extends Model {
 
     public function transaction() {
         return $this->belongsTo(DetailTransaction::class);
+    }
+
+    public function deliveryStatus() {
+        return $this->belongsTo(DeliveryStatus::class);
+    }
+
+    public function incrementDeliveryStatus($value = 1) {
+        return $this->update([
+            'delivery_status_id' => $this->delivery_status_id + $value
+        ]);
     }
 }
