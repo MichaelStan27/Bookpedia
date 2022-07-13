@@ -53,6 +53,9 @@ Route::post('/wishlist/{book}', [WishlistController::class, 'store'])->name('wis
 
 Route::controller(TransactionManagementController::class)->middleware('auth')->group(function () {
     Route::get('/user/orders', 'orders')->name('orders');
+    Route::get('/user/sales', 'sales')->name('sales');
+    Route::post('/user/sales/header/{headerTransaction}', 'updateSaleHeader')->name('update-sale-header');
+    Route::post('/user/sales/item/{transaction}', 'updateSaleItem')->name('update-sale-item');
 });
 
 // Route::get('/update-book/{id}', function(){
