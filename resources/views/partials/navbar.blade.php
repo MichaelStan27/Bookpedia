@@ -8,16 +8,27 @@
         <li>
             @include('partials.searchbar')
         </li>
-        <li class="relative">
-            @auth
+        @auth
+            <li class="relative">
                 <a href="{{ route('cart') }}">
                     <i class="fa-solid fa-cart-shopping fa-lg "></i>
                 </a>
                 <div class="flex items-center justify-center aspect-square w-5 text-xs rounded-[50%] bg-red-600 text-white absolute top-[-50%] right-[-50%]"
                     id="cartCount">
-                    {{ auth()->user()->cartItems()->count() }}</div>
-            @endauth
-        </li>
+                    {{ auth()->user()->cartItems()->count() }}
+                </div>
+            </li>
+            <li>
+                <a href="{{ route('orders') }}">
+                    <i class="fa-solid fa-bag-shopping fa-xl"></i>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('sales') }}">
+                    <i class="fa-solid fa-book fa-xl"></i>
+                </a>
+            </li>
+        @endauth
         @auth
             <li class="group relative">
                 <a href="{{ route('profile', auth()->user()) }}" class="inline">

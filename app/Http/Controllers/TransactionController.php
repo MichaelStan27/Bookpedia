@@ -55,6 +55,7 @@ class TransactionController extends Controller {
 
                 LoanDetails::create([
                     'detail_transaction_id' => $detailTrans->id,
+                    'delivery_status_id' => 3,
                     'deadline' => NULL,
                     'loan_date' => NULL,
                     'return_date' => NULL,
