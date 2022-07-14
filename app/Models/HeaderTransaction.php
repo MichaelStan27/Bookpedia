@@ -54,6 +54,6 @@ class HeaderTransaction extends Model {
     }
 
     public function getLoanTransaction() {
-        return $this->detailTransactions()->where('transaction_type_id', '=', 1);
+        return $this->detailTransactions()->where('transaction_type_id', '=', 1)->get();
     }
 }
