@@ -17,10 +17,13 @@ class DeliveryStatusSeeder extends Seeder {
                 'info' => 'Dikemas',
             ],
             [
+                'info' => 'Dikirim',
+            ],
+            [
                 'info' => 'Diterima',
             ],
             [
-                'info' => 'Dikirim',
+                'info' => 'Loan',
             ],
             [
                 'info' => 'Dikirim kembali',

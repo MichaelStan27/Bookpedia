@@ -11,4 +11,16 @@ class DeliveryStatus extends Model {
     public function headerTransaction() {
         return $this->hasOne(HeaderTransaction::class);
     }
+
+    public function loanDetails() {
+        return $this->hasOne(DeliveryStatus::class);
+    }
+
+    public function getNextStatusAttribute() {
+        return DeliveryStatus::find($this->id + 1)->info;
+    }
+
+    public function is($status) {
+        return strtolower($this->info) == $status;
+    }
 }

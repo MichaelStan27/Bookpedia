@@ -15,6 +15,7 @@ class CreateLoanDetailsTable extends Migration {
             $table->unsignedBigInteger('detail_transaction_id');
             $table->primary('detail_transaction_id');
             $table->foreign('detail_transaction_id')->references('id')->on('detail_transactions');
+            $table->foreignId('delivery_status_id')->constrained('delivery_statuses');
             $table->date('deadline')->nullable();
             $table->date('loan_date')->nullable();
             $table->date('return_date')->nullable();
