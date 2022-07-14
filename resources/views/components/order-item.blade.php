@@ -23,7 +23,7 @@
                 {{ $transaction->item_price_with_notation }}
             </h1>
         </div>
-        @if ($tab == 'ongoing' && $transaction->transactionType->id == 1 && $transaction->loanDetails->deliveryStatus->is('diterima'))
+        @if ($tab == 'onloan' && $transaction->transactionType->id == 1 && $transaction->loanDetails->deliveryStatus->is('loan'))
             <div class="flex gap-3">
                 <form action="{{ route('update-sale-item', $transaction) }}" method="POST">
                     @csrf

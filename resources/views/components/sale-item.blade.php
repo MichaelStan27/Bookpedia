@@ -1,4 +1,4 @@
-@props(['transaction'])
+@props(['transaction', 'tab'])
 
 <div class="flex p-4">
     <div class="w-24">
@@ -23,5 +23,15 @@
                 {{ $transaction->item_price_with_notation }}
             </h1>
         </div>
+        @if ($tab == 'onloan' && $transaction->transactionType->id == 1 && $transaction->loanDetails->deliveryStatus->is('dikirim kembali'))
+            <div class="flex gap-3">
+                <form action="{{ route('update-sale-item', $transaction) }}" method="POST">
+                    @csrf
+                    <button class="py-3 px-7 rounded-md bg-green-500 text-white font-medium">
+                        {{ $transaction->loanDetails->deliveryStatus->next_status }}
+                    </button>
+                </form>
+            </div>
+        @endif
     </div>
 </div>

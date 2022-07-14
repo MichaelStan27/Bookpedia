@@ -8,9 +8,15 @@
         <div class="font-medium text-center text-gray-500 border-b border-gray-200 mb-5">
             <ul class="flex flex-wrap -mb-px">
                 <li class="mr-2">
-                    <a data-target="1" data-id="tabItem" href="{{ route('sales', ['tab' => 'ongoing']) }}"
-                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent @if ($target == 'ongoing') active @else not-active @endif">
-                        On going
+                    <a data-target="1" data-id="tabItem" href="{{ route('sales', ['tab' => 'ondelivery']) }}"
+                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent @if ($target == 'ondelivery') active @else not-active @endif">
+                        On delivery
+                    </a>
+                </li>
+                <li class="mr-2">
+                    <a data-target="2" data-id="tabItem" href="{{ route('sales', ['tab' => 'onloan']) }}"
+                        class="inline-block p-4 rounded-t-lg border-b-2 @if ($target == 'onloan') active @else not-active @endif">
+                        On loan
                     </a>
                 </li>
                 <li class="mr-2">
@@ -22,11 +28,19 @@
             </ul>
         </div>
         <div id="container" class="flex flex-col gap-4">
-            @forelse ($groupedSales as $groupSale)
-                <x-sales-item-parent :groupSale="$groupSale" :tab="$target"></x-sales-item-parent>
-            @empty
-                <h1 class="text-neutral-500 text-lg font-medium">No on going sales</h1>
-            @endforelse
+            @if ($target == 'onloan')
+                @forelse ($groupedSales as $trans)
+                    <x-sale-item-loan :tab="$target" :transaction="$trans"></x-sale-item-loan>
+                @empty
+                    <h1 class="text-neutral-500 text-lg font-medium">There is no book on loan</h1>
+                @endforelse
+            @else
+                @forelse ($groupedSales as $groupSale)
+                    <x-sales-item-parent :tab="$target" :groupSale="$groupSale"></x-sales-item-parent>
+                @empty
+                    <h1 class="text-neutral-500 text-lg font-medium">There is no on going sale</h1>
+                @endforelse
+            @endif
         </div>
     </div>
 @endsection

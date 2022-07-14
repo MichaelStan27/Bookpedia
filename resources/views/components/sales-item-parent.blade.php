@@ -6,23 +6,9 @@
             <h1 class="font-bold text-2xl">{{ $groupSale->buyer->fullname }}</h1>
             <h1 class="px-2 font-bold">{{ $groupSale->deliveryStatus->info }}</h1>
         </div>
-        @if ($tab == 'ongoing')
-            @foreach ($groupSale->detailTransactions as $transaction)
-                @if ($groupSale->deliveryStatus->id < 3)
-                    <x-order-item :tab="$tab" :transaction="$transaction"></x-order-item>
-                @elseif ($transaction->transactionType->id == 1)
-                    <x-order-item :tab="$tab" :transaction="$transaction"></x-order-item>
-                @endif
-            @endforeach
-        @elseif ($tab == 'finish')
-            @foreach ($groupSale->detailTransactions as $transaction)
-                @if ($transaction->transactionType->id == 2)
-                    <x-order-item :tab="$tab" :transaction="$transaction"></x-order-item>
-                @elseif ($transaction->transactionType->id == 1 && $transaction->loanDetails->deliveryStatus->is('diterima kembali'))
-                    <x-order-item :tab="$tab" :transaction="$transaction"></x-order-item>
-                @endif
-            @endforeach
-        @endif
+        @foreach ($groupSale->detailTransactions as $transaction)
+            <x-sale-item :tab="$tab" :transaction="$transaction"></x-sale-item>
+        @endforeach
         <div class="flex justify-between items-center px-5 pt-8 pb-4 gap-5">
             <div class="flex gap-5">
                 <h1 class="font-bold">Tanggal pembelian</h1>
