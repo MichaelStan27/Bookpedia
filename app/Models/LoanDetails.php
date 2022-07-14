@@ -10,6 +10,10 @@ class LoanDetails extends Model {
 
     public $timestamps = false;
 
+    protected $primaryKey = 'detail_transaction_id';
+
+    protected $dates = ['deadline', 'loan_date', 'return_date'];
+
     protected $fillable = [
         'detail_transaction_id',
         'delivery_status_id',
