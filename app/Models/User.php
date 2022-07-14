@@ -63,6 +63,10 @@ class User extends Authenticatable {
         else return "{$successful_trans} successful " . Str::plural('transaction', $successful_trans);
     }
 
+    public function getUserAddressAttribute() {
+        return "{$this->detail_address}, {$this->city}, {$this->postal_code}";
+    }
+
     public function getBalanceWithNotationAttribute() {
         return 'IDR ' . number_format($this->attributes['balance']);
     }
