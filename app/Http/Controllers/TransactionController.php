@@ -11,6 +11,20 @@ use Illuminate\Support\Facades\Request;
 class TransactionController extends Controller {
     public function checkout(Request $request) {
         $user = auth()->user();
+        
+        //Check for validate cart items
+        $trashes = $user->cartItemsTrashed()
+            ->with('book')->get('cart_items.*');
+
+        $borrowed = $user->cartItems()
+            ->with('book')
+            ->join('books', 'book_id', 'books.id')
+            ->where('status_id', '2')
+            ->get('cart_items.*');  
+
+        if(!$trashes->isEmpty() || !$borrowed->isEmpty()){
+            return redirect()->back();
+        }
 
         $cartItems = $user->cartItems;
 

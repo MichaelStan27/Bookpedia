@@ -72,7 +72,6 @@ Route::controller(CartController::class)->group(function () {
     Route::delete('/your-cart/{cartItem}', 'destroy')->name('delete');
     Route::get('/api/cart-container', 'cartContainer');
     Route::post('/add-to-cart/{book}', 'add_to_cart')->middleware('auth');
-    Route::delete('/trashed-cart/{type}', 'delete_trash')->middleware('auth')->name('cart.remove-trashed');
 });
 
 Route::get('/user/{user}/profile', [ProfileController::class, 'userProfile'])->name('profile');

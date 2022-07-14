@@ -14,22 +14,28 @@ class CartController extends Controller {
     public function index() {
         $user = auth()->user();
 
-        $cartItems = $user->cartItems()
-            ->with('book')->get();
+        //trash    
         $trashes = $user->cartItemsTrashed()
-            ->with('book')->get();
+            ->with('book')->get('cart_items.*');
+        
+        foreach($trashes as $cartItem){
+            $cartItem->delete();
+        }
 
-        $type = 'book-deleted';
-
-        if($trashes->isEmpty()){
-            $type = 'book-borrowed';
-
-            $trashes = $user->cartItems()
+        //borrowed
+        $borrowed = $user->cartItems()
             ->with('book')
             ->join('books', 'book_id', 'books.id')
             ->where('status_id', '2')
             ->get('cart_items.*');
+
+        foreach($borrowed as $cartItem){
+            $cartItem->delete();
         }
+
+        //get valid cart item
+        $cartItems = $user->cartItems()
+            ->with('book')->get();
 
         $cartTotal = $cartItems->reduce(function ($carry, $item) {
             if ($item->type_id == 1) {
@@ -46,8 +52,8 @@ class CartController extends Controller {
 
         return view('cart')
             ->with('trashes', $trashes)
+            ->with('borrowed', $borrowed)
             ->with('cartItems', $cartItems)
-            ->with('type', $type)
             ->with('count', $count);
     }
 
@@ -99,27 +105,6 @@ class CartController extends Controller {
 
         $cartItem->delete();
         return redirect()->back()->with('message', 'Successfully removed from cart!');
-    }
-
-    public function delete_trash($type){
-        if($type == 'book-deleted'){
-            $tobeDelete = auth()->user()
-                ->cartItemsTrashed()
-                ->get('cart_items.*');
-        }
-        else{
-            $tobeDelete = auth()->user()
-                ->cartItems()
-                ->join('books', 'book_id', 'books.id')
-                ->where('status_id', '2')
-                ->get('cart_items.*');
-        }
-        
-        foreach($tobeDelete as $cartItem){
-            $cartItem->delete();
-        }
-
-        return redirect()->back();
     }
 
     public function cartContainer(Request $request) {

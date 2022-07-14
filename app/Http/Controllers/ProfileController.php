@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller {
     public function userProfile(Request $request, User $user) {
 
+        //check trashed
+        $trashes = auth()->user()->wishlistsTrashed()->get('wishlists.*');
+        
+        foreach($trashes as $wishlist){
+            $wishlist->delete();
+        }
+
         $myBook = $user->books()
             ->with(['transactionType', 'category', 'user'])
             ->latest()
@@ -27,7 +34,7 @@ class ProfileController extends Controller {
             "user" => $user, 
             "books" => $myBook, 
             "wishlist" => $wishlist,
-            "trashes" => $user->wishlistsTrashed
+            "trashes" => $trashes
         ]);
     }
 }

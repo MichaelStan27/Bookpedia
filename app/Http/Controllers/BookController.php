@@ -199,7 +199,6 @@ class BookController extends Controller {
     }
 
     public function destroy(Book $book) {
-        Storage::delete("public/$book->image");
         $book->delete();
 
         return redirect()->route('profile', auth()->user())->with("message", "Book deleted successfully!");
