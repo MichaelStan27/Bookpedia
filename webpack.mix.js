@@ -19,6 +19,7 @@ mix.js(
         "resources/js/add-book.js",
         "resources/js/carousel.js",
         "resources/js/filter.js",
+        "resources/js/popup.js",
     ],
     "public/js/app.js"
 )
