@@ -19,6 +19,10 @@ class ProfileController extends Controller {
             ->paginate(4, ['*'], 'wishlistPage')
             ->appends($request->all());
 
+        $wishlist_trash = $user->wishlistsTrashed()
+            ->with(['book.transactionType', 'book.category', 'book.user'])
+            ->get();
+
         return view('profile', [
             "user" => $user, 
             "books" => $myBook, 

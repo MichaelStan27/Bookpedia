@@ -14,9 +14,11 @@ class CartController extends Controller {
     public function index() {
         $user = auth()->user();
 
-        $cartItems = $user->cartItems;
-        $trashes = $user->cartItemsTrashed;
-        // dd($cartItems->toSql());
+        $cartItems = $user->cartItems()
+            ->with('book')->get();
+        $trashes = $user->cartItemsTrashed()
+            ->with('book')->get();
+            
         $cartTotal = $cartItems->reduce(function ($carry, $item) {
             if ($item->type_id == 1) {
                 return $carry + $item->book->loan_price * $item->duration;
@@ -111,7 +113,7 @@ class CartController extends Controller {
             return Response::json(['status' => 'ERROR', 'message' => 'Item not found'], 404);
         }
 
-        $cartItems = $user->cartItems;
+        $cartItems = $user->cartItems()->with('book')->get();
 
         $cartTotal = $cartItems->reduce(function ($carry, $item) {
             if ($item->type_id == 1) {
