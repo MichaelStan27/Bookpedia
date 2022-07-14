@@ -18,7 +18,19 @@ class CartController extends Controller {
             ->with('book')->get();
         $trashes = $user->cartItemsTrashed()
             ->with('book')->get();
-            
+
+        $type = 'book-deleted';
+
+        if($trashes->isEmpty()){
+            $type = 'book-borrowed';
+
+            $trashes = $user->cartItems()
+            ->with('book')
+            ->join('books', 'book_id', 'books.id')
+            ->where('status_id', '2')
+            ->get('cart_items.*');
+        }
+
         $cartTotal = $cartItems->reduce(function ($carry, $item) {
             if ($item->type_id == 1) {
                 return $carry + $item->book->loan_price * $item->duration;
@@ -35,6 +47,7 @@ class CartController extends Controller {
         return view('cart')
             ->with('trashes', $trashes)
             ->with('cartItems', $cartItems)
+            ->with('type', $type)
             ->with('count', $count);
     }
 
@@ -88,11 +101,21 @@ class CartController extends Controller {
         return redirect()->back()->with('message', 'Successfully removed from cart!');
     }
 
-    public function delete_trash(){
-        $trashes = auth()->user()->cartItemsTrashed()->get('cart_items.*');
+    public function delete_trash($type){
+        if($type == 'book-deleted'){
+            $tobeDelete = auth()->user()
+                ->cartItemsTrashed()
+                ->get('cart_items.*');
+        }
+        else{
+            $tobeDelete = auth()->user()
+                ->cartItems()
+                ->join('books', 'book_id', 'books.id')
+                ->where('status_id', '2')
+                ->get('cart_items.*');
+        }
         
-        foreach($trashes as $cartItem){
-            $cartItem = CartItem::find($cartItem->id);
+        foreach($tobeDelete as $cartItem){
             $cartItem->delete();
         }
 
