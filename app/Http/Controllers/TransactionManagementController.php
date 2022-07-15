@@ -87,14 +87,14 @@ class TransactionManagementController extends Controller {
     public function updateSaleHeader(HeaderTransaction $headerTransaction) {
         $user = auth()->user();
 
-        if ($headerTransaction->deliveryStatus->is('dikemas') && $headerTransaction->seller->id != $user->id) {
+        if ($headerTransaction->deliveryStatus->is('being packaged') && $headerTransaction->seller->id != $user->id) {
             abort(403);
-        } else if ($headerTransaction->deliveryStatus->is('dikirim') && $headerTransaction->buyer->id != $user->id) {
+        } else if ($headerTransaction->deliveryStatus->is('shipped') && $headerTransaction->buyer->id != $user->id) {
             abort(403);
         }
 
         if ($headerTransaction->incrementDeliveryStatus()) {
-            if ($headerTransaction->deliveryStatus->is('dikirim')) {
+            if ($headerTransaction->deliveryStatus->is('shipped')) {
                 $headerTransaction
                     ->getLoanTransaction()
                     ->each(function ($item) {
@@ -119,14 +119,14 @@ class TransactionManagementController extends Controller {
 
         $headerTransaction = $transaction->headerTransaction;
 
-        if ($transaction->loanDetails->deliveryStatus->is('dikirim kembali') && $headerTransaction->seller->id != $user->id) {
+        if ($transaction->loanDetails->deliveryStatus->is('shipped back') && $headerTransaction->seller->id != $user->id) {
             abort(403);
         } else if ($transaction->loanDetails->deliveryStatus->is('loan') && $headerTransaction->buyer->id != $user->id) {
             abort(403);
         }
 
         if ($transaction->loanDetails->incrementDeliveryStatus()) {
-            if ($transaction->loanDetails->deliveryStatus->is('dikirim kembali')) {
+            if ($transaction->loanDetails->deliveryStatus->is('shipped back')) {
                 $transaction->loanDetails->update([
                     'return_date' => Carbon::now()
                 ]);
