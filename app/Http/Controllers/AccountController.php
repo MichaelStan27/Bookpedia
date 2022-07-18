@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 class AccountController extends Controller {
-    public function viewLogin(){
+    public function viewLogin() {
         return view('/login');
     }
 
-    public function viewRegister(){
+    public function viewRegister() {
         return view('/register');
     }
 
@@ -24,10 +24,10 @@ class AccountController extends Controller {
         ]);
         if (Auth::attempt($request->only('email', 'password'), $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->route('home')->with('message', 'login successful!');
+            return redirect()->route('home')->with('message', 'Login successful!');
         }
 
-        return redirect()->back()->withErrors(['message' => 'invalid login credentials']);
+        return redirect()->back()->withErrors(['message' => 'Invalid login credentials']);
     }
 
     public function logout(Request $request) {
@@ -37,7 +37,7 @@ class AccountController extends Controller {
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('home')->with('message', 'logout successful!');
+        return redirect()->route('home')->with('message', 'Logout successful!');
     }
 
     public function store(Request $request) {
