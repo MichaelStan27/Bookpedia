@@ -10,7 +10,7 @@
                 </div>
                 <div class="pl-2 pt-2">
                     <p class="font-bold">{{ Str::limit($user->fullname, 18, $end = '...') }}</p>
-                    <p class="text-xs">{{ $user->city }}</p>
+                    <p class="text-xs">{{ $user->city->city_name }}</p>
                 </div>
             </div>
         </div>

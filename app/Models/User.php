@@ -51,18 +51,18 @@ class User extends Authenticatable {
 
     public function cartItemsTrashed() {
         return $this->cartItems()
-                    ->join('books', 'cart_items.book_id', 'books.id')
-                    ->where('books.deleted_at', '<>', '');
+            ->join('books', 'cart_items.book_id', 'books.id')
+            ->where('books.deleted_at', '<>', '');
     }
-    
+
     public function wishlists() {
         return $this->hasMany(Wishlist::class);
     }
 
-    public function wishlistsTrashed(){
+    public function wishlistsTrashed() {
         return $this->wishlists()
-                    ->join('books', 'wishlists.book_id', 'books.id')
-                    ->where('books.deleted_at', '<>', '');
+            ->join('books', 'wishlists.book_id', 'books.id')
+            ->where('books.deleted_at', '<>', '');
     }
 
     public function getFullnameAttribute() {
@@ -89,5 +89,9 @@ class User extends Authenticatable {
 
     public function buyHeaderTransactions() {
         return $this->hasMany(HeaderTransaction::class, 'buyer_id');
+    }
+
+    public function city() {
+        return $this->belongsTo(City::class);
     }
 }

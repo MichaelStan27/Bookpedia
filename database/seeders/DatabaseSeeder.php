@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder {
             CartItemSeeder::class,
             WishlistSeeder::class,
             DeliveryStatusSeeder::class,
+            CitySeeder::class,
         ]);
     }
 }

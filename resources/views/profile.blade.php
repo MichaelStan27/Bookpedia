@@ -41,7 +41,7 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt=""
                                 class="w-8 h-8 mx-2">
                             <label for="location" class="text-left text-xl text-gray-500">
-                                <b>{{ $user->city }}</b>
+                                <b>{{ $user->city->city_name }}</b>
                             </label>
                         </div>
                     </div>
