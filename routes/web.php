@@ -28,7 +28,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AccountController::class, 'logout']);
+    Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
 
     Route::controller(BookController::class)->group(function () {
         Route::get('/add-book', 'add_book_form')->name('add-book');
