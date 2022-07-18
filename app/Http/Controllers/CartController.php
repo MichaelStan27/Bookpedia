@@ -17,8 +17,8 @@ class CartController extends Controller {
         //trash    
         $trashes = $user->cartItemsTrashed()
             ->with('book')->get('cart_items.*');
-        
-        foreach($trashes as $cartItem){
+
+        foreach ($trashes as $cartItem) {
             $cartItem->delete();
         }
 
@@ -29,7 +29,7 @@ class CartController extends Controller {
             ->where('status_id', '2')
             ->get('cart_items.*');
 
-        foreach($borrowed as $cartItem){
+        foreach ($borrowed as $cartItem) {
             $cartItem->delete();
         }
 
@@ -76,22 +76,16 @@ class CartController extends Controller {
 
         //Creating cartItem object
         $type = ($book->transaction_type_id == 3) ? $request->type : $book->transaction_type_id;
-        if ($type == 1) {
-            CartItem::firstOrCreate([
-                'book_id' => $book->id,
-                'user_id' => Auth::user()->id,
-                'type_id' => $type,
-                'duration' => 1
-            ]);
-        } else {
-            CartItem::firstOrCreate([
-                'book_id' => $book->id,
-                'user_id' => Auth::user()->id,
-                'type_id' => $type,
-                'duration' => NULL
-            ]);
-        }
+
+        CartItem::firstOrCreate([
+            'book_id' => $book->id,
+            'user_id' => $user->id,
+            'type_id' => $type,
+            'duration' => $type == 1 ? 1 : NULL
+        ]);
+
         $cartQty = $user->cartItems()->count();
+
         return Response::json([
             'status' => 'OK',
             'cartQty' => $cartQty,
@@ -99,11 +93,9 @@ class CartController extends Controller {
         ]);
     }
 
-
     public function destroy(CartItem $cartItem) {
-        $title = $cartItem->book->title;
-
         $cartItem->delete();
+
         return redirect()->back()->with('message', 'Successfully removed from cart!');
     }
 
