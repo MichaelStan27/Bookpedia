@@ -17,6 +17,7 @@
     @include('partials.toast-notification')
     @include('partials.navbar')
     @yield('content')
+    @include('partials.footer')
 </body>
 
 </html>
