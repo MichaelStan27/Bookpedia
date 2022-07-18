@@ -3,9 +3,8 @@
         <li class="text-2xl"><a href="/"><img src="{{ asset('assets/logo/logo.png') }}" alt=""
                     class="h-20"></a></li>
     </ul>
-
-    <ul class="flex items-center gap-10">
-        <li>
+    <ul class="flex items-center gap-10 w-3/4">
+        <li class="w-3/4">
             @include('partials.searchbar')
         </li>
         @auth
@@ -18,16 +17,6 @@
                     {{ auth()->user()->cartItems()->count() }}
                 </div>
             </li>
-            <li>
-                <a href="{{ route('orders') }}">
-                    <i class="fa-solid fa-bag-shopping fa-xl"></i>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('sales') }}">
-                    <i class="fa-solid fa-book fa-xl"></i>
-                </a>
-            </li>
         @endauth
         @auth
             <li class="group relative">
@@ -35,7 +24,7 @@
                     <i class="fa-solid fa-user fa-lg mx-2"></i>
                     <span class="hidden md:inline">{{ auth()->user()->first_name }}</span>
                 </a>
-                <div class="w-fit pt-5 hidden absolute z-20 right-0 md:translate-x-1/2 group-hover:block">
+                <div class="w-fit pt-5 hidden absolute z-30 right-0 md:translate-x-1/2 group-hover:block">
                     <div
                         class="p-5 w-72 bg-white shadow-md rounded-lg ring-2 ring-gray-800 ring-offset-4 ring-offset-gray-200 ">
                         <div class="p-3 border-b-2 border-gray-300 flex items-center">
@@ -47,26 +36,41 @@
                                     detail</a>
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="items-center">
                             <div class="p-3 w-full">
                                 <i class="fa-solid fa-wallet fa-sm mr-2 text-green-600"></i>
                                 <span class="text-sm">Balance : </span>
                                 <h5>{{ auth()->user()->balance_with_notation }}</h5>
                             </div>
-                            <div class="p-2 text-right gap-4">
+                            <div class="text-center gap-4">
                                 <a href="{{ route('profile', auth()->user()) . '#wishlist' }}" class="relative">
                                     <button
-                                        class="w-20 px-3 my-1 font-semibold shadow-md rounded-md bg-blue-600 text-sm text-white hover:brightness-105">Wishlist
+                                        class="w-full px-3 py-1 my-1 font-semibold shadow-md rounded-md bg-blue-600 text-sm text-white hover:bg-blue-500">
+                                        <i class="fa-solid fa-heart mr-2"></i>Wishlist
+                                        <div
+                                            class="flex items-center justify-center aspect-square w-7 text-xs rounded-[50%] bg-red-600 text-white absolute top-[-40%] right-[-5%]">
+                                            {{ auth()->user()->wishlists()->count() }}</div>
                                     </button>
-                                    <div
-                                        class="flex items-center justify-center aspect-square w-5 text-xs rounded-[50%] bg-red-600 text-white absolute top-[-35%] right-[-10%]">
-                                        {{ auth()->user()->wishlists()->count() }}</div>
+                                </a>
+                                <a href="{{ route('orders') }}">
+                                    <button
+                                        class="w-full px-3 py-1 my-1 font-semibold shadow-md rounded-md bg-blue-600 text-sm text-white hover:bg-blue-500">
+                                        <i class="fa-solid fa-bag-shopping mr-2"></i>My orders
+                                    </button>
+                                </a>
+                                <a href="{{ route('sales') }}">
+                                    <button
+                                        class="w-full px-3 py-1 my-1 font-semibold shadow-md rounded-md bg-blue-600 text-sm text-white hover:bg-blue-500">
+                                        <i class="fa-solid fa-book mr-2"></i>
+                                        <span class="hidden md:inline">My book status</span>
+                                    </button>
                                 </a>
                                 <form action="/logout" method="post">
                                     @csrf
                                     <button
-                                        class="w-20 px-3 my-1 font-semibold shadow-md rounded-md bg-red-600 text-sm text-white whitespace-nowrap hover:brightness-105">Log
-                                        Out</button>
+                                        class="w-full px-3 py-1 my-1 font-semibold shadow-md rounded-md bg-red-600 text-sm text-white whitespace-nowrap hover:brightness-105">
+                                        <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i>
+                                        Log Out</button>
                                 </form>
                             </div>
                         </div>
