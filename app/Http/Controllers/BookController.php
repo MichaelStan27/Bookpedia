@@ -103,10 +103,8 @@ class BookController extends Controller {
         return redirect()->route('profile', $user)->with('message', 'Book added successfully!');
     }
 
-    public function update_book_form($id) {
+    public function update_book_form(Book $book) {
         $categories = Category::all();
-        $book = Book::with('category')
-            ->where('id', $id)->first();
 
         return view('update-book')->with(['book' => $book, 'categories' => $categories]);
     }
