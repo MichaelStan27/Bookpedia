@@ -127,31 +127,33 @@
         </div>
 
         {{-- MY WISHLIST SECTION --}}
-        <hr class="mt-2 mb-6 scroll-smooth" id="wishlist">
-        <div class="flex flex-wrap justify-between items-center">
-            <div class="text-2xl font-bold">WISHLIST</div>
-        </div>
+        @if (null !== auth()->user() && auth()->user()->id == $user->id)
+            <hr class="mt-2 mb-6 scroll-smooth" id="wishlist">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="text-2xl font-bold">WISHLIST</div>
+            </div>
 
-        {{-- Wishlist Data --}}
-        <div class="container py-4">
-            <section class="text-gray-1000 body-font">
-                <div class="container mx-auto h-1/4">
-                    <div class="flex flex-wrap mb-10 gap-20">
-                        @forelse ($wishlist as $wish)
-                            <x-wishlist :wishlist="$wish"></x-wishlist>
-                        @empty
-                            <h1 class="text-lg font-semibold text-neutral-600">
-                                This user currently doesn't have any wishlist
-                            </h1>
-                        @endforelse
+            {{-- Wishlist Data --}}
+            <div class="container py-4">
+                <section class="text-gray-1000 body-font">
+                    <div class="container mx-auto h-1/4">
+                        <div class="flex flex-wrap mb-10 gap-20">
+                            @forelse ($wishlist as $wish)
+                                <x-wishlist :wishlist="$wish"></x-wishlist>
+                            @empty
+                                <h1 class="text-lg font-semibold text-neutral-600">
+                                    This user currently doesn't have any wishlist
+                                </h1>
+                            @endforelse
+                        </div>
+                        <div>
+                            {{ $wishlist->links() }}
+                        </div>
                     </div>
-                    <div>
-                        {{ $wishlist->links() }}
-                    </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
     </div>
+    @endif
 
     @include('partials.wishlist-trash-popup')
 

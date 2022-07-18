@@ -2,7 +2,7 @@
     <div id="popup" class="w-screen h-screen flex flex-col justify-center bg-black/60 bg fixed top-0 z-10">
         <div
             class="w-1/2 h-fit max-h-[35rem] py-5 flex flex-col items-center gap-5 bg-gray-100 shadow-2xl rounded-lg m-auto">
-            <h1 class="text-xl font-semibold">Your cart items are not available anymore</h1>
+            <h1 class="text-xl font-semibold">Your wishlist items are no longer available</h1>
             <div class="w-full h-fit max-h-[35rem] py-5 px-10 flex flex-col gap-3 bg-gray-200 overflow-y-auto">
                 <h1> {{ $trashes->count() }} book(s) in your wishlist was bought by someone or deleted
                     by

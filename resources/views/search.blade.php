@@ -25,7 +25,8 @@
                         @forelse ($books as $book)
                             <x-book-card :book="$book"></x-book-card>
                         @empty
-                            <h1 class="absolute top-0 left-0 text-neutral-600 text-lg">No result found ...</h1>
+                            <h1 class="absolute top-80 left-0 w-fit whitespace-nowrap text-neutral-700 text-2xl">No Result
+                                Found . . .</h1>
                         @endforelse
                     </div>
                     {{ $books->links() }}

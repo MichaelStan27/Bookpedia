@@ -23,6 +23,15 @@
                 {{ $transaction->item_price_with_notation }}
             </h1>
         </div>
+        @if ($tab == 'finish' && $transaction->is_loan_trans)
+            <div class="mb-10 text-right   text-white">
+                @if ($transaction->book->status_id == 2)
+                    <h1 class=" bg-slate-400 p-2 rounded-md">On Loan </h1>
+                @else
+                    <h1 class=" bg-slate-800 p-2 rounded-md">Finished</h1>
+                @endif
+            </div>
+        @endif
         @if ($tab == 'onloan' && $transaction->transactionType->id == 1 && $transaction->loanDetails->deliveryStatus->is('loan'))
             <div class="flex gap-3">
                 <form action="{{ route('update-sale-item', $transaction) }}" method="POST">
