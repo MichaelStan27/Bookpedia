@@ -111,7 +111,8 @@
                         <label for="password_confirmation" class="block text-left mx-auto w-1/2 text-gray-500">Confirm
                             Password
                             <span class="text-red-500">*</span></label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" autocomplete="off"
+                        <input type="password" name="password_confirmation" id="password_confirmation"
+                            autocomplete="off"
                             class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1  @error('password_confirmation') border-red-500 @enderror">
                         @error('password_confirmation')
                             <p class="
@@ -121,8 +122,9 @@
                     <button type="submit"
                         class="text-white rounded-md border-2 w-1/2 py-1 bg-black hover:text-black hover:bg-gray-100 mb-8 shadow-md">Create
                         Account</button>
-                    <h1 class="text-gray-400 mb-4 border-y-2 w-1/2 text-center mx-auto">If you already have an account </h1>
-                    <a href="/login">
+                    <h1 class="text-gray-400 mb-4 border-y-2 w-1/2 text-center mx-auto">If you already have an account
+                    </h1>
+                    <a href="{{ route('login') }}">
                         <div class="rounded-md text-white bg-gray-500 hover:bg-gray-600 w-1/2 py-1 shadow-md mb-7 mx-auto">
                             Login
                         </div>

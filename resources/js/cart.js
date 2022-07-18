@@ -54,7 +54,7 @@ listAddToCartBtn?.forEach((button) => {
 function addToCart(button) {
     const book_id = button.getAttribute("book-id");
     const data = new FormData(button.parentNode);
-    fetch(`/add-to-cart/${book_id}`, {
+    fetch(`/cart/${book_id}`, {
         method: "POST",
         body: data,
     }).then((resp) => {

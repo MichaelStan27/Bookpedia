@@ -62,7 +62,7 @@
                                         class="flex items-center justify-center aspect-square w-5 text-xs rounded-[50%] bg-red-600 text-white absolute top-[-35%] right-[-10%]">
                                         {{ auth()->user()->wishlists()->count() }}</div>
                                 </a>
-                                <form action="/logout" method="post">
+                                <form action="{{ route('logout') }}" method="post">
                                     @csrf
                                     <button
                                         class="w-20 px-3 my-1 font-semibold shadow-md rounded-md bg-red-600 text-sm text-white whitespace-nowrap hover:brightness-105">Log
@@ -74,7 +74,7 @@
                 </div>
             </li>
         @else
-            <li><a href="/login">Login</a></li>
+            <li><a href="{{ route('login') }}">Login</a></li>
         @endauth
     </ul>
 

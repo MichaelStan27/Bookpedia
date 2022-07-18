@@ -78,7 +78,7 @@
                             class="rounded-md px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium">
                             <i class="fa-solid fa-bag-shopping mr-2"></i>My orders
                         </a>
-                        <a href="#"
+                        <a href="{{ route('sales') }}"
                             class="rounded-md px-8 py-3 bg-green-500 hover:bg-green-600 text-white text-center font-medium">
                             <i class="fa-solid fa-book md:mr-2"></i>
                             <span class="hidden md:inline">My book status</span>
