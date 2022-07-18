@@ -65,7 +65,7 @@
                                         <span class="hidden md:inline">My book status</span>
                                     </button>
                                 </a>
-                                <form action="/logout" method="post">
+                                <form action="{{ route('logout') }}" method="post">
                                     @csrf
                                     <button
                                         class="w-full px-3 py-1 my-1 font-semibold shadow-md rounded-md bg-red-600 text-sm text-white whitespace-nowrap hover:brightness-105">
@@ -78,7 +78,7 @@
                 </div>
             </li>
         @else
-            <li><a href="/login">Login</a></li>
+            <li><a href="{{ route('login') }}">Login</a></li>
         @endauth
     </ul>
 

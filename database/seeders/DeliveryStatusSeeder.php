@@ -14,22 +14,22 @@ class DeliveryStatusSeeder extends Seeder {
     public function run() {
         DeliveryStatus::insert([
             [
-                'info' => 'Dikemas',
+                'info' => 'Being packaged',
             ],
             [
-                'info' => 'Dikirim',
+                'info' => 'Shipped',
             ],
             [
-                'info' => 'Diterima',
+                'info' => 'Received',
             ],
             [
                 'info' => 'Loan',
             ],
             [
-                'info' => 'Dikirim kembali',
+                'info' => 'Shipped back',
             ],
             [
-                'info' => 'Diterima kembali',
+                'info' => 'Received back',
             ],
         ]);
     }

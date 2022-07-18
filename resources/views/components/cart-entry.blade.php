@@ -38,7 +38,7 @@
         @else
             <h3 class="font-medium">{{ $cartItem->book->sale_price_with_notation }}</h3>
         @endif
-        <form action="{{ route('delete', $cartItem) }}" method="post">
+        <form action="{{ route('cart.destroy', $cartItem) }}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit"

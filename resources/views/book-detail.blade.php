@@ -82,7 +82,7 @@
                         </tr>
                         <tr class="">
                             <td class="font-semibold">Owner</td>
-                            <td class="">: <a href="/user/profile/{{ $book->user->id }}">
+                            <td class="">: <a href="{{ route('profile', $book->user) }}}}">
                                     {{ $book->owner }}</a></td>
                         </tr>
                         <tr class="">

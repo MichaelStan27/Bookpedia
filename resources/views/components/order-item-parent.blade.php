@@ -11,15 +11,15 @@
         @endforeach
         <div class="flex justify-between items-center px-5 pt-8 pb-4 gap-5">
             <div class="flex gap-5">
-                <h1 class="font-bold">Tanggal pemesanan</h1>
+                <h1 class="font-bold">Order date</h1>
                 <h1>{{ $groupOrder->order_date }}</h1>
             </div>
             <div class="flex flex-col gap-3 items-end">
                 <div class="flex">
-                    <h1 class="font-bold text-lg mr-5">Total Pesanan</h1>
+                    <h1 class="font-bold text-lg mr-5">Order total</h1>
                     <h1 class="font-bold text-lg">{{ $groupOrder->total_with_notation }}</h1>
                 </div>
-                @if ($groupOrder->deliveryStatus->is('dikirim'))
+                @if ($groupOrder->deliveryStatus->is('shipped'))
                     <form action="{{ route('update-sale-header', $groupOrder) }}" method="POST">
                         @csrf
                         <button type="submit" class="py-3 px-7 rounded-md bg-blue-500 text-white font-medium">

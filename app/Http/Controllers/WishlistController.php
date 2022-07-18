@@ -10,7 +10,8 @@ class WishlistController extends Controller {
     public function store(Book $book) {
         $user = auth()->user();
 
-        $wishlist = Wishlist::where('book_id', $book->id)->where('user_id', $user->id)->first();
+        $wishlist = $user->wishlists()->where('book_id', $book->id)->first();
+
         if (!$wishlist) {
             Wishlist::create([
                 'book_id' => $book->id,
@@ -18,7 +19,9 @@ class WishlistController extends Controller {
             ]);
             return redirect()->back()->with('message', 'Added to wishlist!');
         }
+
         $wishlist->delete();
+
         return redirect()->back()->with('message', 'Deleted from wishlist successfully!');
     }
 }
