@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller {
     public function userProfile(Request $request, User $user) {
 
-        //check trashed
-        $trashes = auth()->user()->wishlistsTrashed()->get('wishlists.*');
-        
-        foreach($trashes as $wishlist){
-            $wishlist->delete();
+        // check trashed
+        $loggedInUser = auth()->user();
+        if ($loggedInUser && $loggedInUser->id == $user->id) {
+            $trashes = $user->wishlistsTrashed()
+                ->with(['book.transactionType', 'book.category', 'book.user'])
+                ->get('wishlists.*');
+
+            foreach ($trashes as $wishlist) {
+                $wishlist->delete();
+            }
         }
 
         $myBook = $user->books()
@@ -26,15 +31,11 @@ class ProfileController extends Controller {
             ->paginate(4, ['*'], 'wishlistPage')
             ->appends($request->all());
 
-        $wishlist_trash = $user->wishlistsTrashed()
-            ->with(['book.transactionType', 'book.category', 'book.user'])
-            ->get();
-
         return view('profile', [
-            "user" => $user, 
-            "books" => $myBook, 
+            "user" => $user,
+            "books" => $myBook,
             "wishlist" => $wishlist,
-            "trashes" => $trashes
+            "trashes" => $trashes ?? false
         ]);
     }
 }
