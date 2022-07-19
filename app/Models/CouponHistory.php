@@ -9,6 +9,7 @@ class CouponHistory extends Model {
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $dates = ['created_at', 'updated_at'];
 
     public function coupon() {
         return $this->belongsTo(Coupon::class);
@@ -16,5 +17,9 @@ class CouponHistory extends Model {
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function getRedeemDateAttribute() {
+        return $this->created_at->format('d F Y');
     }
 }
