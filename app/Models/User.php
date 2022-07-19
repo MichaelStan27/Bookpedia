@@ -76,7 +76,7 @@ class User extends Authenticatable {
     }
 
     public function getUserAddressAttribute() {
-        return "{$this->detail_address}, {$this->city}, {$this->postal_code}";
+        return "{$this->detail_address}, {$this->city->city_name}, {$this->postal_code}";
     }
 
     public function getBalanceWithNotationAttribute() {
