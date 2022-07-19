@@ -25,7 +25,7 @@
                     <span class="hidden md:inline">{{ auth()->user()->first_name }}</span>
                 </a>
                 <div
-                    class="w-fit pt-5 absolute z-30 right-0 md:translate-x-1/2 -translate-y-1/4 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-150">
+                    class="w-fit pt-5 absolute z-30 right-0 md:translate-x-1/2 -translate-y-1/4 invisible opacity-0 scale-50 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-150">
                     <div
                         class="p-5 w-72 bg-white shadow-md rounded-lg ring-2 ring-gray-800 ring-offset-4 ring-offset-gray-200 ">
                         <div class="p-3 border-b-2 border-gray-300 flex items-center">
