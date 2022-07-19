@@ -74,6 +74,10 @@
                 <div class="bg-white rounded-xl flex gap-5 px-8 py-6 justify-between items-center">
                     <h1 class="text-xl font-bold uppercase">Transaction</h1>
                     <div class="flex gap-2">
+                        <a href="{{ route('coupon') }}"
+                            class="rounded-md px-8 py-3 bg-red-500 hover:bg-red-600 text-white font-medium">
+                            <i class="fa-solid fa-ticket mr-2"></i>Coupon
+                        </a>
                         <a href="{{ route('orders') }}"
                             class="rounded-md px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium">
                             <i class="fa-solid fa-bag-shopping mr-2"></i>My orders

@@ -60,6 +60,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/user/sales/item/{transaction}', 'updateSaleItem')->name('update-sale-item');
         Route::post('/checkout', 'checkout')->name('checkout');
     });
+
+    Route::controller(CouponController::class)->group(function () {
+        Route::get('/coupon', 'index')->name('coupon');
+        Route::post('/redeem', 'redeem')->name('redeem');
+    });
 });
 
 // Can be accessed by all users
