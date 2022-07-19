@@ -26,7 +26,7 @@
             <tr>
                 <td>
                     <h1 class="px-2 py-1 font-bold border text-sky-400 border-sky-500">
-                        {{ $transaction->headerTransaction->created_at->format('d M Y') }}
+                        {{ $transaction->loanDetails->loan_date->format('d M Y') }}
                     </h1>
                 </td>
                 <td>
@@ -34,7 +34,7 @@
                 </td>
                 <td>
                     <h1 class="px-2 py-1 font-bold border text-red-400 border-red-500">
-                        {{ $transaction->headerTransaction->created_at->format('d M Y') }}
+                        {{ $transaction->loanDetails->deadline->format('d M Y') }}
                     </h1>
                 </td>
             </tr>
