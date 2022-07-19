@@ -15,8 +15,10 @@
 
 <body class="bg-[#F2F2F2]">
     @include('partials.toast-notification')
-    @include('partials.navbar')
-    @yield('content')
+    <div class="min-h-screen">
+        @include('partials.navbar')
+        @yield('content')
+    </div>
     @include('partials.footer')
 </body>
 
