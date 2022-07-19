@@ -83,17 +83,6 @@
                         @enderror
                     </div>
                     <div class="mb-4">
-                        <label for="balance" class="block text-left mx-auto w-1/2 text-gray-500">Balance
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input type="text" name="balance" id="balance" placeholder="" autocomplete="off"
-                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1 @error('balance') border-red-500 @enderror"
-                            value="{{ old('balance') }}">
-                        @error('balance')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="mb-4">
                         <label for="email" class="block text-left mx-auto w-1/2 text-gray-500">Email
                             <span class="text-sm text-gray-400">(must be a valid email)</span>
                             <span class="text-red-500">*</span>

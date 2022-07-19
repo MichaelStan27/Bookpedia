@@ -59,6 +59,10 @@ class User extends Authenticatable {
         return $this->hasMany(Wishlist::class);
     }
 
+    public function couponHistories() {
+        return $this->hasMany(CouponHistory::class);
+    }
+
     public function wishlistsTrashed() {
         return $this->wishlists()
             ->join('books', 'wishlists.book_id', 'books.id')

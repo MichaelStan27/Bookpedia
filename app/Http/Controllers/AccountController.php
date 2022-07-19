@@ -51,7 +51,6 @@ class AccountController extends Controller {
             'city' => ['required', 'exists:cities,id'],
             'postal_code' => ['required', 'digits:5'],
             'detail_address' => ['required', 'min:10'],
-            'balance' => ['required', 'numeric'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', Password::min(5)->letters()->numbers(), 'confirmed'],
             'password_confirmation' => ['required', Password::min(5)->letters()->numbers()]
@@ -64,7 +63,7 @@ class AccountController extends Controller {
             'city_id' => $request->city,
             'postal_code' => $request->postal_code,
             'detail_address' => $request->detail_address,
-            'balance' => $request->balance,
+            'balance' => 0,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
