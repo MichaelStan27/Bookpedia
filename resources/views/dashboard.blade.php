@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="container mx-auto w-[80%] xl:w-[83%] 4xl:w-[85%] mb-[20rem]">
+    <div class="container mx-auto w-[80%] xl:w-[83%] 4xl:w-[85%] mb-4">
         <div class="relative h-[24rem] overflow-hidden bg-neutral-200 rounded-lg mx-auto my-10">
             <button id="carousel-prev-btn" class="absolute left-5 bottom-1/2 translate-y-1/2 select-none z-20">
                 <i
