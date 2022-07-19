@@ -60,7 +60,7 @@ class User extends Authenticatable {
     }
 
     public function couponHistories() {
-        return $this->belongsTo(CouponHistory::class);
+        return $this->hasMany(CouponHistory::class);
     }
 
     public function wishlistsTrashed() {

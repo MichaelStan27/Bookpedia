@@ -11,10 +11,10 @@ class CouponHistory extends Model {
     protected $guarded = ['id'];
 
     public function coupon() {
-        return $this->hasOne(Coupon::class);
+        return $this->belongsTo(Coupon::class);
     }
 
     public function user() {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

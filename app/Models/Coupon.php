@@ -11,6 +11,6 @@ class Coupon extends Model {
     protected $guarded = ['id'];
 
     public function couponHistory() {
-        return $this->belongsTo(CouponHistory::class);
+        return $this->hasMany(CouponHistory::class);
     }
 }
