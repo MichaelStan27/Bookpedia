@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,11 +11,13 @@ use Illuminate\Validation\Rules\Password;
 
 class AccountController extends Controller {
     public function viewLogin() {
-        return view('/login');
+        return view('login');
     }
 
     public function viewRegister() {
-        return view('/register');
+        return view('register', [
+            'cities' => City::all()
+        ]);
     }
 
     public function login(Request $request) {
@@ -45,7 +48,7 @@ class AccountController extends Controller {
             'first_name' => ['required'],
             'last_name' => ['required'],
             'phone' => ['required', 'digits_between:11,13', 'regex:/^[0][0-9]{10,12}/'],
-            'city' => ['required'],
+            'city' => ['required', 'exists:cities,id'],
             'postal_code' => ['required', 'digits:5'],
             'detail_address' => ['required', 'min:10'],
             'balance' => ['required', 'numeric'],
@@ -58,7 +61,7 @@ class AccountController extends Controller {
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone,
-            'city' => $request->city,
+            'city_id' => $request->city,
             'postal_code' => $request->postal_code,
             'detail_address' => $request->detail_address,
             'balance' => $request->balance,

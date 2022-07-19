@@ -3,10 +3,10 @@
 @section('title', 'Register')
 
 @section('content')
-    <div class="container mx-auto flex justify-center py-8">
+    <div class="container mx-auto flex justify-center py-6">
         <div class="bg-white w-1/2 rounded-l-md shadow-lg py-2">
             <h1 class="text-center text-2xl font-bold py-2 my-4">Register</h1>
-            <form action="" method="post" class="">
+            <form action="{{ route('register') }}" method="post">
                 @csrf
                 <div class="text-center mt-4">
                     <div class="mb-4">
@@ -30,6 +30,25 @@
                         @enderror
                     </div>
                     <div class="mb-4">
+                        <label for="city" class="block w-1/2 mx-auto text-left text-gray-500">
+                            City <span class="text-red-500">*</span>
+                        </label>
+                        <select name="city" id="city"
+                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1 @error('city') border-red-500 @enderror">
+                            <option value="" @if (!old('city')) selected @endif disabled>
+                                Select your city
+                            </option>
+                            @foreach ($cities as $city)
+                                <option value="{{ $city->id }}" @if (old('city') === $city->city_name) selected @endif>
+                                    {{ $city->city_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('city')
+                            <p class="text-red-500 text-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
                         <label for="phone" class="block text-left mx-auto w-1/2 text-gray-500">Phone Number
                             <span class="text-sm text-gray-400">(numeric, starts with 0, 11-13)</span>
                             <span class="text-red-500">*</span>
@@ -38,16 +57,6 @@
                             class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1 @error('phone') border-red-500 @enderror"
                             value="{{ old('phone') }}">
                         @error('phone')
-                            <p class="text-red-500 text-sm">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="mb-4">
-                        <label for="city" class="block text-left mx-auto w-1/2 text-gray-500">City <span
-                                class="text-red-500">*</span></label>
-                        <input type="text" name="city" id="city" placeholder="" autocomplete="off"
-                            class="text-center w-1/2 rounded-md border-2 outline-gray-400 py-1 @error('city') border-red-500 @enderror"
-                            value="{{ old('city') }}">
-                        @error('city')
                             <p class="text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                     </div>
@@ -120,9 +129,11 @@
                         @enderror
                     </div>
                     <button type="submit"
-                        class="text-white rounded-md border-2 w-1/2 py-1 bg-black hover:text-black hover:bg-gray-100 mb-8 shadow-md">Create
-                        Account</button>
-                    <h1 class="text-gray-400 mb-4 border-y-2 w-1/2 text-center mx-auto">If you already have an account
+                        class="text-white rounded-md border-2 w-1/2 py-1 bg-black hover:text-black hover:bg-gray-100 mb-8 shadow-md">
+                        Create Account
+                    </button>
+                    <h1 class="text-gray-400 mb-4 border-y-2 w-1/2 text-center mx-auto">
+                        If you already have an account
                     </h1>
                     <a href="{{ route('login') }}">
                         <div class="rounded-md text-white bg-gray-500 hover:bg-gray-600 w-1/2 py-1 shadow-md mb-7 mx-auto">
