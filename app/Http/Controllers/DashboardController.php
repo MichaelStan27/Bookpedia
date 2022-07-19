@@ -11,19 +11,22 @@ class DashboardController extends Controller {
         $user = auth()->user();
 
         if ($user) {
-            $users = User::where('id', '<>', $user->id)->limit(5)->get();
+            $users = User::with(['city'])
+                ->where('id', '<>', $user->id)
+                ->where('city_id', $user->city_id)
+                ->limit(5)
+                ->get();
             $books = Book::with(['transactionType', 'category', 'user'])
                 ->where('user_id', '<>', $user->id)
                 ->limit(12)->get();
         } else {
-            $users = User::limit(5)->get();
             $books = Book::with(['transactionType', 'category', 'user'])
                 ->limit(12)->get();
         }
 
         return view('dashboard', [
             'books' => $books,
-            'users' => $users
+            'users' => $users ?? []
         ]);
     }
 
