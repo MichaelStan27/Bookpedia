@@ -20,9 +20,13 @@
         @endauth
         @auth
             <li class="group relative">
-                <a href="{{ route('profile', auth()->user()) }}" class="inline">
-                    <i class="fa-solid fa-user fa-lg mx-2"></i>
-                    <span class="hidden md:inline">{{ auth()->user()->first_name }}</span>
+                <a href="{{ route('profile', auth()->user()) }}" class="flex">
+                    <div class="">
+                        <h1 class="hidden md:inline">{{ auth()->user()->first_name }}</h1>
+                    </div>
+                    <div class="">
+                        <i class="fa-solid fa-caret-down ml-2"></i>
+                    </div>
                 </a>
                 <div
                     class="w-fit pt-5 absolute z-30 right-0 md:translate-x-1/2 -translate-y-1/4 invisible opacity-0 scale-50 group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 transition-all duration-150">
