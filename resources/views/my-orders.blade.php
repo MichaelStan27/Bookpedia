@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Dashboard')
+@section('title', 'My Order')
 
 @section('content')
     <div class="container mx-auto w-4/5 mb-[20rem]">

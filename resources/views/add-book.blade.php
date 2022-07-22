@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Register')
+@section('title', 'Add Book')
 
 @section('content')
     <div class="container mx-auto flex justify-center py-8">
