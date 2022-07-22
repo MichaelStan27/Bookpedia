@@ -30,7 +30,7 @@ class AccountController extends Controller {
             return redirect()->route('home')->with('message', 'Login successful!');
         }
 
-        return redirect()->back()->withErrors(['message' => 'Invalid login credentials']);
+        return redirect()->back()->with('message', 'Invalid login credentials');
     }
 
     public function logout(Request $request) {
