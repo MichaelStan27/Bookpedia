@@ -10,6 +10,8 @@ services:
       - db
     ports:
       - 80:80
+    volumes:
+      - ./storage:/app/storage
 
   db:
     image: mysql
