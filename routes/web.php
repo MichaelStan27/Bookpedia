@@ -78,4 +78,8 @@ Route::get('/book/{book}', [BookController::class, 'viewBookDetail'])->name('boo
 Route::controller(ProfileController::class)->group(function () {
     Route::get('/user/{user}/profile', 'userProfile')->name('profile');
     Route::get('/users', 'searchUser')->name('search-user');
+    Route::middleware('auth')->group(function () {
+        Route::get('/update-profile/{user}', 'updateProfileForm')->name('update-profile');
+        Route::put('/update-profile/{user}', 'updateProfile');
+    });
 });
