@@ -6,7 +6,7 @@
     <div class="container mx-auto py-5 scroll-smooth w-10/12">
         {{-- Profile Section --}}
         <div class="container py-1">
-            <div class="bg-white flex justify-start items-center rounded-l-3xl rounded-r-3xl mt-4 mb-4 w-full">
+            <div class="bg-white flex justify-start items-center rounded-l-3xl rounded-r-3xl mt-4 mb-4 w-full relative">
                 <div class="w-1/4 mx-10 py-4 text-center">
                     <img src="https://cdn.iconscout.com/icon/free/png-256/user-avatar-contact-portfolio-personal-portrait-profile-1-5182.png"
                         class="rounded-full my-4 mx-auto w-5/6" alt="">
@@ -63,6 +63,20 @@
                                     <h5 class="text-xl leading-tight text-gray-500">{{ $user->BalanceWithNotation }}</h5>
                                 </div>
                             </div>
+                        @endif
+                    @endauth
+                </div>
+                <div class="absolute top-10 right-8">
+                    @auth
+                        @if (auth()->user()->id == $user->id)
+                            <a href="{{ route('search-user') }}">
+                                <button class="bg-neutral-600 rounded-md px-4 py-2 text-white hover:brightness-105">
+                                    <span class="mr-2">
+                                        Search User
+                                    </span>
+                                    <i class="fa-solid fa-users"></i>
+                                </button>
+                            </a>
                         @endif
                     @endauth
                 </div>
