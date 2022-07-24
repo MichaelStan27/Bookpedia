@@ -8,7 +8,7 @@
             @forelse ($users as $user)
                 <x-user-card :user="$user"></x-user-card>
             @empty
-                <div class="col-start-3 text-center py-10">
+                <div class="col-start-2 text-center py-10">
                     <h1 class="font-bold text-2xl text-neutral-600">
                         No User Found
                     </h1>
