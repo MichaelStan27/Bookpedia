@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller {
@@ -63,5 +65,37 @@ class ProfileController extends Controller {
         return view('search-user', [
             'users' => $query->select('users.*')->paginate($paginate)->appends($request->query())
         ]);
+    }
+
+    public function updateProfileForm(User $user) {
+        return view('update-profile', [
+            'cities' => City::all(),
+            'user' => $user
+        ]);
+    }
+
+    public function updateProfile(Request $request, User $user) {
+        $request->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'phone' => ['required', 'digits_between:11,13', 'regex:/^[0][0-9]{10,12}/'],
+            'city' => ['required', 'exists:cities,id'],
+            'postal_code' => ['required', 'digits:5'],
+            'detail_address' => ['required', 'min:10'],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+        ]);
+
+        $user->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone_number' => $request->phone,
+            'city_id' => $request->city,
+            'postal_code' => $request->postal_code,
+            'detail_address' => $request->detail_address,
+            'balance' => $user->balance,
+            'email' => $request->email,
+        ]);
+
+        return redirect()->route('profile', $user)->with('message', 'Profile updated successfully');
     }
 }
