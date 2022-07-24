@@ -5,7 +5,11 @@
     </ul>
     <ul class="flex items-center gap-10 w-3/4">
         <li class="w-3/4">
-            @include('partials.searchbar')
+            @if (Route::is('search-user'))
+                @include('partials.searchbar-user')
+            @else
+                @include('partials.searchbar')
+            @endif
         </li>
         @auth
             <li class="relative">
