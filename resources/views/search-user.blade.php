@@ -3,8 +3,8 @@
 @section('title', 'Search User')
 
 @section('content')
-    <div class="container mx-auto w-[80%] xl:w-[83%] 4xl:w-[85%] mb-4">
-        <div class="grid grid-cols-3">
+    <div class="container mx-auto w-[80%] xl:w-[83%] 4xl:w-[85%] mb-4 mt-12">
+        <div class="grid grid-cols-3 gap-3">
             @forelse ($users as $user)
                 @if (isset($userTrans[$user->id]))
                     <x-user-card :user="$user"
