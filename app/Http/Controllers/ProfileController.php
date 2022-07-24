@@ -38,4 +38,30 @@ class ProfileController extends Controller {
             "trashes" => $trashes ?? false
         ]);
     }
+
+    public function searchUser(Request $request) {
+        // Initialization 
+        $user = auth()->user();
+        $paginate = 9;
+
+        // Base Query
+        $query = User::with('city')
+            ->join('cities', 'users.city_id', '=', 'cities.id');
+
+        // Exclude auth user from query
+        $query = $query->where('users.id', '<>', $user->id);
+
+        // Get keyword from searchbar
+        $keyword = $request->query('keyword');
+
+        $query = $query->where(function ($query) use ($keyword) {
+            $query->Where('users.first_name', 'LIKE', "%$keyword%")
+                ->orWhere('users.last_name', 'LIKE', "%$keyword%")
+                ->orWhere('cities.city_name', 'LIKE', "%$keyword%");
+        });
+
+        return view('search-user', [
+            'users' => $query->select('users.*')->paginate($paginate)->appends($request->query())
+        ]);
+    }
 }

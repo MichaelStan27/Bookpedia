@@ -75,4 +75,7 @@ Route::controller(DashboardController::class)->group(function () {
 
 Route::get('/book/{book}', [BookController::class, 'viewBookDetail'])->name('book-detail');
 
-Route::get('/user/{user}/profile', [ProfileController::class, 'userProfile'])->name('profile');
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('/user/{user}/profile', 'userProfile')->name('profile');
+    Route::get('/users', 'searchUser')->name('search-user');
+});
