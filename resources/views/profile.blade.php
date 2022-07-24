@@ -22,7 +22,9 @@
                                 class="w-8 h-8 mx-2">
                             <label for="membersice" class="block text-xl text-left text-gray-500">
                                 <a href="mailto:{{ $user->email }}" class="text-decoration-none">
-                                    {{ $user->email }}
+                                    <span class="hover:brightness-105 text-blue-800">
+                                        {{ $user->email }}
+                                    </span>
                                 </a>
                             </label>
                         </div>
@@ -38,10 +40,19 @@
                     </div>
                     <div class="my-4 py-2">
                         <div class="flex items-center justify-start">
-                            <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt=""
+                            <img src="https://cdn-icons-png.flaticon.com/128/2942/2942076.png" alt=""
                                 class="w-8 h-8 mx-2">
                             <label for="location" class="text-left text-xl text-gray-500">
                                 <b>{{ $user->city->city_name }}</b>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="my-4 py-2">
+                        <div class="flex items-center justify-start">
+                            <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt=""
+                                class="w-8 h-8 mx-2">
+                            <label for="location" class="text-left text-xl text-gray-500">
+                                <b>{{ $user->user_address }}</b>
                             </label>
                         </div>
                     </div>
@@ -54,17 +65,6 @@
                             </h5>
                         </div>
                     </div>
-                    @auth
-                        @if (auth()->user()->id == $user->id)
-                            <div class="my-4 py-2">
-                                <div class="flex items-center justify-start">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/6506/6506327.png" alt=""
-                                        class="w-8 h-8 mx-2">
-                                    <h5 class="text-xl leading-tight text-gray-500">{{ $user->BalanceWithNotation }}</h5>
-                                </div>
-                            </div>
-                        @endif
-                    @endauth
                 </div>
                 <div class="absolute top-10 right-8">
                     @auth
