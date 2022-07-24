@@ -49,7 +49,7 @@ class ProfileController extends Controller {
             ->join('cities', 'users.city_id', '=', 'cities.id');
 
         // Exclude auth user from query
-        $query = $query->where('users.id', '<>', $user->id);
+        if ($user) $query = $query->where('users.id', '<>', $user->id);
 
         // Get keyword from searchbar
         $keyword = $request->query('keyword');
