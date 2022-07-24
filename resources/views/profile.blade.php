@@ -69,9 +69,17 @@
                 <div class="absolute top-10 right-8">
                     @auth
                         @if (auth()->user()->id == $user->id)
+                            <a href="{{ route('update-profile', $user) }}" class="block">
+                                <button class="bg-blue-500 rounded-md px-5 py-2 text-white hover:brightness-105 mb-2">
+                                    <span class="mr-2 font-semibold">
+                                        Edit Profile
+                                    </span>
+                                    <i class="fa-solid fa-user-pen"></i>
+                                </button>
+                            </a>
                             <a href="{{ route('search-user') }}">
-                                <button class="bg-neutral-600 rounded-md px-4 py-2 text-white hover:brightness-105">
-                                    <span class="mr-2">
+                                <button class="bg-neutral-600 rounded-md px-4 py-2 text-white hover:brightness-105 mb-2">
+                                    <span class="mr-2 font-semibold">
                                         Search User
                                     </span>
                                     <i class="fa-solid fa-users"></i>
