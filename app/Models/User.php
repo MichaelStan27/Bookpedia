@@ -95,6 +95,12 @@ class User extends Authenticatable {
         return $this->hasMany(HeaderTransaction::class, 'buyer_id');
     }
 
+    public function getBookCountAttribute() {
+        $books = $this->books->count();
+        if ($books == 0) return "This user doesnt have any books yet";
+        else return "This user has " . "$books " . Str::plural('book', $books);
+    }
+
     public function city() {
         return $this->belongsTo(City::class);
     }
