@@ -1,4 +1,4 @@
-@props(['user'])
+@props(['user', 'transactionCount'])
 
 <a href="{{ route('profile', $user) }}">
     <div class="rounded-md bg-white mb-4 px-4 py-2 mx-3 text-center shadow-md hover:scale-105">
@@ -21,7 +21,7 @@
             {{ $user->book_count }}
         </div>
         <div class="font-semibold text-green-500 text-lg">
-            {{ $user->successful_trans }}
+            {{ $transactionCount }}
         </div>
     </div>
 </a>

@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller {
     public function userProfile(Request $request, User $user) {
@@ -42,6 +43,19 @@ class ProfileController extends Controller {
     }
 
     public function searchUser(Request $request) {
+
+        // Get successful transaction
+        $sucessTrans = DB::table('detail_transactions')
+            ->join('books', 'books.id', '=', 'detail_transactions.book_id')
+            ->join('users', 'users.id', '=', 'books.user_id')
+            ->groupBy('users.id')
+            ->select('users.id', DB::raw('count(users.id) as total_trans'))
+            ->get();
+
+        $sucessTrans = $sucessTrans->mapWithKeys(function ($item) {
+            return [$item->id => $item->total_trans];
+        });
+
         // Initialization 
         $user = auth()->user();
         $paginate = 9;
@@ -63,7 +77,8 @@ class ProfileController extends Controller {
         });
 
         return view('search-user', [
-            'users' => $query->select('users.*')->paginate($paginate)->appends($request->query())
+            'users' => $query->select('users.*')->paginate($paginate)->appends($request->query()),
+            'userTrans' => $sucessTrans
         ]);
     }
 

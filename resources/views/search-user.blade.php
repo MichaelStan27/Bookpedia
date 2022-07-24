@@ -6,7 +6,13 @@
     <div class="container mx-auto w-[80%] xl:w-[83%] 4xl:w-[85%] mb-4">
         <div class="grid grid-cols-3">
             @forelse ($users as $user)
-                <x-user-card :user="$user"></x-user-card>
+                @if (isset($userTrans[$user->id]))
+                    <x-user-card :user="$user"
+                        transactionCount="{{ $userTrans[$user->id] . '  successful ' . Str::plural('transaction', $userTrans[$user->id]) }}">
+                    </x-user-card>
+                @else
+                    <x-user-card :user="$user" transactionCount="No successful transaction"></x-user-card>
+                @endif
             @empty
                 <div class="col-start-2 text-center py-10">
                     <h1 class="font-bold text-2xl text-neutral-600">
